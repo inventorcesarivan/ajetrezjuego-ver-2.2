@@ -266,7 +266,7 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
 
 
 <style id="mode-indicator-style">
-.mode-inline{ display:inline-flex; align-items:center; gap:6px; margin-left:-6px; }
+.mode-inline{ display:inline-flex; align-items:center; gap:8px; margin-left:8px; }
 .mode-pill{
   display:inline-flex; align-items:center; gap:6px;
   padding:6px 10px; border-radius:999px;
@@ -278,9 +278,7 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
 @media (max-width: 640px){
   .mode-pill{ font-size:14px; }
 }
-
-.mode-inline .mode-switch{ font-size:12px; padding:3px 6px; border-radius:8px; }
-</style></style>
+</style>
 
 
 </head>
@@ -1554,9 +1552,8 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
     line-height: 1.2;
     text-align:center;
     box-shadow: 0 .5rem 1.25rem rgba(0,0,0,.35);
-    max-width: 52vw;
-    white-space: normal;
-    text-wrap: balance;
+    max-width: 70vw;
+    white-space: nowrap;
   }
 </style>
 
@@ -1587,7 +1584,7 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
     const r = boardEl ? boardEl.getBoundingClientRect() : null;
     const cell = estimateCell(r);
     // subir medio casillero (~0.5 * cell)
-    const top = r ? Math.max(4, r.top + window.scrollY - 12 - (cell * 0.75)) : window.scrollY + 12;
+    const top = r ? Math.max(4, r.top + window.scrollY - 12 - (cell * 0.5)) : window.scrollY + 12;
     const left = r ? (r.left + r.width/2 + window.scrollX) : (window.innerWidth/2 + window.scrollX);
     hud.style.top = top + 'px';
     hud.style.left = left + 'px';
