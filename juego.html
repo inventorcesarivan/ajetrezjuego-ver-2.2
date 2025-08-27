@@ -53,7 +53,7 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
 
 /* #rowControls centrado arriba */
 #rowControls{
-  position:absolute; top:23px; left:50%; transform:translateX(-50%);
+  position:absolute; top: calc(23px - var(--square) * 0.5); left:50%; transform:translateX(-50%);
   display:flex; gap:10px; align-items:center; z-index:96;
   background: rgba(255,255,255,0.98); border-radius:12px;
   box-shadow: 0 .35rem .8rem rgba(0,0,0,.25); padding: 8px 10px;
@@ -190,9 +190,7 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
 /* Ajustes finos:
    - #rowControls baja 0.5 casillero
    - #instructivoToggle sube 0.5 casillero */
-#rowControls{
-  top: calc(23px + var(--square) * 0.5) !important;
-}
+#rowControls{ top: calc(23px - var(--square) * 0.5) !important; }
 
 </style><style>
 /* Bajar 2mm el botón 'Mostrar/Ocultar instructivo' y volver transparente el contenedor de Mantener/Desplazar */
@@ -260,7 +258,7 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
 <style>
 /* === Ajetrez: UI states for illegal shift === */
 .btn.blocked{background:#d33;color:#fff;border-color:#a00;cursor:not-allowed;opacity:.95}
-#rule-toast.toast{position:fixed;left:50%;top:12%;transform:translateX(-50%);background:rgba(200,0,0,.92);color:#fff;padding:10px 14px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.35);font-weight:700;max-width:min(92vw,560px);text-align:center;transition:opacity .35s z-index:9999;}
+#rule-toast.toast{position:fixed;left:50%;top:12%;transform:translateX(-50%);background:rgba(200,0,0,.92);color:#fff;padding:10px 14px;border-radius:12px;z-index:10000;box-shadow:0 8px 24px rgba(0,0,0,.35);font-weight:700;max-width:min(92vw,560px);text-align:center;transition:opacity .35s}
 </style>
 
 
@@ -280,16 +278,6 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
 }
 </style>
 
-
-
-
-
-<style id="rowcontrols-desktop-up-half">
-@media (min-width:981px){
-  /* Subir 0.5 casillero en escritorio */
-  #rowControls{ top: calc(23px - var(--square) * 0.5) !important; }
-}
-</style>
 
 </head>
 <body>
@@ -1139,11 +1127,7 @@ try{ AJ_SFX.playShift(); }catch(_){}
   let _tHandle=null;
   window.showRuleToast = function(msg){
     var el=document.getElementById('rule-toast');
-    if(!el){ el=document.createElement('div'); el.id='rule-toast'; el.className='toast';
-      var fs=document.fullscreenElement||document.webkitFullscreenElement; (fs||document.body).appendChild(el); }
-    else {
-      var fs=document.fullscreenElement||document.webkitFullscreenElement; if(fs && !fs.contains(el)) fs.appendChild(el); if(!fs && el.parentNode!==document.body) document.body.appendChild(el);
-    }
+    if(!el){ el=document.createElement('div'); el.id='rule-toast'; el.className='toast'; document.body.appendChild(el); }
     el.textContent = msg || 'No se puede desplazar la sección: el 8×8 central no puede quedar sin rey de alguno de los jugadores.';
     el.style.display='block'; el.style.opacity='1';
     if(_tHandle) clearTimeout(_tHandle);
@@ -1549,7 +1533,13 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
 
 
 <style id="botHUD-styles">
-  .bot-hud{ position: fixed; display: none; z-index: 2147483000; pointer-events: none; }
+  .bot-hud{
+    position: fixed;
+    display: none;
+    z-index: 9998;
+    pointer-events: none;
+    /* top/left set dynamically to align with #board */
+  }
   .bot-hud .bot-card{
     background: rgba(17,24,39,.92);
     color:#fff;
@@ -1601,12 +1591,6 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
 
   function show(text){
     try{
-      // If in fullscreen, ensure HUD is inside the fullscreen element (top layer)
-      const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
-      if(fsEl && hud && !fsEl.contains(hud)){ fsEl.appendChild(hud); }
-      if(!fsEl && hud && hud.parentNode !== document.body){ document.body.appendChild(hud); }
-    }catch(e){}
-    try{
       if(!hud || !textEl) return;
       textEl.textContent = text;
       positionToBoard();
@@ -1640,14 +1624,6 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   });
 
   window.BOT_UI = { showFor };
-  // Keep HUD in correct layer when entering/leaving fullscreen
-  document.addEventListener('fullscreenchange', ()=>{
-    try{
-      const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
-      if(fsEl && hud && !fsEl.contains(hud)){ fsEl.appendChild(hud); positionToBoard(); }
-      if(!fsEl && hud && hud.parentNode !== document.body){ document.body.appendChild(hud); positionToBoard(); }
-    }catch(e){}
-  });
   window.BOT_TIMING = window.BOT_TIMING || { announceMove: 3000, decideShift: 3000, announceShift: 3000, actionLead: 800 };
   window.piezaNombre = window.piezaNombre || function(t){
     const map = {P:'peón', N:'caballo', B:'alfil', R:'torre', Q:'dama', K:'rey'};
@@ -1656,20 +1632,5 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
 })();
 </script>
 
-
-<script>
-(function(){
-  function moveToastToFS(){
-    try{
-      var el=document.getElementById('rule-toast');
-      if(!el) return;
-      var fs=document.fullscreenElement||document.webkitFullscreenElement;
-      if(fs && !fs.contains(el)){ fs.appendChild(el); }
-      if(!fs && el.parentNode!==document.body){ document.body.appendChild(el); }
-    }catch(e){}
-  }
-  document.addEventListener('fullscreenchange', moveToastToFS);
-})();
-</script>
 </body>
 </html>
