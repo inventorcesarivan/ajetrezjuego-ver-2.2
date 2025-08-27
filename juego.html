@@ -281,6 +281,15 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
 </style>
 
 
+
+<style id="rowControls-desktop-up-half">
+/* Subir medio casillero los controles de Mantener/Desplazar (solo desktop) */
+@media (min-width: 981px){
+  #rowControls{
+    top: 23px !important;
+  }
+}
+</style>
 </head>
 <body>
 <div class="container">
@@ -1129,7 +1138,7 @@ try{ AJ_SFX.playShift(); }catch(_){}
   let _tHandle=null;
   window.showRuleToast = function(msg){
     var el=document.getElementById('rule-toast');
-    if(!el){ el=document.createElement('div'); el.id='rule-toast'; el.className='toast'; document.body.appendChild(el); }
+    if(!el){ el=document.createElement('div'); el.id='rule-toast'; el.className='toast'; (document.fullscreenElement || document.body).appendChild(el); }
     el.textContent = msg || 'No se puede desplazar la sección: el 8×8 central no puede quedar sin rey de alguno de los jugadores.';
     el.style.display='block'; el.style.opacity='1';
     if(_tHandle) clearTimeout(_tHandle);
