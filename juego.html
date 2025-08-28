@@ -1129,6 +1129,22 @@ function playSfx(kind){
   }
 </style>
 
+
+<style id="donate-mobile-tweak-2025-08-28">
+/* === SOLO MÓVIL: botones de donación 15% más chicos y barra 3 casilleros a la IZQUIERDA === */
+@media (max-width:699px){
+  /* Reducir SOLO los logos (MercadoPago / PayPal) en 15% */
+  #donateBar .donate-logo img{
+    height: calc(32px * 0.85) !important; /* antes: ~32px en móvil */
+    width: auto !important;
+  }
+  /* Desplazar la barra de donaciones 3 casilleros hacia la izquierda */
+  #donateBar{
+    transform: translateX(calc(-3 * var(--square))) !important;
+  }
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
