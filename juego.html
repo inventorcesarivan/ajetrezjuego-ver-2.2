@@ -971,6 +971,29 @@ function playSfx(kind){
   transform: translateY(calc(-1 * var(--square))) !important; /* subir solo 1 casillero en total */
 }
 </style>
+
+<style id="reset-fs-mobile-top-align-left-2025-08-28">
+/* === SOLO MÓVIL: subir botones Reiniciar y Pantalla Completa arriba del tablero, alineados con los botones superiores izquierdos === */
+@media (max-width:699px){
+  #floatingControls{
+    position: absolute !important;
+    top: 0 !important;              /* al tope del tablero */
+    left: 0 !important;             /* alineados con los botones izquierdos */
+    transform: none !important;
+    margin: 0 !important;
+    width: auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    gap: 6px !important;
+    z-index: 9999 !important;
+  }
+  #btnResetVisible, #btnFullscreen{
+    left: 0 !important;
+    position: relative !important;
+  }
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
