@@ -301,7 +301,15 @@ function playSfx(kind){
     a.play().catch(()=>{});
   }catch(e){}
 }
-</script></head>
+</script><style>
+/* === Ajetrez: Indicador de fin de partida (solo color rojo en "Reiniciar") === */
+.btn-alert {
+  background: #d00 !important;
+  color: #fff !important;
+  border-color: #a00 !important;
+}
+</style>
+</head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
   "b_N": "assets/piezas_aa/b_N.png",
@@ -839,7 +847,7 @@ function evaluateStatus(nextToMove){
           msg = 'Tablas por material insuficiente';
           const overlay = document.getElementById('overlay');
           const banner  = document.getElementById('banner');
-          if (overlay && banner){ banner.textContent = 'TABLAS'; overlay.style.display = 'flex'; }
+          if (overlay && banner){ banner.textContent = 'TABLAS'; overlay.style.display = 'flex'; try{ __ajMarkGameEnd(); }catch(_){} }
           return;
         }
       }
@@ -851,7 +859,7 @@ function evaluateStatus(nextToMove){
         msg = 'Tablas por material insuficiente';
         const overlay = document.getElementById('overlay');
         const banner = document.getElementById('banner');
-        if (overlay && banner){ banner.textContent = 'TABLAS'; overlay.style.display = 'flex'; }
+        if (overlay && banner){ banner.textContent = 'TABLAS'; overlay.style.display = 'flex'; try{ __ajMarkGameEnd(); }catch(_){} }
         return;
       }
     } catch(e) { /* noop */ }
@@ -1223,11 +1231,22 @@ try{ AJ_SFX.playShift(); }catch(_){}
   }
   function endShift(){ pendingShift=null; turn=turn==='w'?'b':'w'; evaluateStatus(turn); render(); maybeBot(); }
 
-  function showOverlay(text){
+  
+// === Ajetrez: Marcar fin de partida — pone en rojo el botón Reiniciar ===
+function __ajMarkGameEnd(){
+  try{
+    const btn = document.getElementById('btnResetVisible');
+    if(btn){ btn.classList.add('btn-alert'); btn.setAttribute('title','Partida terminada'); }
+  }catch(_){}
+}
+
+function showOverlay(text){
     const overlay=document.getElementById('overlay');
     const banner=document.getElementById('banner');
     banner.textContent=text; overlay.style.display='flex';
-  }
+  
+    try { if(/JAQUE|TABLAS|AHOGADO/i.test(text)) __ajMarkGameEnd(); } catch(_){}
+    }
   function hideOverlay(){ document.getElementById('overlay').style.display='none'; }
 
 // === Ajetrez: helper para avisos de regla y chequeo de legalidad ===
@@ -1261,6 +1280,7 @@ try{ AJ_SFX.playShift(); }catch(_){}
   function resetAll(){
     board=makeInitialBoard16x8(); offsets=initialOffsets.slice(); turn='w'; sel=null; moves=[]; msg='Blancas mueven'; pendingShift=null; epTarget=null; botLog=[]; gameOver=false; winner=null; overlayText=null;
     history=[]; ply=0; reviewing=false; reviewIndex=0; hideOverlay();
+    try{ var b=document.getElementById('btnResetVisible'); if(b){ b.classList.remove('btn-alert'); b.removeAttribute('title'); } }catch(_){}
     render();
     if(typeof maybeBot==='function') maybeBot();
   }
@@ -1435,7 +1455,7 @@ snapshot(`shift fila ${row+1} → ${target===0?'tope izq.':'tope der.'}`);
     const btnFs = document.getElementById('btnFullscreen');
 
     if(btnReset && resetHidden){
-      btnReset.addEventListener('click', () => { try{ resetHidden.click(); }catch(e){} });
+      btnReset.addEventListener('click', () => { try{ btnReset.classList.remove('btn-alert'); btnReset.removeAttribute('title'); }catch(_){ } try{ resetHidden.click(); }catch(e){} });
     }
     function fsActive(){ return document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement; }
     function reqFS(el){ if(el.requestFullscreen) return el.requestFullscreen(); if(el.webkitRequestFullscreen) return el.webkitRequestFullscreen(); if(el.mozRequestFullScreen) return el.mozRequestFullScreen(); }
