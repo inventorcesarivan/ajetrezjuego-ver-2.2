@@ -1520,6 +1520,16 @@ function playSfx(kind){
 }
 </style>
 
+
+<style id="donate-mobile-up7squares-2025-08-28">
+/* SOLO en móvil: subir los botones de donación 7 casilleros en total */
+@media (max-width:699px){
+  #donateBar{
+    top: calc(50% + (var(--square, 36px) * (3 - 7))) !important; /* antes +3, ahora -4 */
+  }
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
