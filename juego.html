@@ -254,10 +254,7 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
 
 
 /* === Bajar 2mm también el botón de Ver en pantalla completa === */
-#btnFullscreen{
-  position: relative;
-  top: 2mm !important;
-}
+
 
 </style>
 <style>
@@ -664,9 +661,7 @@ function playSfx(kind){
 
 <style id="restart-fs-down-3mm-2025-08-28">
 /* === Bajar botones de Reiniciar y Pantalla Completa 3mm === */
-#resetBtn, #fullscreenBtn{
-  margin-top: 3mm !important;
-}
+#resetBtn, 
 </style>
 
 <style id="board-up-0_5square-2025-08-28e">
@@ -699,52 +694,31 @@ function playSfx(kind){
   /* Usa el mismo offset vertical que el bloque de modo (actualmente ~ -2mm respecto al tope de la base) */
   --mode-top-offset: -2mm;
 }
-#resetBtn, #fullscreenBtn{
-  position: absolute !important;
-  top: 0 !important;
-  transform: translateY(var(--mode-top-offset)) !important;
-  margin-top: 0 !important; /* neutraliza ajustes previos */
-}
+#resetBtn, 
 </style>
 
 <style id="reset-fs-extra-down-3mm-2025-08-28">
 /* === Bajar Reiniciar y Pantalla Completa 3mm más respecto a los controles de modo === */
-#resetBtn, #fullscreenBtn{
-  transform: translateY(calc(var(--mode-top-offset, 0px) + 3mm)) !important;
-}
+#resetBtn, 
 </style>
 
 <style id="reset-fs-left-half-square-2025-08-28">
 /* === Desplazar Reiniciar y Pantalla Completa medio casillero a la izquierda === */
-#resetBtn, #fullscreenBtn{
-  transform: translate(calc(-0.5 * var(--square)), calc(var(--mode-top-offset, 0px) + 3mm)) !important;
-}
+#resetBtn, 
 </style>
 
 <style id="fix-visible-reset-fs-2025-08-28">
-/* === Corregir target: los botones visibles son #btnResetVisible y #btnFullscreen === */
-#btnResetVisible, #btnFullscreen{
-  /* Anula el top anterior y usa transform como única fuente de desplazamiento */
-  top: 0 !important;
-  /* Mantener posicionamiento no forzado (relativo por defecto) para no romper layout */
-  position: relative !important;
-  transform: translate(calc(-0.5 * var(--square)), calc(var(--mode-top-offset, 0px) + 3mm)) !important;
-}
+/* === Corregir target: los botones visibles son 
 
 /* En móvil, preservar el mismo comportamiento (por si había overrides) */
 @media (max-width: 699px){
-  #btnResetVisible, #btnFullscreen{
-    top: 0 !important;
-    transform: translate(calc(-0.5 * var(--square)), calc(var(--mode-top-offset, 0px) + 3mm)) !important;
-  }
+  #btnResetVisible, 
 }
 </style>
 
 <style id="visible-reset-fs-down-half-square-2025-08-28">
 /* === Bajar botones visibles Reiniciar y Pantalla Completa medio casillero (web y móvil) === */
-#btnResetVisible, #btnFullscreen{
-  transform: translate(calc(-0.5 * var(--square)), calc(var(--mode-top-offset, 0px) + 3mm + 0.5 * var(--square))) !important;
-}
+#btnResetVisible, 
 </style>
 
 <style id="board-container-expand-down-0_5square-2025-08-28">
@@ -764,10 +738,7 @@ function playSfx(kind){
 <style id="mobile-reset-fs-up-half-and-narrow-2025-08-28">
 /* === SOLO MÓVIL: subir medio casillero los botones Reiniciar y Pantalla Completa, y achicar ancho a la mitad === */
 @media (max-width:699px){
-  #btnResetVisible, #btnFullscreen{
-    transform: translate(calc(-0.5 * var(--square)), calc(var(--mode-top-offset, 0px) + 3mm)) !important;
-    width: 50% !important;
-  }
+  #btnResetVisible, 
 }
 </style>
 
@@ -789,15 +760,7 @@ function playSfx(kind){
   }
 
   /* Botones: más angostos, sin transform heredado, ajustando padding */
-  #btnResetVisible, #btnFullscreen{
-    position: relative !important;
-    top: 0 !important;
-    transform: none !important; /* neutraliza ajustes previos de translate */
-    width: 42vw !important;      /* más angosto */
-    max-width: 180px !important; /* límite superior razonable */
-    padding: 6px 10px !important;
-    text-align: center !important;
-  }
+  #btnResetVisible, 
 }
 </style>
 
@@ -853,11 +816,7 @@ function playSfx(kind){
 <style id="reset-fs-mobile-halfwidth-2025-08-28">
 /* === SOLO MÓVIL: achicar ancho de los botones Reiniciar y Fullscreen a la mitad === */
 @media (max-width:699px){
-  #btnResetVisible, #btnFullscreen{
-    width: 50% !important;
-    max-width: none !important;
-    flex: 0 0 auto !important;
-  }
+  #btnResetVisible, 
 }
 </style>
 
@@ -868,9 +827,7 @@ function playSfx(kind){
     flex-direction: column !important;
     align-items: flex-end !important;
   }
-  #btnResetVisible, #btnFullscreen{
-    width: 50% !important;
-  }
+  #btnResetVisible, 
 }
 </style>
 
@@ -890,14 +847,7 @@ function playSfx(kind){
     gap: 6px !important;
     flex-wrap: nowrap !important;
   }
-  #btnResetVisible, #btnFullscreen{
-    width: auto !important;              /* volver a ancho natural */
-    max-width: none !important;
-    position: relative !important;
-    top: 0 !important;
-    transform: none !important;
-    padding: 6px 10px !important;
-  }
+  #btnResetVisible, 
 }
 </style>
 
@@ -918,22 +868,10 @@ function playSfx(kind){
     flex-wrap: nowrap !important;
     pointer-events: auto !important;
   }
-  #btnResetVisible, #btnFullscreen{
-    display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    position: relative !important;
-    top: 0 !important;
-    left: auto !important;
-    right: auto !important;
-    transform: none !important;
-    width: auto !important;
-    max-width: none !important;
-    padding: 6px 10px !important;
-  }
+  #btnResetVisible, 
   /* Orden explícito: Reset a la izquierda, Fullscreen a la derecha */
   #btnResetVisible{ order: 0 !important; }
-  #btnFullscreen{ order: 1 !important; }
+  
 }
 </style>
 
@@ -975,7 +913,7 @@ body, .container, .frame, #overlay, .banner{
 <div class="overlay" id="overlay" style="display:none;"><div class="banner" id="banner">JAQUE MATE</div></div>
 <div id="floatingControls">
 <button class="btn" id="btnResetVisible">Reiniciar</button>
-<button class="btn" id="btnFullscreen">Ver en pantalla completa</button>
+
 </div>
 
 <div id="board"></div>
@@ -2145,7 +2083,7 @@ snapshot(`shift fila ${row+1} → ${target===0?'tope izq.':'tope der.'}`);
     const frame = document.querySelector('.frame');
     const resetHidden = document.getElementById('resetBtn');
     const btnReset = document.getElementById('btnResetVisible');
-    const btnFs = document.getElementById('btnFullscreen');
+    const btnFs = document.getElementById('
 
     if(btnReset && resetHidden){
       btnReset.addEventListener('click', () => { try{ btnReset.classList.remove('btn-alert'); btnReset.removeAttribute('title'); }catch(_){ } try{ resetHidden.click(); }catch(e){} });
@@ -2595,13 +2533,7 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
     align-items: flex-end !important;
     gap: 6px !important;
   }
-  #btnResetVisible, #btnFullscreen{
-    width: 50% !important;
-    max-width: 180px !important;
-    transform: none !important;
-    top: 0 !important;
-    position: relative !important;
-  }
+  #btnResetVisible, 
 }
 </style>
 
@@ -2619,7 +2551,7 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
       fc.style.zIndex = 2147483647;
 
       var r = document.getElementById('btnResetVisible');
-      var f = document.getElementById('btnFullscreen');
+      var f = document.getElementById('
       [r,f].forEach(function(el){
         if(!el) return;
         el.style.width = '50%';
