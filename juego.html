@@ -770,6 +770,36 @@ function playSfx(kind){
   }
 }
 </style>
+
+<style id="mobile-reset-fs-topright-above-board-2025-08-28">
+/* === SOLO MÓVIL: enviar Reiniciar / Pantalla completa a la derecha ARRIBA del tablero, más angostos === */
+@media (max-width:699px){
+  /* Ubicar el contenedor de controles flotantes respecto al tablero */
+  #floatingControls{
+    position: absolute !important;
+    top: calc(var(--board-top, 0px) + var(--board-offset-y, 0px)) !important; /* alineado al tope visible del tablero */
+    right: calc(0.5 * var(--square)) !important;
+    left: auto !important;
+    z-index: 2147483000 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 6px !important;
+    flex-wrap: nowrap !important;
+  }
+
+  /* Botones: más angostos, sin transform heredado, ajustando padding */
+  #btnResetVisible, #btnFullscreen{
+    position: relative !important;
+    top: 0 !important;
+    transform: none !important; /* neutraliza ajustes previos de translate */
+    width: 42vw !important;      /* más angosto */
+    max-width: 180px !important; /* límite superior razonable */
+    padding: 6px 10px !important;
+    text-align: center !important;
+  }
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
