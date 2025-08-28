@@ -2502,5 +2502,68 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
 }
 </style>
 
+
+<style id="mobile-reset-fs-force-style-2025-08-28">
+@media (max-width:699px){
+  #floatingControls{
+    position: fixed !important;
+    top: calc(var(--board-top, 0px) + var(--board-offset-y, 0px)) !important;
+    right: calc(1 * var(--square)) !important;
+    left: auto !important;
+    z-index: 2147483647 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 6px !important;
+  }
+  #btnResetVisible, #btnFullscreen{
+    width: 50% !important;
+    max-width: 180px !important;
+    transform: none !important;
+    top: 0 !important;
+    position: relative !important;
+  }
+}
+</style>
+
+<script id="mobile-reset-fs-neutralizer-2025-08-28">
+// Neutraliza scripts que muevan los controles en móvil
+(function(){
+  function forcePos(){
+    try{
+      var fc = document.getElementById('floatingControls');
+      if(!fc) return;
+      fc.style.position = 'fixed';
+      fc.style.top = 'calc(var(--board-top, 0px) + var(--board-offset-y, 0px))';
+      fc.style.right = 'calc(1 * var(--square))';
+      fc.style.left = 'auto';
+      fc.style.zIndex = 2147483647;
+
+      var r = document.getElementById('btnResetVisible');
+      var f = document.getElementById('btnFullscreen');
+      [r,f].forEach(function(el){
+        if(!el) return;
+        el.style.width = '50%';
+        el.style.maxWidth = '180px';
+        el.style.transform = 'none';
+        el.style.top = '0';
+        el.style.position = 'relative';
+      });
+    }catch(e){}
+  }
+
+  // Intenta anular funciones móviles si existen
+  try{ window.moveControlsBelowOnMobile = function(){}; }catch(e){}
+  try{ window.onMobileLayout = function(){ forcePos(); }; }catch(e){}
+
+  ['load','resize','orientationchange'].forEach(function(ev){
+    window.addEventListener(ev, forcePos, {passive:true});
+  });
+  document.addEventListener('visibilitychange', forcePos, {passive:true});
+  // Primer forzado
+  if(document.readyState === 'complete') forcePos();
+  else window.addEventListener('DOMContentLoaded', forcePos, {once:true});
+})();
+</script>
 </body>
 </html>
