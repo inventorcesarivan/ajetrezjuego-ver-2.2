@@ -873,6 +873,17 @@ function playSfx(kind){
   }
 }
 </style>
+
+<style id="reset-fs-mobile-down-1square-2025-08-28">
+/* === SOLO MÓVIL: bajar 1 casillero los botones Reiniciar y Pantalla Completa === */
+@media (max-width:699px){
+  /* Desplazar el contenedor de controles móviles 1 casillero hacia abajo
+     Usamos translateY para sumar al posicionamiento actual sin romper otras reglas */
+  #floatingControls{
+    transform: translateY(var(--square)) !important;
+  }
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
