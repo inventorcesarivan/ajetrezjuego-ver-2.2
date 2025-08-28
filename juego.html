@@ -1396,6 +1396,45 @@ function playSfx(kind){
 }
 </style>
 
+
+<style id="donation-paypal-topright-mobile-2025-08-28">
+/* === SOLO MÓVIL: enviar PayPal arriba a la DERECHA === */
+@media (max-width:699px){
+  #donarPayPal{
+    position: fixed !important;
+    top: calc(1 * var(--square)) !important;   /* distancia desde arriba, ajustable */
+    right: calc(1 * var(--square)) !important; /* distancia desde la derecha, ajustable */
+    left: auto !important;
+    bottom: auto !important;
+    z-index: 10000 !important;
+  }
+}
+</style>
+
+
+<style id="reset-fs-center-board-mobile-2025-08-28">
+/* === SOLO MÓVIL: subir botones Reiniciar y Pantalla Completa a la mitad del tablero === */
+@media (max-width:699px){
+  #board{
+    position: relative !important;
+  }
+  #floatingControls{
+    position: absolute !important;
+    top: 50% !important;          /* mitad vertical del tablero */
+    left: 50% !important;         /* centro horizontal */
+    transform: translate(-50%, -50%) !important;
+    z-index: 10000 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 10px !important;
+  }
+  #btnResetVisible, #btnFullscreen{
+    min-width: calc(3.2 * var(--square)) !important;
+    min-height: calc(1.2 * var(--square)) !important;
+  }
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
