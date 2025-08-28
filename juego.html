@@ -148,6 +148,58 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
   }
 }
 
+
+/* === SOLO WEB: subir 1 casillero los botones de mantener/desplazar sección === */
+@media (min-width:981px){
+  #rowControls{
+    top: calc(23px - var(--square)) !important;
+  }
+}
+
+
+/* === NO FLOTANTE para el cartel rojo de regla (web y móvil) === */
+#rule-toast.toast{
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  transform: none !important;
+  margin: 10px auto !important;
+  max-width: min(92vw, 560px) !important;
+  text-align: center !important;
+  z-index: auto !important;
+}
+/* Contenedor centra el cartel dentro del marco */
+.frame #rule-toast.toast{ display:none; } /* por defecto oculto; se muestra vía JS */
+
+
+/* === Subir medio casillero los botones de mantener/desplazar sección (web y móvil) === */
+#rowControls{
+  margin-top: calc(-0.5 * var(--square)) !important;
+}
+
+
+/* === Subir 4 casilleros el cartel emergente de advertencia (rule-toast) === */
+#rule-toast.toast{
+  margin-top: calc(-4 * var(--square)) !important;
+}
+
+
+/* === Superponer el cartel de advertencia por encima de todo === */
+#rule-toast.toast{
+  position: absolute !important;
+  top: 10% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 99999 !important;
+  margin-top: 0 !important;
+}
+
+
+/* === Desplazar 1 casillero hacia abajo el cartel de advertencia === */
+#rule-toast.toast{
+  top: calc(10% + var(--square)) !important;
+}
+
 </style>
 <style>
 /* 20% más chico el panel del instructivo */
@@ -1350,17 +1402,25 @@ function showOverlay(text){
 (function(){
   let _tHandle=null;
   window.showRuleToast = function(msg){
-    var el=document.getElementById('rule-toast');
-    if(!el){ el=document.createElement('div'); el.id='rule-toast'; el.className='toast';
-      var fs=document.fullscreenElement||document.webkitFullscreenElement; (fs||document.body).appendChild(el); }
-    else {
-      var fs=document.fullscreenElement||document.webkitFullscreenElement; if(fs && !fs.contains(el)) fs.appendChild(el); if(!fs && el.parentNode!==document.body) document.body.appendChild(el);
-    }
-    el.textContent = msg || 'No se puede desplazar la sección: el 8×8 central no puede quedar sin rey de alguno de los jugadores.';
-    el.style.display='block'; el.style.opacity='1';
-    if(_tHandle) clearTimeout(_tHandle);
-    _tHandle = setTimeout(function(){ el.style.opacity='0'; setTimeout(function(){ el.style.display='none'; }, 420); }, 4200);
-  };
+  var el = document.getElementById('rule-toast');
+  var host = document.querySelector('.frame') || document.body; // anclar dentro del marco, no flotante
+  if(!el){
+    el = document.createElement('div');
+    el.id = 'rule-toast';
+    el.className = 'toast';
+    host.appendChild(el);
+  } else if(el.parentNode !== host){
+    host.appendChild(el);
+  }
+  el.textContent = msg || 'No se puede desplazar la sección: el 8×8 central no puede quedar sin rey de alguno de los jugadores.';
+  el.style.display = 'block';
+  el.style.opacity = '1';
+  if(window.__aj_rule_toast_timer__) clearTimeout(window.__aj_rule_toast_timer__);
+  window.__aj_rule_toast_timer__ = setTimeout(function(){
+    el.style.opacity = '0';
+    setTimeout(function(){ el.style.display = 'none'; }, 420);
+  }, 4200);
+};
   window.canShiftSection = function(row, action){
     // action: 'left' => target 8; 'right' => target 0
     var target = (action==='left')?8:0;
