@@ -224,6 +224,41 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
   }
 }
 
+
+/* === WEB y MÓVIL: enviar el botón de modo (Estás en modo / Cambiar de modo) a la derecha === */
+.toolbar .mode-inline{
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  justify-content: flex-end !important;
+}
+
+
+/* === Ajustes de posición === */
+
+/* Bajar medio casillero el botón de modo */
+.toolbar .mode-inline{
+  margin-top: calc(0.5 * var(--square)) !important;
+}
+
+/* Subir medio casillero los botones de reiniciar y pantalla completa */
+#floatingControls{
+  top: calc(23px - 0.5 * var(--square)) !important;
+}
+
+
+/* === Bajar 2mm el botón de Reiniciar === */
+#btnResetVisible{
+  position: relative;
+  top: 2mm !important;
+}
+
+
+/* === Bajar 2mm también el botón de Ver en pantalla completa === */
+#btnFullscreen{
+  position: relative;
+  top: 2mm !important;
+}
+
 </style>
 <style>
 /* 20% más chico el panel del instructivo */
