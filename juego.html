@@ -1145,6 +1145,345 @@ function playSfx(kind){
 }
 </style>
 
+
+<style id="donate-floating-style-2025-08-28">
+/* === Botones de donación flotantes (web + móvil) con botón de cierre === */
+#donateBar{
+  position: fixed !important;
+  bottom: 1rem !important;
+  right: 1rem !important;
+  z-index: 9999 !important;
+  /* Mantener layout compacto sin interferir con clics debajo cuando esté oculto */
+}
+/* Móvil: ajustar levemente los márgenes */
+@media (max-width:699px){
+  #donateBar{
+    bottom: 0.75rem !important;
+    right: 0.75rem !important;
+  }
+}
+
+/* Botón de cierre ("X") dentro de la barra */
+#donateBar .donate-close{
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 9999px;
+  border: 1px solid rgba(0,0,0,0.2);
+  background: rgba(255,255,255,0.9);
+  cursor: pointer;
+  z-index: 1;
+  user-select: none;
+}
+
+/* Si el sitio usa temas oscuros, asegurar contraste */
+@media (prefers-color-scheme: dark){
+  #donateBar .donate-close{
+    background: rgba(20,20,20,0.9);
+    color: white;
+    border-color: rgba(255,255,255,0.25);
+  }
+}
+
+/* Asegurar que el contenedor tenga posición relativa para ubicar la "X" */
+#donateBar{ position: fixed !important; }
+#donateBar.donate-has-close{ position: fixed !important; }
+</style>
+
+
+<style id="donate-bottomleft-style-2025-08-28">
+/* === Barra de donaciones anclada DEBAJO del tablero (izquierda) en web y móvil === */
+
+/* Restablecer estilo previo por si quedó 'fixed' o con transform de pasos anteriores */
+#donateBar{
+  position: static !important;
+  transform: none !important;
+}
+
+/* Cuando está anclada al tablero */
+.donate-anchored-below-left{
+  position: absolute !important;
+  left: 0 !important;
+  /* Colocarla justo debajo del tablero con un margen de medio casillero */
+  top: calc(100% + (var(--square, 40px) * 0.5)) !important;
+  z-index: 50 !important;
+}
+
+/* Asegurar que el contenedor del tablero permita posicionamiento absoluto */
+.board-anchor-relative{
+  position: relative !important;
+}
+
+/* Ajustes suaves para pantallas móviles */
+@media (max-width:699px){
+  .donate-anchored-below-left{
+    top: calc(100% + (var(--square, 36px) * 0.5)) !important;
+  }
+}
+
+/* Botón de cierre se mantiene igual que en la versión flotante anterior */
+#donateBar .donate-close{
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 9999px;
+  border: 1px solid rgba(0,0,0,0.2);
+  background: rgba(255,255,255,0.9);
+  cursor: pointer;
+  z-index: 1;
+  user-select: none;
+}
+@media (prefers-color-scheme: dark){
+  #donateBar .donate-close{
+    background: rgba(20,20,20,0.9);
+    color: white;
+    border-color: rgba(255,255,255,0.25);
+  }
+}
+</style>
+
+
+<style id="donate-bottomleft-style-2025-08-28b">
+/* Reducir los botones de donación 10% más */
+#donateBar .donate-logo img{
+  height: calc(32px * 0.9) !important;
+  width: auto !important;
+}
+
+/* Asegurar que el contenedor se vea compacto */
+#donateBar{
+  position: absolute !important;
+  left: 0 !important;
+  top: calc(100% + (var(--square, 40px) * 0.5)) !important;
+  z-index: 50 !important;
+  display: inline-block !important;
+}
+
+/* Ajuste en móvil */
+@media (max-width:699px){
+  #donateBar{
+    top: calc(100% + (var(--square, 36px) * 0.5)) !important;
+  }
+}
+</style>
+
+
+<style id="board-extend-down-2025-08-28">
+/* Estirar el contenedor del tablero hacia abajo 2 casilleros */
+#board, #mobile-board-down-1square{
+  padding-bottom: calc(var(--square, 40px) * 2) !important;
+  position: relative;
+}
+</style>
+
+
+<style id="donate-ontop-up2-2025-08-28">
+/* Botones de donación por encima de todo y 2 casilleros más arriba */
+#donateBar{
+  z-index: 99999 !important;
+  position: absolute !important;
+  left: 0 !important;
+  bottom: calc((var(--square, 40px) * 2)) !important; /* subir 2 casilleros */
+}
+</style>
+
+
+<style id="donate-below-board-2mm-2025-08-28">
+/* Ubicar los botones de donación justo debajo de la última sección del tablero con 2mm de separación */
+#donateBar{
+  position: absolute !important;
+  left: 0 !important;
+  top: calc(100% + 2mm) !important;
+  z-index: 9999 !important;
+}
+#board, #mobile-board-down-1square{
+  position: relative !important; /* asegurar que donateBar se posicione relativo al tablero */
+}
+</style>
+
+
+<style id="donate-center-board-2025-08-28">
+/* Botones de donación flotantes en el centro del tablero (web y móvil) */
+#donateBar{
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 99999 !important;
+}
+#board, #mobile-board-down-1square{
+  position: relative !important;
+}
+</style>
+
+
+<style id="donate-center-down3-2025-08-28">
+/* Botones de donación flotantes en el centro del tablero pero 3 casilleros más abajo */
+#donateBar{
+  position: absolute !important;
+  top: calc(50% + (var(--square, 40px) * 3)) !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 99999 !important;
+}
+#board, #mobile-board-down-1square{
+  position: relative !important;
+}
+</style>
+
+
+<style id="donate-center-down3-left5-2025-08-28">
+/* Botones de donación flotantes: centro, 3 casilleros más abajo y 5 casilleros a la izquierda */
+#donateBar{
+  position: absolute !important;
+  top: calc(50% + (var(--square, 40px) * 3)) !important;
+  left: calc(50% - (var(--square, 40px) * 5)) !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 99999 !important;
+}
+#board, #mobile-board-down-1square{
+  position: relative !important;
+}
+</style>
+
+
+<style id="donate-center-down3-left4-2025-08-28">
+/* Botones de donación flotantes: centro, 3 casilleros más abajo y 4 casilleros a la izquierda */
+#donateBar{
+  position: absolute !important;
+  top: calc(50% + (var(--square, 40px) * 3)) !important;
+  left: calc(50% - (var(--square, 40px) * 4)) !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 99999 !important;
+}
+#board, #mobile-board-down-1square{
+  position: relative !important;
+}
+</style>
+
+
+<style id="donate-close-inline-2025-08-28">
+/* Organizar barra de donaciones en fila con la "X" al lado de los botones */
+#donateBar{
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: rgba(0,0,0,0.75);
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+/* Botón de cierre ahora es un ítem más de la fila */
+#donateBar .donate-close{
+  position: static !important;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 9999px;
+  border: 1px solid rgba(0,0,0,0.2);
+  background: rgba(255,255,255,0.9);
+  cursor: pointer;
+}
+@media (prefers-color-scheme: dark){
+  #donateBar .donate-close{
+    background: rgba(20,20,20,0.9);
+    color: white;
+    border-color: rgba(255,255,255,0.25);
+  }
+}
+</style>
+
+
+<style id="donate-clean-bg-2025-08-28">
+/* Eliminar franja negra: sin fondo en el contenedor */
+#donateBar{
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* Mantener alineación flex horizontal */
+#donateBar{
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+/* Mantener botón de cierre visible y limpio */
+#donateBar .donate-close{
+  position: static !important;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 9999px;
+  border: 1px solid rgba(0,0,0,0.2);
+  background: rgba(255,255,255,0.9);
+  cursor: pointer;
+}
+@media (prefers-color-scheme: dark){
+  #donateBar .donate-close{
+    background: rgba(20,20,20,0.9);
+    color: white;
+    border-color: rgba(255,255,255,0.25);
+  }
+}
+</style>
+
+
+<style id="donate-shift-left2-2025-08-28">
+/* Desplazar la barra de donación 2 casilleros a la izquierda */
+#donateBar{
+  position: absolute !important;
+  top: calc(50% + (var(--square, 40px) * 3)) !important;
+  left: calc(50% - (var(--square, 40px) * 6)) !important; /* antes -4, ahora -6 = 2 casilleros más */
+  transform: translate(-50%, -50%) !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+</style>
+
+
+<style id="donate-shift-left-3mm-2025-08-28">
+/* Desplazar la barra de donación 3mm más a la izquierda */
+#donateBar{
+  left: calc(50% - (var(--square, 40px) * 6) - 3mm) !important;
+}
+</style>
+
+
+<style id="mode-down-3mm-2025-08-28">
+/* Bajar 3mm el indicador de modo y el botón de cambio (web + móvil) */
+.mode-pill,
+.mode-switch{
+  margin-top: 3mm !important;
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
@@ -2815,5 +3154,208 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   else window.addEventListener('DOMContentLoaded', forcePos, {once:true});
 })();
 </script>
+
+<script id="donate-floating-script-2025-08-28">
+(function(){
+  function ready(fn){ if(document.readyState!=='loading'){ fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }
+  ready(function(){
+    var bar = document.getElementById('donateBar');
+    if(!bar) return;
+    // Marcar para estilos
+    bar.classList.add('donate-has-close');
+    // Si ya existe un botón, no duplicar
+    if (!bar.querySelector('.donate-close')){
+      var btn = document.createElement('button');
+      btn.className = 'donate-close';
+      btn.setAttribute('type','button');
+      btn.setAttribute('aria-label','Cerrar barra de donaciones');
+      btn.setAttribute('title','Cerrar');
+      btn.textContent = '×';
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        bar.style.display = 'none';
+      });
+      btn.addEventListener('keydown', function(e){
+        if(e.key==='Enter' || e.key===' '){
+          e.preventDefault();
+          bar.style.display = 'none';
+        }
+      });
+      // Asegurar que el contenedor permita posicionamiento absoluto del botón
+      var currentPos = getComputedStyle(bar).position;
+      if(currentPos === 'static'){ bar.style.position = 'fixed'; }
+      // Insertar el botón
+      bar.appendChild(btn);
+    }
+  });
+})();
+</script>
+
+
+<script id="donate-bottomleft-script-2025-08-28">
+(function(){
+  function onReady(fn){ if(document.readyState!=='loading'){ fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }
+  function pickBoardForViewport(){
+    // Si existe un tablero móvil y el viewport es chico, usarlo; si no, usar el de web
+    var mobile = document.getElementById('mobile-board-down-1square');
+    var desktop = document.getElementById('board');
+    var isMobile = window.matchMedia('(max-width: 699px)').matches;
+    if(isMobile && mobile) return mobile;
+    if(desktop) return desktop;
+    return mobile || desktop || null;
+  }
+  onReady(function(){
+    var bar = document.getElementById('donateBar');
+    if(!bar) return;
+    // Evitar estilos anteriores de flotante fixed
+    bar.style.position = '';
+    bar.style.bottom = '';
+    bar.style.right = '';
+    bar.style.left = '';
+    bar.style.top = '';
+    bar.style.transform = '';
+
+    // Asegurar botón de cierre si no existe
+    if (!bar.querySelector('.donate-close')){
+      var btn = document.createElement('button');
+      btn.className = 'donate-close';
+      btn.type = 'button';
+      btn.setAttribute('aria-label','Cerrar barra de donaciones');
+      btn.title = 'Cerrar';
+      btn.textContent = '×';
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        bar.style.display = 'none';
+      });
+      btn.addEventListener('keydown', function(e){
+        if(e.key==='Enter' || e.key===' '){
+          e.preventDefault();
+          bar.style.display = 'none';
+        }
+      });
+      bar.appendChild(btn);
+    }
+
+    function anchor(){
+      var board = pickBoardForViewport();
+      if(!board) return;
+      // Marcar el tablero para posicionamiento relativo
+      board.classList.add('board-anchor-relative');
+      // Asegurar que donateBar esté dentro del mismo contenedor para posicionamiento absoluto
+      if(bar.parentElement !== board){
+        try{ board.appendChild(bar); } catch(e){ /* fallback: dejarlo donde está */ }
+      }
+      bar.classList.add('donate-anchored-below-left');
+      // Quitar display none si se reubica, para que sea visible tras cambios de modo
+      if(bar.style.display === 'none'){ /* mantener oculto si el usuario lo cerró */ }
+    }
+
+    anchor();
+    // Re-anclar en resize/orientation change por si cambia la versión visible
+    window.addEventListener('resize', anchor);
+    window.addEventListener('orientationchange', anchor);
+  });
+})();
+</script>
+
+
+<script id="donate-bottomleft-script-2025-08-28b">
+(function(){
+  function onReady(fn){ if(document.readyState!=='loading'){ fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }
+  function pickBoardForViewport(){
+    var mobile = document.getElementById('mobile-board-down-1square');
+    var desktop = document.getElementById('board');
+    var isMobile = window.matchMedia('(max-width: 699px)').matches;
+    if(isMobile && mobile) return mobile;
+    if(desktop) return desktop;
+    return mobile || desktop || null;
+  }
+  onReady(function(){
+    var bar = document.getElementById('donateBar');
+    if(!bar) return;
+    // Insertar dentro del contenedor del tablero
+    function anchor(){
+      var board = pickBoardForViewport();
+      if(!board) return;
+      board.style.position = 'relative';
+      if(bar.parentElement !== board){
+        try{ board.appendChild(bar); }catch(e){}
+      }
+    }
+    anchor();
+    window.addEventListener('resize', anchor);
+    window.addEventListener('orientationchange', anchor);
+  });
+})();
+</script>
+
+
+<script id="donate-persist-2025-08-28">
+(function(){
+  function ready(fn){ if(document.readyState!=='loading'){ fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }
+  function pickBoardForViewport(){
+    var mobile = document.getElementById('mobile-board-down-1square');
+    var desktop = document.getElementById('board');
+    // Prefer an existing desktop board; fall back to mobile
+    return desktop || mobile || null;
+  }
+  ready(function(){
+    var bar = document.getElementById('donateBar');
+    if(!bar) return;
+    // Keep an original clone to restore if DOM wipes the element
+    var template = bar.cloneNode(true);
+    // Ensure the close button keeps working on restored copies
+    function ensureClose(el){
+      var x = el.querySelector('.donate-close');
+      if(!x){
+        x = document.createElement('button');
+        x.className='donate-close';
+        x.type='button';
+        x.textContent='×';
+        el.appendChild(x);
+      }
+      if(!x.__bound){
+        x.addEventListener('click', function(e){ e.stopPropagation(); el.style.display='none'; });
+        x.__bound = true;
+      }
+    }
+    ensureClose(bar);
+
+    function anchor(forceVisible){
+      var board = pickBoardForViewport();
+      if(!board) return;
+      board.style.position = board.style.position || 'relative';
+      var current = document.getElementById('donateBar');
+      if(!current || current.parentElement !== board){
+        // If missing, recreate from template to preserve structure
+        var fresh = template.cloneNode(true);
+        fresh.id = 'donateBar'; // ensure correct id
+        ensureClose(fresh);
+        board.appendChild(fresh);
+        current = fresh;
+      }
+      if(forceVisible && current.style.display==='none'){
+        // Only force visible if some script hid it inadvertently (not user close)
+        current.style.display='';
+      }
+    }
+
+    // Initial anchor
+    anchor(true);
+
+    // Observe DOM changes that might remove/rebuild the board
+    var obs = new MutationObserver(function(){
+      anchor(true);
+    });
+    obs.observe(document.body, { childList: true, subtree: true });
+
+    // Also re-anchor on resize / orientation changes (board swaps mobile/desktop)
+    window.addEventListener('resize', function(){ anchor(false); });
+    window.addEventListener('orientationchange', function(){ anchor(false); });
+    document.addEventListener('visibilitychange', function(){ if(!document.hidden) anchor(false); });
+  });
+})();
+</script>
+
 </body>
 </html>
