@@ -1093,46 +1093,6 @@ function playSfx(kind){
   left: calc(0.5 * var(--square)) !important;
 }
 </style>
-
-<style id="top-buttons-shrink-mobile-2025-08-28">
-/* === SOLO MÓVIL: achicar 15% ancho y alto de los botones Colabora / Comentario / Novedades === */
-@media (max-width:699px){
-  #toolbar .btn,
-  #toolbarBottom .btn,
-  .toolbar .btn-colabora,
-  .toolbar .btn-comentario,
-  .toolbar .btn-novedades {
-    transform: scale(0.85) !important; /* reduce tamaño a 85% */
-    transform-origin: center center !important;
-  }
-}
-</style>
-
-<style id="top-buttons-mobile-topright-2025-08-28">
-/* === SOLO MÓVIL: mover botones Colabora / Comentario / Novedades arriba del tablero a la derecha === */
-@media (max-width:699px){
-  #toolbar{
-    position: absolute !important;
-    top: 0 !important;
-    right: 0 !important;
-    left: auto !important;
-    width: auto !important;
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: flex-end !important;
-    gap: 6px !important;
-    z-index: 9999 !important;
-    background: transparent !important;
-  }
-  #toolbar .btn,
-  .toolbar .btn-colabora,
-  .toolbar .btn-comentario,
-  .toolbar .btn-novedades {
-    transform: scale(0.85) !important;
-    transform-origin: center center !important;
-  }
-}
-</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
@@ -1784,41 +1744,7 @@ const isJaque=inCheck(vis,nextToMove);
 function renderToolbarBottom(){
   const el = document.getElementById('toolbarBottom');
   if(!el) return;
-  el.innerHTML = '';
-
-  // Segmento 1: Colabora
-  const seg1 = document.createElement('div');
-  seg1.className = 'seg';
-  const bColabora = document.createElement('button');
-  bColabora.className = 'btn';
-  bColabora.id = 'btnColabora';
-  bColabora.textContent = 'Colabora con el proyecto';
-  bColabora.onclick = () => window.open("https://proyectoajetrez.netlify.app/#colabora-tab", "_blank");
-  seg1.append(bColabora);
-  el.append(seg1);
-
-  // Segmento 2: Comentario / Bug
-  const seg2 = document.createElement('div');
-  seg2.className = 'seg';
-  const bReportar = document.createElement('button');
-  bReportar.className = 'btn';
-  bReportar.id = 'btnReportar';
-  bReportar.innerHTML = 'Deja tu comentario / sugerencia<br>Reporta un bug (error)';
-  bReportar.onclick = () => window.open("https://docs.google.com/forms/d/e/1FAIpQLScbwPV0PDI1e-c7mLgiqu3koLOlyFiAnL1aCB-kLQ-iiK1xtA/viewform?usp=header", "_blank");
-  seg2.append(bReportar);
-  el.append(seg2);
-
-  // Segmento 3: Novedades
-  const seg3 = document.createElement('div');
-  seg3.className = 'seg';
-  const bNovedades = document.createElement('button');
-  bNovedades.className = 'btn';
-  bNovedades.id = 'btnNovedades';
-  bNovedades.textContent = 'Novedades del juego';
-  bNovedades.onclick = () => window.open("https://proyectoajetrez.netlify.app/#novedades-tab", "_blank");
-  seg3.append(bNovedades);
-  el.append(seg3);
-}
+  el.innerHTML = '';}
 
 
   
