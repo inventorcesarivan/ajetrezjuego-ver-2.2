@@ -994,6 +994,29 @@ function playSfx(kind){
   }
 }
 </style>
+
+<style id="reset-fs-mobile-top-align-left-up3squares-2025-08-28">
+/* === SOLO MÓVIL: botones Reiniciar y Pantalla Completa en fila horizontal, 3 casilleros más arriba === */
+@media (max-width:699px){
+  #floatingControls{
+    position: absolute !important;
+    top: calc(-3 * var(--square)) !important; /* subir 3 casilleros más */
+    left: 0 !important;
+    transform: none !important;
+    margin: 0 !important;
+    width: auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    gap: 6px !important;
+    z-index: 9999 !important;
+  }
+  #btnResetVisible, #btnFullscreen{
+    left: 0 !important;
+    position: relative !important;
+  }
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
