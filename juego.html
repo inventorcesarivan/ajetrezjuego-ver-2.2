@@ -1214,6 +1214,20 @@ function playSfx(kind){
   }
 </style>
 
+
+<style id="colaboraBtn-mobile-shift-1-1-2025-08-28">
+/* === SOLO MÓVIL: mover el indicador "Colabora con el proyecto" +1 casillero a la DERECHA y +1 casillero hacia ARRIBA === */
+@media (max-width:699px){
+  #colaboraBtn{
+    position: relative !important;
+    /* anulamos cualquier transform previo para evitar acumulación */
+    transform: none !important;
+    left: calc(1 * var(--square)) !important;   /* +1 casillero a la derecha */
+    top: calc(-1 * var(--square)) !important;   /* +1 casillero hacia arriba */
+  }
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
