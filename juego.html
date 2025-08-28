@@ -1169,6 +1169,20 @@ function playSfx(kind){
   }
 </style>
 
+
+<style id="donate-mobile-float-center-board-2025-08-28">
+  /* SOLO MÓVIL: hacer flotante el botón de donaciones y centrarlo en medio del tablero */
+  @media (max-width:699px){
+    #donateBar{
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) !important;
+      z-index: 9999;
+    }
+  }
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
