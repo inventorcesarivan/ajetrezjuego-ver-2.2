@@ -930,6 +930,24 @@ function playSfx(kind){
   left: calc(-1 * var(--square)) !important;
 }
 </style>
+
+<style id="reset-fs-nofloat-both-2025-08-28">
+/* === WEB y MÓVIL: Reiniciar y Pantalla Completa dejan de ser flotantes === */
+#floatingControls{
+  position: static !important;       /* quita flotante */
+  transform: none !important;        /* anula desplazamientos forzados */
+  margin-top: calc(3 * var(--square)) !important; /* conserva bajada de 3 casilleros */
+  width: 100% !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+}
+
+#btnResetVisible, #btnFullscreen{
+  position: relative !important;
+  left: calc(-1 * var(--square)) !important; /* mantiene corrimiento a la izquierda */
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
