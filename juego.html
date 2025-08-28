@@ -936,6 +936,22 @@ function playSfx(kind){
   #btnFullscreen{ order: 1 !important; }
 }
 </style>
+
+<style id="reset-fs-always-on-top-2025-08-28">
+/* === Siempre por encima de todo (web y móvil) === */
+#floatingControls{
+  z-index: 2147483647 !important;      /* tope absoluto */
+  pointer-events: auto !important;      /* clickeables */
+}
+#floatingControls *{
+  z-index: 2147483647 !important;       /* hijos encima también */
+}
+/* Protección extra por si algún overlay usa position:fixed con z-index alto */
+body, .container, .frame, #overlay, .banner{
+  /* No bajamos su z-index, solo aseguramos que no eclipsen los controles */
+  /* (si algún overlay tapa, los controles siguen ganando por z-index) */
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
