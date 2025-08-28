@@ -800,6 +800,15 @@ function playSfx(kind){
   }
 }
 </style>
+
+<style id="mobile-reset-fs-right-half-square-2025-08-28">
+/* === SOLO MÓVIL: desplazar medio casillero más a la derecha los botones Reset/Fullscreen === */
+@media (max-width:699px){
+  #floatingControls{
+    right: calc(0.5 * var(--square) + 0.5 * var(--square)) !important; /* base + medio casillero extra */
+  }
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
