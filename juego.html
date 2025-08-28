@@ -890,6 +890,17 @@ body, .container, .frame, #overlay, .banner{
   /* (si algún overlay tapa, los controles siguen ganando por z-index) */
 }
 </style>
+
+<style id="reset-mobile-halfwidth-2025-08-28">
+/* === SOLO MÓVIL: achicar ancho del botón Reiniciar a la mitad === */
+@media (max-width:699px){
+  #btnResetVisible{
+    width: 50% !important;
+    max-width: none !important;
+    flex: 0 0 auto !important;
+  }
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
