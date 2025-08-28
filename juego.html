@@ -285,23 +285,36 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
 .piece-img{
   width:100%; height:100%; display:block; pointer-events:none; user-select:none;
   margin:auto; image-rendering:auto; object-fit:contain; max-width:100%; max-height:100%;
-  background-color:transparent !important;
+  background-color:transparent !important; -webkit-user-drag:none;
   filter:drop-shadow(0 1.2px 1.6px rgba(0,0,0,.35));
+}</style><script>
+let SFX = {
+  move: new Audio('assets/audio/move.mp3'),
+  capture: new Audio('assets/audio/capture.mp3'),
+  shift: new Audio('assets/audio/shift.mp3')
+};
+function playSfx(kind){
+  try{
+    const a = SFX[kind];
+    if(!a) return;
+    a.currentTime = 0;
+    a.play().catch(()=>{});
+  }catch(e){}
 }
-</style></head>
+</script></head>
 <script>const PIECE_SPRITES = {
-  "b_R": "assets/piezas_clean/b_R.png",
-  "b_N": "assets/piezas_clean/b_N.png",
-  "b_B": "assets/piezas_clean/b_B.png",
-  "b_Q": "assets/piezas_clean/b_Q.png",
-  "b_K": "assets/piezas_clean/b_K.png",
-  "b_P": "assets/piezas_clean/b_P.png",
-  "w_R": "assets/piezas_clean/w_R.png",
-  "w_N": "assets/piezas_clean/w_N.png",
-  "w_B": "assets/piezas_clean/w_B.png",
-  "w_Q": "assets/piezas_clean/w_Q.png",
-  "w_K": "assets/piezas_clean/w_K.png",
-  "w_P": "assets/piezas_clean/w_P.png"
+  "b_R": "assets/piezas_aa/b_R.png",
+  "b_N": "assets/piezas_aa/b_N.png",
+  "b_B": "assets/piezas_aa/b_B.png",
+  "b_Q": "assets/piezas_aa/b_Q.png",
+  "b_K": "assets/piezas_aa/b_K.png",
+  "b_P": "assets/piezas_aa/b_P.png",
+  "w_R": "assets/piezas_aa/w_R.png",
+  "w_N": "assets/piezas_aa/w_N.png",
+  "w_B": "assets/piezas_aa/w_B.png",
+  "w_Q": "assets/piezas_aa/w_Q.png",
+  "w_K": "assets/piezas_aa/w_K.png",
+  "w_P": "assets/piezas_aa/w_P.png"
 };</script>
 
 <body>
@@ -825,7 +838,6 @@ function inCheck(vis,color){ const k=findKing(vis,color); if(!k) return false; c
 // ==== SVG de piezas (versión estilizada ++ con más curvas) ====
 
 function pieceSvg(type, color){
-  // Return an IMG that points to the exact sprite cropped from the user's reference
   const key = (color==='w' ? 'w_' : 'b_') + type;
   const src = PIECE_SPRITES[key];
   if(!src) return '';
@@ -1193,6 +1205,8 @@ try{ AJ_SFX.playShift(); }catch(_){}
 
       // 3) Ejecutar la jugada recién cuando desaparece el cartel
       let res = applyMove(board,offsets,from,to,special);
+      // SFX (bot move)
+      try{ if(res && (res.captured===true || (typeof res.captured!=='undefined' && res.captured))){ AJ_SFX && AJ_SFX.playCapture && AJ_SFX.playCapture(); } else { AJ_SFX && AJ_SFX.playMove && AJ_SFX.playMove(); } }catch(_){}
       let newBoard = res.board;
       let movedPiece = res.movedPiece;
       const lastRank = movedPiece.color==='w'?7:0;
@@ -1238,7 +1252,10 @@ try{ AJ_SFX.playShift(); }catch(_){}
         }
         if(doShift){
           const newOff = offsets.slice(); newOff[row] = target; offsets = newOff;
-          snapshot(`shift fila ${row+1} → ${target===0?'tope izq.':'tope der.'}`);
+          
+          // SFX (bot shift)
+          try{ AJ_SFX && AJ_SFX.playShift && AJ_SFX.playShift(); }catch(_){}
+snapshot(`shift fila ${row+1} → ${target===0?'tope izq.':'tope der.'}`);
         } else {
           snapshot('mantiene sección');
         }
@@ -1640,5 +1657,39 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   document.addEventListener('fullscreenchange', moveToastToFS);
 })();
 </script>
+
+<script>
+(function(){
+  const core = window.applyMove || window.doMove || window.commitMove;
+  if(core && !core.__sfxWrapped){
+    const orig = core;
+    const wrap = function(move){
+      const res = orig.apply(this, arguments);
+      try{
+        if(move && (move.capture || move.isCapture)) playSfx('capture');
+        else playSfx('move');
+      }catch(e){}
+      return res;
+    };
+    wrap.__sfxWrapped = true;
+    if(window.applyMove) window.applyMove = wrap;
+    if(window.doMove) window.doMove = wrap;
+    if(window.commitMove) window.commitMove = wrap;
+  }
+  const sh = window.shiftSection || window.applySectionShift;
+  if(sh && !sh.__sfxWrapped){
+    const o = sh;
+    const w = function(){
+      const r = o.apply(this, arguments);
+      try{ playSfx('shift'); }catch(e){}
+      return r;
+    };
+    w.__sfxWrapped = true;
+    if(window.shiftSection) window.shiftSection = w;
+    if(window.applySectionShift) window.applySectionShift = w;
+  }
+})();
+</script>
+
 </body>
 </html>
