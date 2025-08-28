@@ -1102,6 +1102,33 @@ function playSfx(kind){
   }
 }
 </style>
+
+<style id="donate-bar-style-2025-08-28">
+  /* === Barra de donaciones (debajo del tablero) === */
+  #donateBar{
+    display:flex; align-items:center; justify-content:center; gap:12px;
+    flex-wrap:wrap; margin-top: 12px;
+  }
+  #donateBar .donate-text{
+    display:inline-block; padding:10px 14px; border-radius:12px;
+    background:#000; color:#fff; font-weight:800; text-decoration:none; 
+    border:1px solid #000; line-height:1; white-space:nowrap;
+    box-shadow:0 .3rem .6rem rgba(0,0,0,.18);
+  }
+  #donateBar .donate-logo{
+    display:inline-flex; align-items:center; justify-content:center;
+    padding:6px 8px; border-radius:10px; background:#fff; border:1px solid rgba(0,0,0,.1);
+    text-decoration:none;
+  }
+  #donateBar .donate-logo img{
+    display:block; height:36px; width:auto; object-fit:contain;
+  }
+  @media (max-width:699px){
+    #donateBar{ gap:10px; }
+    #donateBar .donate-logo img{ height:32px; }
+  }
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
@@ -1131,6 +1158,18 @@ function playSfx(kind){
 <div id="board"></div>
 <div id="rowControls"></div>
 <div class="toolbar" id="toolbarBottom"></div>
+
+<div id="donateBar" role="group" aria-label="Colaboraciones y donaciones">
+  <a id="donateTextBtn" class="donate-text" href="#donar">Colabora con el proyecto</a>
+  <!-- Reemplaza los href y (si hace falta) los src por los que usás en la página principal -->
+  <a id="donarMercadoPago" class="donate-logo" href="https://link.mercadopago.com.ar/ajetrez" target="_blank" rel="noopener">
+    <img src="assets/images/mercadopago.jpg" alt="MercadoPago">
+  </a>
+  <a id="donarPayPal" class="donate-logo" href="#" target="_blank" rel="noopener">
+    <img src="assets/images/paypal.png" alt="PayPal">
+  </a>
+</div>
+
 </div>
 </div>
 <!-- Contenedores auxiliares (ocultos) para compatibilidad con el script original -->
