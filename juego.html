@@ -1484,6 +1484,22 @@ function playSfx(kind){
 }
 </style>
 
+
+<style id="donate-mobile-shrink30-2025-08-28">
+/* SOLO en versión móvil: reducir botones de donación 30% */
+@media (max-width:699px){
+  #donateBar .donate-logo img{
+    transform: scale(0.7) !important; /* 70% del tamaño original */
+    transform-origin: center center;
+  }
+  #donateBar button,
+  #donateBar a{
+    transform: scale(0.7) !important;
+    transform-origin: center center;
+  }
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
