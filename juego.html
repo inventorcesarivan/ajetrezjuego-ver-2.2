@@ -200,6 +200,14 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
   top: calc(10% + var(--square)) !important;
 }
 
+
+/* === SOLO MÓVIL: desplazar 1 casillero hacia abajo el botón de mantener/desplazar sección === */
+@media (max-width:699px){
+  #rowControls{
+    margin-top: calc(var(--square)) !important;
+  }
+}
+
 </style>
 <style>
 /* 20% más chico el panel del instructivo */
