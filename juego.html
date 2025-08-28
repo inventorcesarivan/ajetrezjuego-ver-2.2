@@ -948,6 +948,29 @@ function playSfx(kind){
   left: calc(-1 * var(--square)) !important; /* mantiene corrimiento a la izquierda */
 }
 </style>
+
+<style id="reset-fs-nofloat-both-up3squares-2025-08-28">
+/* === WEB y MÓVIL: subir botones Reiniciar y Pantalla Completa 3 casilleros === */
+#floatingControls{
+  margin-top: 0 !important; /* reiniciamos margen */
+  margin-top: calc(0 * var(--square)) !important;
+  transform: translateY(calc(-3 * var(--square))) !important; /* subir 3 casilleros */
+}
+</style>
+
+<style id="reset-fs-nofloat-both-up2squares-2025-08-28">
+/* === WEB y MÓVIL: ajustar botones Reiniciar y Pantalla Completa a subir solo 2 casilleros (bajar 1 desde el ajuste previo) === */
+#floatingControls{
+  transform: translateY(calc(-2 * var(--square))) !important; /* subir solo 2 casilleros en total */
+}
+</style>
+
+<style id="reset-fs-nofloat-both-up1square-2025-08-28">
+/* === WEB y MÓVIL: ajustar botones Reiniciar y Pantalla Completa a subir solo 1 casillero (bajar 1 desde el ajuste previo) === */
+#floatingControls{
+  transform: translateY(calc(-1 * var(--square))) !important; /* subir solo 1 casillero en total */
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
