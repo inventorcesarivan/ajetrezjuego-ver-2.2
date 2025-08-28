@@ -1093,6 +1093,20 @@ function playSfx(kind){
   left: calc(0.5 * var(--square)) !important;
 }
 </style>
+
+<style id="top-buttons-shrink-mobile-2025-08-28">
+/* === SOLO MÓVIL: achicar 15% ancho y alto de los botones Colabora / Comentario / Novedades === */
+@media (max-width:699px){
+  #toolbar .btn,
+  #toolbarBottom .btn,
+  .toolbar .btn-colabora,
+  .toolbar .btn-comentario,
+  .toolbar .btn-novedades {
+    transform: scale(0.85) !important; /* reduce tamaño a 85% */
+    transform-origin: center center !important;
+  }
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
