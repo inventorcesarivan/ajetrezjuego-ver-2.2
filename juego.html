@@ -1191,6 +1191,29 @@ function playSfx(kind){
   }
 </style>
 
+
+<style id="donate-left4-uphalf-2025-08-28">
+  /* WEB y MÓVIL: desplazar la barra de donaciones 4 casilleros a la izquierda y 0.5 casillero hacia arriba */
+  #donateBar{
+    transform: translate(calc(-4 * var(--square)), calc(-0.5 * var(--square))) !important;
+  }
+</style>
+
+
+<style id="colaboraBtn-style-2025-08-28">
+  /* Estilo para el botón "Colabora con el proyecto" */
+  #colaboraBtn{
+    background-color: #000 !important;
+    color: #fff !important;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transform: translateX(calc(-2 * var(--square)));
+  }
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
@@ -1222,6 +1245,7 @@ function playSfx(kind){
 <div class="toolbar" id="toolbarBottom"></div>
 
 <div id="donateBar" role="group" aria-label="Colaboraciones y donaciones">
+      <button id="colaboraBtn" style="margin-right:10px;font-weight:bold;">Colabora con el proyecto</button>
   <!-- Reemplaza los href y (si hace falta) los src por los que usás en la página principal -->
   <a id="donarMercadoPago" class="donate-logo" href="https://link.mercadopago.com.ar/ajetrez" target="_blank" rel="noopener">
     <img src="assets/images/mercadopago.jpg" alt="MercadoPago">
