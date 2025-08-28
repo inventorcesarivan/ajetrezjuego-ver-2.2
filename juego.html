@@ -1026,6 +1026,20 @@ function playSfx(kind){
   }
 }
 </style>
+
+<style id="reset-fs-mobile-top-align-left-vertical-2025-08-28">
+/* === SOLO MÓVIL: botones Reiniciar y Pantalla Completa en columna (uno debajo del otro) === */
+@media (max-width:699px){
+  #floatingControls{
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+  }
+  #btnResetVisible, #btnFullscreen{
+    width: auto !important;
+  }
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
