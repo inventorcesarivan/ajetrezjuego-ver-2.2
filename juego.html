@@ -1304,6 +1304,31 @@ function playSfx(kind){
 }
 </style>
 
+
+<style id="center-reset-fullscreen-mobile-2025-08-28">
+/* === SOLO MÓVIL: centrar los botones Reiniciar / Ver en pantalla completa en el MEDIO del tablero === */
+@media (max-width: 699px){
+  /* Asegura contexto de posicionamiento */
+  #board{
+    position: relative !important;
+  }
+  /* Contenedor de los botones */
+  #floatingControls{
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 10000 !important;
+    gap: 10px !important;
+  }
+  /* Opcional: agrandar un poco para facilidad táctil */
+  #btnResetVisible, #btnFullscreen{
+    min-width: calc(3.2 * var(--square)) !important;
+    min-height: calc(1.2 * var(--square)) !important;
+  }
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
