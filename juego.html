@@ -1040,6 +1040,25 @@ function playSfx(kind){
   }
 }
 </style>
+
+<style id="reset-fs-mobile-vertical-floating-2025-08-28">
+/* === SOLO MÓVIL: botones Reiniciar y Pantalla Completa flotantes en columna arriba del tablero === */
+@media (max-width:699px){
+  #floatingControls{
+    position: fixed !important;
+    top: calc(var(--square) * 1) !important; /* ajustar vertical según tablero */
+    left: 0.5rem !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    z-index: 2147483647 !important;
+    background: transparent !important;
+  }
+  #btnResetVisible, #btnFullscreen{
+    width: auto !important;
+  }
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
