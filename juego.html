@@ -901,6 +901,23 @@ body, .container, .frame, #overlay, .banner{
   }
 }
 </style>
+
+<style id="reset-mobile-bottom-2025-08-28">
+/* === SOLO MÓVIL: enviar botón Reiniciar a la parte inferior del tablero y quitar flotante === */
+@media (max-width:699px){
+  #floatingControls{
+    position: static !important;     /* deja de ser flotante */
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: calc(1 * var(--square)) !important; /* pequeño espacio */
+  }
+  #btnResetVisible{
+    width: 50% !important;
+    max-width: none !important;
+    flex: 0 0 auto !important;
+  }
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
