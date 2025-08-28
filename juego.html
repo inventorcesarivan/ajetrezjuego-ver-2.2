@@ -475,6 +475,16 @@ function playSfx(kind){
   border-color: #a00 !important;
 }
 </style>
+
+<style id="mobile-rowcontrols-down-2squares-2025-08-28">
+/* === SOLO MÓVIL: desplazar 2 casilleros hacia abajo el botón de mantener/desplazar sección === */
+@media (max-width:699px){
+  #rowControls{
+    top: calc(23px + (2 * var(--square))) !important;
+    margin-top: 0 !important; /* neutraliza ajustes previos por margen */
+  }
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
