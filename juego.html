@@ -1531,12 +1531,20 @@ function playSfx(kind){
 </style>
 
 
-<style id="board-mobile-shrink2squares-2025-08-28">
-/* SOLO en móvil: reducir la base del tablero quitando 2 casilleros desde abajo */
+<style id="mobile-buttons-10pct-and-shift-half-2025-08-28">
+/* SOLO MÓVIL: achicar TODOS los botones 10% */
 @media (max-width:699px){
-  #mobile-board-down-1square, #board{
-    padding-bottom: calc(var(--square, 36px) * 0) !important; /* reset */
-    margin-bottom: calc(var(--square, 36px) * -2) !important; /* recorta 2 casilleros desde abajo */
+  button, .btn, .button, [role="button"], a.btn, .toolbar button{
+    transform: scale(0.9) !important;
+    transform-origin: center center !important;
+  }
+  /* Ajustar tipografía para mantener legibilidad */
+  button, .btn, .button, [role="button"], a.btn, .toolbar button{
+    font-size: 0.95em !important;
+  }
+  /* Desplazar 0.5 casillero a la IZQUIERDA los botones Reiniciar y Pantalla completa */
+  #btnResetVisible, #btnFullscreen, #resetBtn, #fullscreenBtn{
+    transform: translateX(calc(-0.5 * var(--square, 36px))) scale(0.9) !important;
   }
 }
 </style>
