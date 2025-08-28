@@ -1107,6 +1107,32 @@ function playSfx(kind){
   }
 }
 </style>
+
+<style id="top-buttons-mobile-topright-2025-08-28">
+/* === SOLO MÓVIL: mover botones Colabora / Comentario / Novedades arriba del tablero a la derecha === */
+@media (max-width:699px){
+  #toolbar{
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    width: auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+    gap: 6px !important;
+    z-index: 9999 !important;
+    background: transparent !important;
+  }
+  #toolbar .btn,
+  .toolbar .btn-colabora,
+  .toolbar .btn-comentario,
+  .toolbar .btn-novedades {
+    transform: scale(0.85) !important;
+    transform-origin: center center !important;
+  }
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
