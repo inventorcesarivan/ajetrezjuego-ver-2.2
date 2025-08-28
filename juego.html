@@ -1277,6 +1277,33 @@ function playSfx(kind){
 }
 </style>
 
+
+<style id="donation-buttons-floating-both-2025-08-28">
+/* === BOTONES FLOTANTES EN MÓVIL Y WEB (ESCRITORIO) === */
+/* Ya hay reglas para móvil; aquí añadimos escritorio y consolidamos */
+
+@media (min-width:700px){
+  :root{
+    --donation-bottom-desktop: calc(1.5 * var(--square));   /* altura desde abajo (ajustable) */
+    --donation-spread-desktop: calc(2 * var(--square));     /* separación horizontal entre botones */
+    --donation-global-shift-x-desktop: 0px;                 /* corrimiento global en X */
+  }
+  #mercadopagoBtn, #paypalBtn{
+    position: fixed !important;
+    z-index: 9999 !important;
+    transform: none !important;
+    bottom: var(--donation-bottom-desktop) !important;
+    pointer-events: auto !important;
+  }
+  #mercadopagoBtn{
+    left: calc(50% - var(--donation-spread-desktop) + var(--donation-global-shift-x-desktop)) !important;
+  }
+  #paypalBtn{
+    left: calc(50% + var(--donation-spread-desktop) + var(--donation-global-shift-x-desktop)) !important;
+  }
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
