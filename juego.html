@@ -830,6 +830,36 @@ function playSfx(kind){
   text-align: center !important;
 }
 </style>
+
+<style id="reset-fs-web-left4-up1-2025-08-28">
+/* === SOLO WEB: desplazar botones Reiniciar y Fullscreen 4 casilleros a la izquierda y 1 hacia arriba === */
+@media (min-width:700px){
+  #floatingControls{
+    right: calc(0.5 * var(--square) + 4 * var(--square)) !important;
+    top: calc(var(--board-top, 0px) + var(--board-offset-y, 0px) - 1 * var(--square)) !important;
+  }
+}
+</style>
+
+<style id="reset-fs-web-left4-up1-down0_5-2025-08-28">
+/* === SOLO WEB: bajar botones flotantes medio casillero (manteniendo 4 izq, 1 arriba previos) === */
+@media (min-width:700px){
+  #floatingControls{
+    top: calc(var(--board-top, 0px) + var(--board-offset-y, 0px) - 1 * var(--square) + 0.5 * var(--square)) !important;
+  }
+}
+</style>
+
+<style id="reset-fs-mobile-halfwidth-2025-08-28">
+/* === SOLO MÓVIL: achicar ancho de los botones Reiniciar y Fullscreen a la mitad === */
+@media (max-width:699px){
+  #btnResetVisible, #btnFullscreen{
+    width: 50% !important;
+    max-width: none !important;
+    flex: 0 0 auto !important;
+  }
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
