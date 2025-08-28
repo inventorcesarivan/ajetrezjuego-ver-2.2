@@ -1155,6 +1155,20 @@ function playSfx(kind){
   }
 </style>
 
+
+<style id="donate-mobile-left3-float-2025-08-28">
+  /* SOLO MÓVIL: mover barra de donaciones 3 casilleros a la IZQUIERDA y hacerla flotante */
+  @media (max-width:699px){
+    #donateBar{
+      position: fixed !important;
+      bottom: 2vh;
+      left: 50%;
+      transform: translateX(calc(-50% - 3 * var(--square))) !important;
+      z-index: 9999;
+    }
+  }
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
