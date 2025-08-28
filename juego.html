@@ -1059,6 +1059,14 @@ function playSfx(kind){
   }
 }
 </style>
+
+<style id="board-up-half-square-both-2025-08-28">
+/* === WEB y MÓVIL: subir el tablero medio casillero === */
+#board, #mobile-board, #mobile-board-down-1square{
+  /* Reemplaza cualquier transform previo, sumando -0.5 casillero al offset existente */
+  transform: translateY(calc(var(--board-offset-y, 0px) - 0.5 * var(--square))) !important;
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
