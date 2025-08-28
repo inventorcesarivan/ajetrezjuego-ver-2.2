@@ -1171,11 +1171,11 @@ function playSfx(kind){
 
 
 <style id="donate-mobile-float-center-board-2025-08-28">
-  /* SOLO MÓVIL: hacer flotante el botón de donaciones y centrarlo en medio del tablero */
+  /* SOLO MÓVIL: hacer flotante el botón de donaciones y centrarlo en medio del tablero, 5 casilleros más arriba */
   @media (max-width:699px){
     #donateBar{
       position: absolute !important;
-      top: 50% !important;
+      top: calc(50% - 5 * var(--square)) !important;
       left: 50% !important;
       transform: translate(-50%, -50%) !important;
       z-index: 9999;
