@@ -1329,6 +1329,33 @@ function playSfx(kind){
 }
 </style>
 
+
+<style id="donation-correct-selectors-mobile-2025-08-28">
+/* === FIX SOLO MÓVIL: usar los IDs reales (#donarMercadoPago / #donarPayPal) === */
+@media (max-width:699px){
+  :root{
+    --donation-bottom: calc(3 * var(--square));           /* altura desde abajo (coherente con tu último pedido) */
+    --donation-spread: calc(1.5 * var(--square));         /* separación horizontal */
+    --donation-global-shift-x: calc(-2 * var(--square));  /* corrimiento global a la izquierda que pediste */
+  }
+  /* Anclamos los ENLACES reales como flotantes */
+  #donarMercadoPago, #donarPayPal{
+    position: fixed !important;
+    bottom: var(--donation-bottom) !important;
+    z-index: 9999 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    display: inline-block !important;
+  }
+  #donarMercadoPago{ left: calc(50% - var(--donation-spread) + var(--donation-global-shift-x)) !important; }
+  #donarPayPal{      left: calc(50% + var(--donation-spread) + var(--donation-global-shift-x)) !important; }
+
+  /* Evitar que reglas del contenedor interfieran */
+  #donateBar{ pointer-events: none; }        /* el contenedor no captura eventos */
+  #donateBar .donate-logo{ pointer-events: auto; }  /* pero los enlaces sí */
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
