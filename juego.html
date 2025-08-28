@@ -93,8 +93,16 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
 .piece-svg.white { fill: #ffffff; stroke: #111111; stroke-width: 2; }
 .piece-svg.black { fill: #111111; stroke: #111111; stroke-width: 2; }
 
-
-/* === Mobile: colocar Reiniciar / Pantalla completa arriba a la derecha y a mitad de tamaño === */
+/* === Botonera inferior: estilo negro/blanco en botones === */
+#toolbarBottom .btn, #floatingControls .btn {
+  background-color: #000 !important;
+  color: #fff !important;
+  border-color: #000 !important;
+  font-weight: bold !important;
+}
+/* Separación inferior similar a la superior */
+#toolbarBottom { margin-top: 10px; }
+/* === SOLO MÓVIL: mover Reiniciar/Pantalla completa arriba a la derecha y reducir tamaño === */
 @media (max-width: 699px){
   #floatingControls{
     position: fixed;
@@ -105,6 +113,8 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
     gap: 6px;
     z-index: 9999;
     background: transparent;
+    padding: 0;
+    margin: 0;
   }
   #floatingControls .btn{
     font-size: 0.72em !important;
@@ -114,7 +124,6 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
     min-height: auto !important;
   }
 }
-
 </style>
 <style>
 /* 20% más chico el panel del instructivo */
@@ -359,6 +368,7 @@ function playSfx(kind){
 
 <div id="board"></div>
 <div id="rowControls"></div>
+<div class="toolbar" id="toolbarBottom"></div>
 </div>
 </div>
 <!-- Contenedores auxiliares (ocultos) para compatibilidad con el script original -->
@@ -936,6 +946,7 @@ const isJaque=inCheck(vis,nextToMove);
     renderRowControls();
     renderTips();
     renderBotLog();
+  renderToolbarBottom();
     updateMovesUI();
     updateReviewControls();
   }
@@ -976,6 +987,46 @@ const isJaque=inCheck(vis,nextToMove);
     modeSeg.append(pill, btn);
     toolbar.append(modeSeg);
 }
+
+function renderToolbarBottom(){
+  const el = document.getElementById('toolbarBottom');
+  if(!el) return;
+  el.innerHTML = '';
+
+  // Segmento 1: Colabora
+  const seg1 = document.createElement('div');
+  seg1.className = 'seg';
+  const bColabora = document.createElement('button');
+  bColabora.className = 'btn';
+  bColabora.id = 'btnColabora';
+  bColabora.textContent = 'Colabora con el proyecto';
+  bColabora.onclick = () => window.open("https://proyectoajetrez.netlify.app/#colabora-tab", "_blank");
+  seg1.append(bColabora);
+  el.append(seg1);
+
+  // Segmento 2: Comentario / Bug
+  const seg2 = document.createElement('div');
+  seg2.className = 'seg';
+  const bReportar = document.createElement('button');
+  bReportar.className = 'btn';
+  bReportar.id = 'btnReportar';
+  bReportar.innerHTML = 'Deja tu comentario / sugerencia<br>Reporta un bug (error)';
+  bReportar.onclick = () => window.open("https://docs.google.com/forms/d/e/1FAIpQLScbwPV0PDI1e-c7mLgiqu3koLOlyFiAnL1aCB-kLQ-iiK1xtA/viewform?usp=header", "_blank");
+  seg2.append(bReportar);
+  el.append(seg2);
+
+  // Segmento 3: Novedades
+  const seg3 = document.createElement('div');
+  seg3.className = 'seg';
+  const bNovedades = document.createElement('button');
+  bNovedades.className = 'btn';
+  bNovedades.id = 'btnNovedades';
+  bNovedades.textContent = 'Novedades del juego';
+  bNovedades.onclick = () => window.open("https://proyectoajetrez.netlify.app/#novedades-tab", "_blank");
+  seg3.append(bNovedades);
+  el.append(seg3);
+}
+
 
   
 
