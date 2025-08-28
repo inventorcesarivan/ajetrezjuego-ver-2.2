@@ -281,7 +281,25 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
 </style>
 
 
-</head>
+<style>
+.piece-img{width:96%;height:96%;display:block;pointer-events:none;user-select:none;
+  image-rendering:auto;filter:drop-shadow(0 1.2px 1.6px rgba(0,0,0,.35));}
+</style></head>
+<script>const PIECE_SPRITES = {
+  "b_R": "assets/piezas/b_R.png",
+  "b_N": "assets/piezas/b_N.png",
+  "b_B": "assets/piezas/b_B.png",
+  "b_Q": "assets/piezas/b_Q.png",
+  "b_K": "assets/piezas/b_K.png",
+  "b_P": "assets/piezas/b_P.png",
+  "w_R": "assets/piezas/w_R.png",
+  "w_N": "assets/piezas/w_N.png",
+  "w_B": "assets/piezas/w_B.png",
+  "w_Q": "assets/piezas/w_Q.png",
+  "w_K": "assets/piezas/w_K.png",
+  "w_P": "assets/piezas/w_P.png"
+};</script>
+
 <body>
 <div class="container">
 <div class="frame">
@@ -801,56 +819,13 @@ function inCheck(vis,color){ const k=findKing(vis,color); if(!k) return false; c
 
 
 // ==== SVG de piezas (versión estilizada ++ con más curvas) ====
-function pieceSvg(type, color){
-  const cls = color==='w' ? 'piece-svg white' : 'piece-svg black';
-  switch(type){
-    case 'P': // Peón más redondo y base curvada
-      return `<svg class="${cls}" viewBox="0 0 100 100" aria-hidden="true">
-        <path d="M22 88 Q26 82 34 82 L66 82 Q74 82 78 88 L22 88 Z"></path>
-        <path d="M34 75 Q50 72 66 75 L66 80 L34 80 Z"></path>
-        <circle cx="50" cy="38" r="14"></circle>
-        <path d="M36 62 Q50 54 64 62 L64 70 Q50 72 36 70 Z"></path>
-      </svg>`;
-    case 'R': // Torre con fuste ligeramente abombado y almenas redondeadas
-      return `<svg class="${cls}" viewBox="0 0 100 100" aria-hidden="true">
-        <path d="M24 90 Q28 84 34 84 L66 84 Q72 84 76 90 L24 90 Z"></path>
-        <path d="M34 76 Q34 70 38 68 L62 68 Q66 70 66 76 L66 80 L34 80 Z"></path>
-        <path d="M36 30 L64 30 L64 64 Q64 68 61 69.5 L39 69.5 Q36 68 36 64 Z"></path>
-        <path d="M26 20 L74 20 L74 30 L64 30 L64 24 L56 24 L56 30 L50 30 L50 24 L44 24 L44 30 L36 30 L36 24 L30 24 L30 30 L26 30 Z"></path>
-      </svg>`;
-    case 'N': // Caballo con perfil más fluido
-      return `<svg class="${cls}" viewBox="0 0 100 100" aria-hidden="true">
-        <path d="M24 92 Q28 86 34 86 L66 86 Q72 86 76 92 L24 92 Z"></path>
-        <path d="M66 72 Q72 58 64 50 Q60 46 60 40 Q62 30 52 26 Q42 22 38 30 Q40 34 44 36 Q40 42 34 46 Q28 50 28 58 Q28 64 36 66 L42 64 L48 70 L42 76 L38 82 L62 82 Q64 78 66 72 Z"></path>
 
-        <circle cx="55" cy="37" r="2.4" fill="${color==='w'?'#111111':'#ffffff'}"></circle>
-      </svg>`;
-    case 'B': // Alfil en lágrima con base doble redondeada
-      return `<svg class="${cls}" viewBox="0 0 100 100" aria-hidden="true">
-        <path d="M26 90 Q30 84 36 84 L64 84 Q70 84 74 90 L26 90 Z"></path>
-        <path d="M34 80 Q34 76 38 74 L62 74 Q66 76 66 80 L66 82 L34 82 Z"></path>
-        <path d="M50 20 Q70 40 60 60 Q56 68 50 70 Q44 68 40 60 Q30 40 50 20 Z"></path>
-        <rect x="48" y="36" width="4" height="13" rx="1" fill="${color==='w'?'#111111':'#ffffff'}"></rect>
-      </svg>`;
-    case 'Q': // Reina con corona más alta y cuerpo curvo
-      return `<svg class="${cls}" viewBox="0 0 100 100" aria-hidden="true">
-        <path d="M22 92 Q26 86 34 86 L66 86 Q74 86 78 92 L22 92 Z"></path>
-        <path d="M30 82 L70 82 L70 76 L30 76 Z"></path>
-        <path d="M28 74 L28 46 L38 56 L50 40 L62 56 L72 46 L72 74 Z"></path>
-        <circle cx="28" cy="44" r="4"></circle>
-        <circle cx="50" cy="34" r="6"></circle>
-        <circle cx="72" cy="44" r="4"></circle>
-      </svg>`;
-    case 'K': // Rey con cuerpo ovalado y cruz suavizada
-      return `<svg class="${cls}" viewBox="0 0 100 100" aria-hidden="true">
-        <path d="M22 92 Q26 86 34 86 L66 86 Q74 86 78 92 L22 92 Z"></path>
-        <path d="M30 82 L70 82 L70 76 L30 76 Z"></path>
-        <rect x="46" y="14" width="8" height="18" rx="2"></rect>
-        <rect x="40" y="22" width="20" height="6" rx="2"></rect>
-        <path d="M34 42 Q50 34 66 42 L66 66 Q66 70 62 72 L38 72 Q34 70 34 66 Z"></path>
-      </svg>`;
-  }
-  return '';
+function pieceSvg(type, color){
+  // Return an IMG that points to the exact sprite cropped from the user's reference
+  const key = (color==='w' ? 'w_' : 'b_') + type;
+  const src = PIECE_SPRITES[key];
+  if(!src) return '';
+  return `<img class="piece-img" alt="${color}${type}" src="${src}" />`;
 }
 function renderBoard(){
     const vis=buildVisible(board,offsets);
