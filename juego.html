@@ -476,13 +476,29 @@ function playSfx(kind){
 }
 </style>
 
-<style id="mobile-rowcontrols-down-2squares-2025-08-28">
-/* === SOLO MÓVIL: desplazar 2 casilleros hacia abajo el botón de mantener/desplazar sección === */
-@media (max-width:699px){
-  #rowControls{
-    top: calc(23px + (2 * var(--square))) !important;
-    margin-top: 0 !important; /* neutraliza ajustes previos por margen */
-  }
+<style id="mode-inline-stack-2025-08-28">
+/* === Colocar botón de cambiar modo DEBAJO del cartel de modo (todas las versiones) === */
+.mode-inline{
+  display: inline-flex;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+}
+/* Asegura el orden: primero la "pill" de estado, luego el botón */
+.mode-inline .mode-pill{ order: 0 !important; }
+.mode-inline button,
+.mode-inline .toggle-mode,
+.mode-inline .btn,
+.mode-inline a[role="button"]{
+  order: 1 !important;
+  display: inline-flex;
+}
+</style>
+
+<style id="rowcontrols-down-1square-2025-08-28">
+/* === WEB y MÓVIL: desplazar 1 casillero hacia abajo el botón Mantener/Desplazar sección === */
+#rowControls{
+  top: calc(23px + (1 * var(--square))) !important;
 }
 </style>
 </head>
