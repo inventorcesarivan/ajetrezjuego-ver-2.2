@@ -93,14 +93,32 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
 .piece-svg.white { fill: #ffffff; stroke: #111111; stroke-width: 2; }
 .piece-svg.black { fill: #111111; stroke: #111111; stroke-width: 2; }
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
-#toolbarBottom .btn { background-color: #000 !important; color: #fff !important; border-color: #000 !important; font-weight: bold !important; }
-#toolbarBottom .btn, #floatingControls .btn { background-color: #000 !important; color: #fff !important; border-color: #000 !important; font-weight: bold !important; }
+
+/* === Mobile: colocar Reiniciar / Pantalla completa arriba a la derecha y a mitad de tamaño === */
+@media (max-width: 699px){
+  #floatingControls{
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    z-index: 9999;
+    background: transparent;
+  }
+  #floatingControls .btn{
+    font-size: 0.72em !important;
+    padding: 6px 8px !important;
+    border-radius: 8px !important;
+    line-height: 1.1 !important;
+    min-height: auto !important;
+  }
+}
+
 </style>
 <style>
 /* 20% más chico el panel del instructivo */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* 5% más chico adicional y desplazar 2 casilleros a la derecha */
 
@@ -108,24 +126,20 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
   /* En móvil mantener margen estándar para no recortar */
   
 }
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* 5% más chico adicional y subir 3 casilleros desde el borde inferior */
 
 @media (max-width:980px){
   
 }
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* -5% tamaño adicional y tipografía -5% con negrita */
 
 #instructivoPanel h3{ font-weight: 800 !important; }
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Ajuste adicional: -10% tipografía y -5% recuadro del instructivo */
 
 #instructivoPanel h3{ font-weight: 800 !important; }
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Quitar negrita del texto del instructivo, mantenerla en el título */
 
@@ -133,87 +147,67 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
 #instructivoPanel p, #instructivoPanel li, #instructivoPanel ol, #instructivoPanel ul, #instructivoPanel span, #instructivoPanel div{
   font-weight: 400 !important;
 }
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Desplazar el instructivo 0.5 casillero a la derecha y 0.5 casillero hacia abajo */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Separar los botones superiores 0.5 casillero del borde derecho */
 #floatingControls{
   right: calc(12px + var(--square) * 0.5) !important;
 }
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Mover los botones superiores 0.5 casillero a la derecha (volver a 12px del borde) */
 #floatingControls{
   right: 12px !important;
 }
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Desplazar el instructivo 0.5 casillero a la derecha (ahora 3 casilleros desde el borde izquierdo) */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Reducir la altura del instructivo medio casillero */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Aumentar el ancho del instructivo medio casillero */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Desplazar el instructivo 0.5 casillero a la izquierda */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* -5% tamaño del panel y mantener el offset de 0.5 casillero; re-aplicar left 2.5 casilleros */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* +0.5 casillero a la derecha y +0.5 hacia arriba; tipografía -5% adicional */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Desplazar el instructivo 0.5 casillero a la izquierda (ahora 2.5 casilleros desde la izquierda) */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* -5% adicional del recuadro del instructivo (manteniendo desplazamientos actuales) */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Achicar altura 0.5 casillero extra y desplazar 0.5 casillero a la derecha */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Bajar el instructivo 3mm y reducir tipografía un 10% (80% → 72%) */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Subir el instructivo medio casillero (sumar 0.5 * var(--square) al bottom actual) */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Subir el instructivo 3mm (eliminar el -3mm previo) */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Bajar el instructivo medio casillero */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* +3% tamaño del recuadro del instructivo (ancho y alto) */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Microajuste: interlineado 1.18 para el instructivo */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Bajar 3mm, desplazar 3mm a la izquierda, y reducir tipografía 5% */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Ajustes finos:
    - #rowControls baja 0.5 casillero
@@ -222,7 +216,6 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
   top: calc(23px + var(--square) * 0.5) !important;
 }
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Bajar 2mm el botón 'Mostrar/Ocultar instructivo' y volver transparente el contenedor de Mantener/Desplazar */
 
@@ -232,21 +225,17 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
   border: none !important;
   backdrop-filter: none !important;
 }
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Colocar el instructivo DENTRO del tablero (#board) */
 #board{ position: relative !important; }
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Subir instructivo 1 casillero dentro del tablero */
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style><style>
 /* Siempre flotante en ambas vistas, manteniendo posición relativa al tablero */
 #board{ position: relative !important; overflow: visible !important; }
 
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style>
 <style id="mobile-controls-below-css">
 @media (max-width:980px){
@@ -261,7 +250,6 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
     flex: 1 1 auto;
   }
 }
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style>
 <style id="toggle-der-10casilleros-mobile-only">
 /* Reubicar SOLO EN MÓVIL el botón de ocultar instructivo 10 casilleros a la derecha */
@@ -272,7 +260,6 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
 @media (min-width:981px){
   
 }
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style>
 <style id="mobile-instructivo-up-half-and-shift-rowcontrols-8">
 @media (max-width:980px){
@@ -283,7 +270,6 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
     padding-left: calc(var(--square) * 8) !important;
   }
 }
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style>
 <style id="mobile-board-down-1square">
 @media (max-width:980px){
@@ -292,13 +278,11 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
     margin-top: var(--square) !important;
   }
 }
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style>
 <style>
 /* === Ajetrez: UI states for illegal shift === */
 .btn.blocked{background:#d33;color:#fff;border-color:#a00;cursor:not-allowed;opacity:.95}
 #rule-toast.toast{position:fixed;left:50%;top:12%;transform:translateX(-50%);background:rgba(200,0,0,.92);color:#fff;padding:10px 14px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.35);font-weight:700;max-width:min(92vw,560px);text-align:center;transition:opacity .35s z-index:9999;}
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style>
 
 
@@ -316,7 +300,6 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
 @media (max-width: 640px){
   .mode-pill{ font-size:14px; }
 }
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style>
 
 
@@ -326,11 +309,7 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
   margin:auto; image-rendering:auto; object-fit:contain; max-width:100%; max-height:100%;
   background-color:transparent !important; -webkit-user-drag:none;
   filter:drop-shadow(0 1.2px 1.6px rgba(0,0,0,.35));
-}#toolbarBottom { min-height: 40px; margin-top: 10px; }
-</style><script>
-// 👉 Reemplaza este enlace por el de tu página principal
-const COLABORA_URL = "https://proyectoajetrez.netlify.app/#colabora-tab";
-
+}</style><script>
 let SFX = {
   move: new Audio('assets/audio/move.mp3'),
   capture: new Audio('assets/audio/capture.mp3'),
@@ -351,7 +330,6 @@ function playSfx(kind){
   color: #fff !important;
   border-color: #a00 !important;
 }
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style>
 </head>
 <script>const PIECE_SPRITES = {
@@ -381,7 +359,6 @@ function playSfx(kind){
 
 <div id="board"></div>
 <div id="rowControls"></div>
-<div class="toolbar" id="toolbarBottom"></div>
 </div>
 </div>
 <!-- Contenedores auxiliares (ocultos) para compatibilidad con el script original -->
@@ -959,7 +936,6 @@ const isJaque=inCheck(vis,nextToMove);
     renderRowControls();
     renderTips();
     renderBotLog();
-  renderToolbarBottom();
     updateMovesUI();
     updateReviewControls();
   }
@@ -1000,58 +976,6 @@ const isJaque=inCheck(vis,nextToMove);
     modeSeg.append(pill, btn);
     toolbar.append(modeSeg);
 }
-
-
-
-
-
-
-
-function renderToolbarBottom(){
-  const el = document.getElementById('toolbarBottom');
-  if(!el) return;
-  el.innerHTML = '';
-
-  // Segmento 1: Colabora
-  const seg1 = document.createElement('div');
-  seg1.className = 'seg';
-  const bColabora = document.createElement('button');
-  bColabora.className = 'btn';
-  bColabora.id = 'btnColabora';
-  bColabora.textContent = 'Colabora con el proyecto';
-  bColabora.onclick = () => window.open("https://proyectoajetrez.netlify.app/#colabora-tab", "_blank");
-  seg1.append(bColabora);
-  el.append(seg1);
-
-  // Segmento 2: Comentario / Bug
-  const seg2 = document.createElement('div');
-  seg2.className = 'seg';
-  const bReportar = document.createElement('button');
-  bReportar.className = 'btn';
-  bReportar.id = 'btnReportar';
-  bReportar.innerHTML = 'Deja tu comentario / sugerencia<br>Reporta un bug (error)';
-  bReportar.onclick = () => window.open("https://docs.google.com/forms/d/e/1FAIpQLScbwPV0PDI1e-c7mLgiqu3koLOlyFiAnL1aCB-kLQ-iiK1xtA/viewform?usp=header", "_blank");
-  seg2.append(bReportar);
-  el.append(seg2);
-
-  // Segmento 3: Novedades
-  const seg3 = document.createElement('div');
-  seg3.className = 'seg';
-  const bNovedades = document.createElement('button');
-  bNovedades.className = 'btn';
-  bNovedades.id = 'btnNovedades';
-  bNovedades.textContent = 'Novedades del juego';
-  bNovedades.onclick = () => window.open("https://proyectoajetrez.netlify.app/#novedades-tab", "_blank");
-  seg3.append(bNovedades);
-  el.append(seg3);
-}
-
-
-
-
-
-
-
 
   
 
@@ -1782,7 +1706,6 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
     max-width: 70vw;
     white-space: nowrap;
   }
-#toolbarBottom { min-height: 40px; margin-top: 10px; }
 </style>
 
 
