@@ -900,6 +900,42 @@ function playSfx(kind){
   }
 }
 </style>
+
+<style id="mobile-reset-fs-visibility-fix-2025-08-28">
+/* === SOLO MÓVIL: garantizar visibilidad y ubicación al tope-derecha en fila === */
+@media (max-width:699px){
+  #floatingControls{
+    position: fixed !important;
+    top: calc(var(--board-top, 0px) + var(--board-offset-y, 0px)) !important;
+    right: calc(1 * var(--square)) !important;
+    left: auto !important;
+    z-index: 2147483647 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 6px !important;
+    flex-wrap: nowrap !important;
+    pointer-events: auto !important;
+  }
+  #btnResetVisible, #btnFullscreen{
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    top: 0 !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    width: auto !important;
+    max-width: none !important;
+    padding: 6px 10px !important;
+  }
+  /* Orden explícito: Reset a la izquierda, Fullscreen a la derecha */
+  #btnResetVisible{ order: 0 !important; }
+  #btnFullscreen{ order: 1 !important; }
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
