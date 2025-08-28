@@ -510,6 +510,256 @@ function playSfx(kind){
   }
 }
 </style>
+
+<style id="board-up-1square-2025-08-28">
+/* === WEB y MÓVIL: subir las secciones del tablero 1 casillero === */
+#board, #mobile-board, #mobile-board-down-1square{
+  top: calc(var(--board-top, 0px) - var(--square)) !important;
+  margin-top: calc(-1 * var(--square)) !important;
+}
+</style>
+
+<style id="board-up-0_5square-2025-08-28">
+/* === WEB y MÓVIL: subir las secciones del tablero medio casillero === */
+#board, #mobile-board, #mobile-board-down-1square{
+  top: calc(var(--board-top, 0px) - 0.5 * var(--square)) !important;
+  margin-top: calc(-0.5 * var(--square)) !important;
+}
+</style>
+
+<style id="mode-top-left-boardbase-2025-08-28">
+/* === Mover botón e indicador de modo a la esquina superior izquierda, al inicio de la base del tablero === */
+.mode-inline{
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  margin: 0 !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  z-index: 9999;
+}
+#board, #mobile-board, #mobile-board-down-1square{
+  position: relative;
+}
+</style>
+
+<style id="board-down-2squares-2025-08-28">
+/* === WEB y MÓVIL: bajar el tablero 2 casilleros === */
+#board, #mobile-board, #mobile-board-down-1square{
+  top: calc(var(--board-top, 0px) + 2 * var(--square)) !important;
+  margin-top: calc(2 * var(--square)) !important;
+}
+</style>
+
+<style id="mode-inline-row-2025-08-28">
+/* === Colocar botón de cambiar modo a la derecha del indicador de modo === */
+.mode-inline{
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  margin: 0 !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 8px !important;
+  z-index: 9999;
+}
+.mode-inline .mode-pill{ order: 0 !important; }
+.mode-inline button,
+.mode-inline .toggle-mode,
+.mode-inline .btn,
+.mode-inline a[role="button"]{ order: 1 !important; }
+</style>
+
+<style id="board-up-2squares-2025-08-28">
+/* === WEB y MÓVIL: subir el tablero 2 casilleros === */
+#board, #mobile-board, #mobile-board-down-1square{
+  top: calc(var(--board-top, 0px) - 2 * var(--square)) !important;
+  margin-top: calc(-2 * var(--square)) !important;
+}
+</style>
+
+<style id="revert-board-up2-and-align-mode-2025-08-28">
+/* === Revertir: tablero vuelve a BAJAR 2 casilleros === */
+#board, #mobile-board, #mobile-board-down-1square{
+  top: calc(var(--board-top, 0px) + 2 * var(--square)) !important;
+  margin-top: calc(2 * var(--square)) !important;
+}
+
+/* === Alinear indicador y botón de modo con el borde superior ACTUAL del tablero === */
+.mode-inline{
+  position: absolute !important;
+  top: calc(var(--board-top, 0px) + 2 * var(--square)) !important;
+  left: 0 !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 8px !important;
+  z-index: 9999;
+}
+.mode-inline .mode-pill{ order: 0 !important; }
+.mode-inline button,
+.mode-inline .toggle-mode,
+.mode-inline .btn,
+.mode-inline a[role="button"]{ order: 1 !important; }
+</style>
+
+<style id="mode-align-top-board-2025-08-28">
+/* === Subir indicador de modo y botón de cambio al TOPE de la base del tablero === */
+.mode-inline{
+  position: absolute !important;
+  top: 0 !important; /* alineado al tope del tablero */
+  left: 0 !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 8px !important;
+  z-index: 9999;
+}
+.mode-inline .mode-pill{ order: 0 !important; }
+.mode-inline button,
+.mode-inline .toggle-mode,
+.mode-inline .btn,
+.mode-inline a[role="button"]{ order: 1 !important; }
+</style>
+
+<style id="mode-top-right-half-square-2025-08-28">
+/* === Mover indicador y botón de modo medio casillero a la derecha === */
+.mode-inline{
+  left: calc(0.5 * var(--square)) !important;
+}
+</style>
+
+<style id="board-up-2squares-2025-08-28b">
+/* === WEB y MÓVIL: subir el tablero 2 casilleros === */
+#board, #mobile-board, #mobile-board-down-1square{
+  top: calc(var(--board-top, 0px) - 2 * var(--square)) !important;
+  margin-top: calc(-2 * var(--square)) !important;
+}
+</style>
+
+<style id="revert-board-up2-2025-08-28c">
+/* === Revertir: tablero vuelve a su posición base (sin subida extra) === */
+#board, #mobile-board, #mobile-board-down-1square{
+  top: var(--board-top, 0px) !important;
+  margin-top: 0 !important;
+}
+</style>
+
+<style id="board-down-1square-2025-08-28d">
+/* === WEB y MÓVIL: bajar el tablero 1 casillero === */
+#board, #mobile-board, #mobile-board-down-1square{
+  top: calc(var(--board-top, 0px) + 1 * var(--square)) !important;
+  margin-top: calc(1 * var(--square)) !important;
+}
+</style>
+
+<style id="mode-up-2mm-2025-08-28">
+/* === Subir indicador de modo y botón unos 2mm === */
+.mode-inline{
+  margin-top: -2mm !important;
+}
+</style>
+
+<style id="restart-fs-down-3mm-2025-08-28">
+/* === Bajar botones de Reiniciar y Pantalla Completa 3mm === */
+#resetBtn, #fullscreenBtn{
+  margin-top: 3mm !important;
+}
+</style>
+
+<style id="board-up-0_5square-2025-08-28e">
+/* === WEB y MÓVIL: subir el tablero medio casillero === */
+#board, #mobile-board, #mobile-board-down-1square{
+  top: calc(var(--board-top, 0px) - 0.5 * var(--square)) !important;
+  margin-top: calc(-0.5 * var(--square)) !important;
+}
+</style>
+
+<style id="board-offset-normalizer-2025-08-28">
+/* === Normalización de desplazamiento del tablero ===
+   Motivo: había múltiples reglas conflictivas con top/margin-top !important
+   que se acumulaban y producían desplazamientos mayores a lo esperado.
+   Solución: una sola fuente de verdad: --board-offset-y con transform.
+*/
+:root{
+  --board-offset-y: calc(1 * var(--square)); /* estado actual deseado: BAJAR 1 casillero */
+}
+#board, #mobile-board, #mobile-board-down-1square{
+  top: var(--board-top, 0px) !important;
+  margin-top: 0 !important;
+  transform: translateY(var(--board-offset-y)) !important;
+}
+</style>
+
+<style id="reset-fs-align-mode-2025-08-28">
+/* === Alinear botones Reiniciar y Pantalla Completa a la altura de los botones de modo === */
+:root{
+  /* Usa el mismo offset vertical que el bloque de modo (actualmente ~ -2mm respecto al tope de la base) */
+  --mode-top-offset: -2mm;
+}
+#resetBtn, #fullscreenBtn{
+  position: absolute !important;
+  top: 0 !important;
+  transform: translateY(var(--mode-top-offset)) !important;
+  margin-top: 0 !important; /* neutraliza ajustes previos */
+}
+</style>
+
+<style id="reset-fs-extra-down-3mm-2025-08-28">
+/* === Bajar Reiniciar y Pantalla Completa 3mm más respecto a los controles de modo === */
+#resetBtn, #fullscreenBtn{
+  transform: translateY(calc(var(--mode-top-offset, 0px) + 3mm)) !important;
+}
+</style>
+
+<style id="reset-fs-left-half-square-2025-08-28">
+/* === Desplazar Reiniciar y Pantalla Completa medio casillero a la izquierda === */
+#resetBtn, #fullscreenBtn{
+  transform: translate(calc(-0.5 * var(--square)), calc(var(--mode-top-offset, 0px) + 3mm)) !important;
+}
+</style>
+
+<style id="fix-visible-reset-fs-2025-08-28">
+/* === Corregir target: los botones visibles son #btnResetVisible y #btnFullscreen === */
+#btnResetVisible, #btnFullscreen{
+  /* Anula el top anterior y usa transform como única fuente de desplazamiento */
+  top: 0 !important;
+  /* Mantener posicionamiento no forzado (relativo por defecto) para no romper layout */
+  position: relative !important;
+  transform: translate(calc(-0.5 * var(--square)), calc(var(--mode-top-offset, 0px) + 3mm)) !important;
+}
+
+/* En móvil, preservar el mismo comportamiento (por si había overrides) */
+@media (max-width: 699px){
+  #btnResetVisible, #btnFullscreen{
+    top: 0 !important;
+    transform: translate(calc(-0.5 * var(--square)), calc(var(--mode-top-offset, 0px) + 3mm)) !important;
+  }
+}
+</style>
+
+<style id="visible-reset-fs-down-half-square-2025-08-28">
+/* === Bajar botones visibles Reiniciar y Pantalla Completa medio casillero (web y móvil) === */
+#btnResetVisible, #btnFullscreen{
+  transform: translate(calc(-0.5 * var(--square)), calc(var(--mode-top-offset, 0px) + 3mm + 0.5 * var(--square))) !important;
+}
+</style>
+
+<style id="board-container-expand-down-0_5square-2025-08-28">
+/* === Ampliar la base contenedora del tablero hacia abajo medio casillero === */
+#board, #mobile-board, #mobile-board-down-1square{
+  padding-bottom: calc(0.5 * var(--square)) !important;
+}
+</style>
+
+<style id="board-container-expand-down-extra0_5square-2025-08-28">
+/* === Ampliar aún más el fondo/base del tablero hacia abajo (otro medio casillero) === */
+#board, #mobile-board, #mobile-board-down-1square{
+  padding-bottom: calc(1 * var(--square)) !important; /* total: 1 casillero */
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
