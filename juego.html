@@ -760,6 +760,16 @@ function playSfx(kind){
   padding-bottom: calc(1 * var(--square)) !important; /* total: 1 casillero */
 }
 </style>
+
+<style id="mobile-reset-fs-up-half-and-narrow-2025-08-28">
+/* === SOLO MÓVIL: subir medio casillero los botones Reiniciar y Pantalla Completa, y achicar ancho a la mitad === */
+@media (max-width:699px){
+  #btnResetVisible, #btnFullscreen{
+    transform: translate(calc(-0.5 * var(--square)), calc(var(--mode-top-offset, 0px) + 3mm)) !important;
+    width: 50% !important;
+  }
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
