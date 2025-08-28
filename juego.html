@@ -913,6 +913,23 @@ function playSfx(kind){
   left: calc(-1 * var(--square)) !important;
 }
 </style>
+
+<style id="reset-fs-nofloat-2025-08-28">
+/* === WEB y MÓVIL: Reiniciar y Pantalla Completa dejan de ser flotantes === */
+#floatingControls{
+  position: static !important;
+  transform: none !important;
+  margin-top: calc(3 * var(--square)) !important; /* mantener desplazamiento actual */
+  width: 100% !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+}
+#btnResetVisible, #btnFullscreen{
+  position: relative !important;
+  left: calc(-1 * var(--square)) !important;
+}
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
