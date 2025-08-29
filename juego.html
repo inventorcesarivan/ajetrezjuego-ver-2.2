@@ -1741,6 +1741,46 @@ function playSfx(kind){
 }
 </style>
 
+
+<style id="mode-inline-floating-2025-08-29">
+/* Flotante en ambas versiones */
+.mode-inline{
+  position: fixed !important;
+  top: 3mm !important;
+  left: 3mm !important;  /* por defecto (web) esquina sup. izquierda */
+  right: auto !important;
+  margin: 0 !important;
+  transform: none !important;   /* anulamos offsets previos que impedían el movimiento */
+  z-index: 2147483000 !important;
+  pointer-events: auto !important;
+}
+
+/* En móvil: esquina sup. derecha */
+@media (max-width: 699px){
+  .mode-inline{
+    left: auto !important;
+    right: 3mm !important;
+  }
+}
+</style>
+
+
+<style id="mode-inline-insideBoard-topLeft-2025-08-29">
+/* Colocar el indicador + botón dentro del tablero, parte superior izquierda, con margen de 3mm */
+#board, #mobile-board, #mobile-board-down-1square{
+  position: relative !important;
+}
+
+.mode-inline{
+  position: absolute !important;
+  top: 3mm !important;
+  left: 3mm !important;
+  margin: 0 !important;
+  transform: none !important;
+  z-index: 1000 !important; /* por encima del tablero */
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
