@@ -1637,17 +1637,17 @@ function playSfx(kind){
   transform: translate(calc(-1 * var(--square)), var(--square)) scale(0.9) !important;
   transform-origin: top right !important;
 }
-</style><style id="board-mobile-down-0_5-final-2025-08-29">
-/* Mod Ajetrez 2025-08-29 (v4):
-   MÓVIL — bajar el tablero 0.5 casillero con una sola regla final.
-   Resetea top/margin-top previos y fija un translateY coherente con --board-offset-y.
+</style><style id="board-mobile-down-1-final-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v5):
+   MÓVIL — bajar SOLO el juego (tablero) 1 casillero hacia abajo.
+   No mueve la base/frame. Se aplica a #board y #mobile-board.
 */
 @media (max-width: 699px){
-  #board, #mobile-board, #mobile-board-down-1square{
+  #board, #mobile-board{
     position: relative !important;
     margin-top: 0 !important;
     top: auto !important;
-    transform: translateY(calc(var(--board-offset-y, 0px) + 0.5 * var(--square))) !important;
+    transform: translateY(calc(var(--board-offset-y, 0px) + 1 * var(--square))) !important;
     transform-origin: top left !important;
   }
 }
