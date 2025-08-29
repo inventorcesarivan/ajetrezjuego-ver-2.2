@@ -1,4 +1,4 @@
-
+<!-- Mod Ajetrez 2025-08-29: Móvil — Reiniciar/Fullscreen +1 casillero hacia abajo, sin cambiar flotante/fijo -->
 <!DOCTYPE html>
 
 <html lang="es">
@@ -428,9 +428,6 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
 .btn.blocked{background:#d33;color:#fff;border-color:#a00;cursor:not-allowed;opacity:.95}
 #rule-toast.toast{position:fixed;left:50%;top:12%;transform:translateX(-50%);background:rgba(200,0,0,.92);color:#fff;padding:10px 14px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.35);font-weight:700;max-width:min(92vw,560px);text-align:center;transition:opacity .35s z-index:9999;}
 </style>
-
-
-
 <style id="mode-indicator-style">
 .mode-inline{ display:inline-flex; align-items:center; gap:8px; margin-left:8px; }
 .mode-pill{
@@ -445,8 +442,6 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
   .mode-pill{ font-size:14px; }
 }
 </style>
-
-
 <style>
 .piece-img{
   width:100%; height:100%; display:block; pointer-events:none; user-select:none;
@@ -475,7 +470,6 @@ function playSfx(kind){
   border-color: #a00 !important;
 }
 </style>
-
 <style id="mode-inline-stack-2025-08-28">
 /* === Colocar botón de cambiar modo DEBAJO del cartel de modo (todas las versiones) === */
 .mode-inline{
@@ -494,14 +488,12 @@ function playSfx(kind){
   display: inline-flex;
 }
 </style>
-
 <style id="rowcontrols-down-1square-2025-08-28">
 /* === WEB y MÓVIL: desplazar 1 casillero hacia abajo el botón Mantener/Desplazar sección === */
 #rowControls{
   top: calc(23px + (1 * var(--square))) !important;
 }
 </style>
-
 <style id="rowcontrols-down-extra1-mobile-2025-08-28">
 /* === SOLO MÓVIL: desplazar 1 casillero adicional hacia abajo el botón Mantener/Desplazar sección === */
 @media (max-width:699px){
@@ -510,7 +502,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="board-up-1square-2025-08-28">
 /* === WEB y MÓVIL: subir las secciones del tablero 1 casillero === */
 #board, #mobile-board, #mobile-board-down-1square{
@@ -518,7 +509,6 @@ function playSfx(kind){
   margin-top: calc(-1 * var(--square)) !important;
 }
 </style>
-
 <style id="board-up-0_5square-2025-08-28">
 /* === WEB y MÓVIL: subir las secciones del tablero medio casillero === */
 #board, #mobile-board, #mobile-board-down-1square{
@@ -526,7 +516,6 @@ function playSfx(kind){
   margin-top: calc(-0.5 * var(--square)) !important;
 }
 </style>
-
 <style id="mode-top-left-boardbase-2025-08-28">
 /* === Mover botón e indicador de modo a la esquina superior izquierda, al inicio de la base del tablero === */
 .mode-inline{
@@ -542,7 +531,6 @@ function playSfx(kind){
   position: relative;
 }
 </style>
-
 <style id="board-down-2squares-2025-08-28">
 /* === WEB y MÓVIL: bajar el tablero 2 casilleros === */
 #board, #mobile-board, #mobile-board-down-1square{
@@ -550,7 +538,6 @@ function playSfx(kind){
   margin-top: calc(2 * var(--square)) !important;
 }
 </style>
-
 <style id="mode-inline-row-2025-08-28">
 /* === Colocar botón de cambiar modo a la derecha del indicador de modo === */
 .mode-inline{
@@ -569,7 +556,6 @@ function playSfx(kind){
 .mode-inline .btn,
 .mode-inline a[role="button"]{ order: 1 !important; }
 </style>
-
 <style id="board-up-2squares-2025-08-28">
 /* === WEB y MÓVIL: subir el tablero 2 casilleros === */
 #board, #mobile-board, #mobile-board-down-1square{
@@ -577,7 +563,6 @@ function playSfx(kind){
   margin-top: calc(-2 * var(--square)) !important;
 }
 </style>
-
 <style id="revert-board-up2-and-align-mode-2025-08-28">
 /* === Revertir: tablero vuelve a BAJAR 2 casilleros === */
 #board, #mobile-board, #mobile-board-down-1square{
@@ -603,7 +588,6 @@ function playSfx(kind){
 .mode-inline .btn,
 .mode-inline a[role="button"]{ order: 1 !important; }
 </style>
-
 <style id="mode-align-top-board-2025-08-28">
 /* === Subir indicador de modo y botón de cambio al TOPE de la base del tablero === */
 .mode-inline{
@@ -623,14 +607,12 @@ function playSfx(kind){
 .mode-inline .btn,
 .mode-inline a[role="button"]{ order: 1 !important; }
 </style>
-
 <style id="mode-top-right-half-square-2025-08-28">
 /* === Mover indicador y botón de modo medio casillero a la derecha === */
 .mode-inline{
   left: calc(0.5 * var(--square)) !important;
 }
 </style>
-
 <style id="board-up-2squares-2025-08-28b">
 /* === WEB y MÓVIL: subir el tablero 2 casilleros === */
 #board, #mobile-board, #mobile-board-down-1square{
@@ -638,7 +620,6 @@ function playSfx(kind){
   margin-top: calc(-2 * var(--square)) !important;
 }
 </style>
-
 <style id="revert-board-up2-2025-08-28c">
 /* === Revertir: tablero vuelve a su posición base (sin subida extra) === */
 #board, #mobile-board, #mobile-board-down-1square{
@@ -646,7 +627,6 @@ function playSfx(kind){
   margin-top: 0 !important;
 }
 </style>
-
 <style id="board-down-1square-2025-08-28d">
 /* === WEB y MÓVIL: bajar el tablero 1 casillero === */
 #board, #mobile-board, #mobile-board-down-1square{
@@ -654,21 +634,18 @@ function playSfx(kind){
   margin-top: calc(1 * var(--square)) !important;
 }
 </style>
-
 <style id="mode-up-2mm-2025-08-28">
 /* === Subir indicador de modo y botón unos 2mm === */
 .mode-inline{
   margin-top: -2mm !important;
 }
 </style>
-
 <style id="restart-fs-down-3mm-2025-08-28">
 /* === Bajar botones de Reiniciar y Pantalla Completa 3mm === */
 #resetBtn, #fullscreenBtn{
   margin-top: 3mm !important;
 }
 </style>
-
 <style id="board-up-0_5square-2025-08-28e">
 /* === WEB y MÓVIL: subir el tablero medio casillero === */
 #board, #mobile-board, #mobile-board-down-1square{
@@ -676,7 +653,6 @@ function playSfx(kind){
   margin-top: calc(-0.5 * var(--square)) !important;
 }
 </style>
-
 <style id="board-offset-normalizer-2025-08-28">
 /* === Normalización de desplazamiento del tablero ===
    Motivo: había múltiples reglas conflictivas con top/margin-top !important
@@ -692,7 +668,6 @@ function playSfx(kind){
   transform: translateY(var(--board-offset-y)) !important;
 }
 </style>
-
 <style id="reset-fs-align-mode-2025-08-28">
 /* === Alinear botones Reiniciar y Pantalla Completa a la altura de los botones de modo === */
 :root{
@@ -706,21 +681,18 @@ function playSfx(kind){
   margin-top: 0 !important; /* neutraliza ajustes previos */
 }
 </style>
-
 <style id="reset-fs-extra-down-3mm-2025-08-28">
 /* === Bajar Reiniciar y Pantalla Completa 3mm más respecto a los controles de modo === */
 #resetBtn, #fullscreenBtn{
   transform: translateY(calc(var(--mode-top-offset, 0px) + 3mm)) !important;
 }
 </style>
-
 <style id="reset-fs-left-half-square-2025-08-28">
 /* === Desplazar Reiniciar y Pantalla Completa medio casillero a la izquierda === */
 #resetBtn, #fullscreenBtn{
   transform: translate(calc(-0.5 * var(--square)), calc(var(--mode-top-offset, 0px) + 3mm)) !important;
 }
 </style>
-
 <style id="fix-visible-reset-fs-2025-08-28">
 /* === Corregir target: los botones visibles son #btnResetVisible y #btnFullscreen === */
 #btnResetVisible, #btnFullscreen{
@@ -739,28 +711,24 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="visible-reset-fs-down-half-square-2025-08-28">
 /* === Bajar botones visibles Reiniciar y Pantalla Completa medio casillero (web y móvil) === */
 #btnResetVisible, #btnFullscreen{
   transform: translate(calc(-0.5 * var(--square)), calc(var(--mode-top-offset, 0px) + 3mm + 0.5 * var(--square))) !important;
 }
 </style>
-
 <style id="board-container-expand-down-0_5square-2025-08-28">
 /* === Ampliar la base contenedora del tablero hacia abajo medio casillero === */
 #board, #mobile-board, #mobile-board-down-1square{
   padding-bottom: calc(0.5 * var(--square)) !important;
 }
 </style>
-
 <style id="board-container-expand-down-extra0_5square-2025-08-28">
 /* === Ampliar aún más el fondo/base del tablero hacia abajo (otro medio casillero) === */
 #board, #mobile-board, #mobile-board-down-1square{
   padding-bottom: calc(1 * var(--square)) !important; /* total: 1 casillero */
 }
 </style>
-
 <style id="mobile-reset-fs-up-half-and-narrow-2025-08-28">
 /* === SOLO MÓVIL: subir medio casillero los botones Reiniciar y Pantalla Completa, y achicar ancho a la mitad === */
 @media (max-width:699px){
@@ -770,7 +738,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="mobile-reset-fs-topright-above-board-2025-08-28">
 /* === SOLO MÓVIL: enviar Reiniciar / Pantalla completa a la derecha ARRIBA del tablero, más angostos === */
 @media (max-width:699px){
@@ -800,7 +767,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="mobile-reset-fs-right-half-square-2025-08-28">
 /* === SOLO MÓVIL: desplazar medio casillero más a la derecha los botones Reset/Fullscreen === */
 @media (max-width:699px){
@@ -809,7 +775,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="reset-fs-floating-both-2025-08-28">
 /* === Hacer flotantes los botones Reiniciar y Pantalla Completa en web y móvil === */
 #floatingControls{
@@ -830,7 +795,6 @@ function playSfx(kind){
   text-align: center !important;
 }
 </style>
-
 <style id="reset-fs-web-left4-up1-2025-08-28">
 /* === SOLO WEB: desplazar botones Reiniciar y Fullscreen 4 casilleros a la izquierda y 1 hacia arriba === */
 @media (min-width:700px){
@@ -840,7 +804,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="reset-fs-web-left4-up1-down0_5-2025-08-28">
 /* === SOLO WEB: bajar botones flotantes medio casillero (manteniendo 4 izq, 1 arriba previos) === */
 @media (min-width:700px){
@@ -849,7 +812,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="reset-fs-mobile-halfwidth-2025-08-28">
 /* === SOLO MÓVIL: achicar ancho de los botones Reiniciar y Fullscreen a la mitad === */
 @media (max-width:699px){
@@ -860,7 +822,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="reset-fs-mobile-vertical-stack-2025-08-28">
 /* === SOLO MÓVIL: colocar botones Reiniciar y Fullscreen uno debajo del otro === */
 @media (max-width:699px){
@@ -873,7 +834,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="reset-fs-mobile-down-1square-2025-08-28">
 /* === SOLO MÓVIL: bajar 1 casillero los botones Reiniciar y Pantalla Completa === */
 @media (max-width:699px){
@@ -884,7 +844,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="reset-fs-mobile-rightmax-2025-08-28">
 /* === SOLO MÓVIL: alinear botones Reiniciar y Pantalla Completa lo más a la derecha dentro del tablero === */
 @media (max-width:699px){
@@ -896,7 +855,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="reset-fs-mobile-down-3squares-rightmax-2025-08-28">
 /* === SOLO MÓVIL: bajar botones Reiniciar y Pantalla Completa 2 casilleros adicionales (total 3) === */
 @media (max-width:699px){
@@ -905,7 +863,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="reset-fs-all-left1square-2025-08-28">
 /* === WEB y MÓVIL: desplazar botones Reiniciar y Pantalla Completa 1 casillero a la izquierda === */
 #btnResetVisible, #btnFullscreen{
@@ -913,7 +870,6 @@ function playSfx(kind){
   left: calc(-1 * var(--square)) !important;
 }
 </style>
-
 <style id="reset-fs-nofloat-2025-08-28">
 /* === WEB y MÓVIL: Reiniciar y Pantalla Completa dejan de ser flotantes === */
 #floatingControls{
@@ -930,7 +886,6 @@ function playSfx(kind){
   left: calc(-1 * var(--square)) !important;
 }
 </style>
-
 <style id="reset-fs-nofloat-both-2025-08-28">
 /* === WEB y MÓVIL: Reiniciar y Pantalla Completa dejan de ser flotantes === */
 #floatingControls{
@@ -948,7 +903,6 @@ function playSfx(kind){
   left: calc(-1 * var(--square)) !important; /* mantiene corrimiento a la izquierda */
 }
 </style>
-
 <style id="reset-fs-nofloat-both-up3squares-2025-08-28">
 /* === WEB y MÓVIL: subir botones Reiniciar y Pantalla Completa 3 casilleros === */
 #floatingControls{
@@ -957,21 +911,18 @@ function playSfx(kind){
   transform: translateY(calc(-3 * var(--square))) !important; /* subir 3 casilleros */
 }
 </style>
-
 <style id="reset-fs-nofloat-both-up2squares-2025-08-28">
 /* === WEB y MÓVIL: ajustar botones Reiniciar y Pantalla Completa a subir solo 2 casilleros (bajar 1 desde el ajuste previo) === */
 #floatingControls{
   transform: translateY(calc(-2 * var(--square))) !important; /* subir solo 2 casilleros en total */
 }
 </style>
-
 <style id="reset-fs-nofloat-both-up1square-2025-08-28">
 /* === WEB y MÓVIL: ajustar botones Reiniciar y Pantalla Completa a subir solo 1 casillero (bajar 1 desde el ajuste previo) === */
 #floatingControls{
   transform: translateY(calc(-1 * var(--square))) !important; /* subir solo 1 casillero en total */
 }
 </style>
-
 <style id="reset-fs-mobile-top-align-left-2025-08-28">
 /* === SOLO MÓVIL: subir botones Reiniciar y Pantalla Completa arriba del tablero, alineados con los botones superiores izquierdos === */
 @media (max-width:699px){
@@ -994,7 +945,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="reset-fs-mobile-top-align-left-up3squares-2025-08-28">
 /* === SOLO MÓVIL: botones Reiniciar y Pantalla Completa en fila horizontal, 3 casilleros más arriba === */
 @media (max-width:699px){
@@ -1017,7 +967,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="reset-fs-mobile-top-align-left-up2_5squares-2025-08-28">
 /* === SOLO MÓVIL: bajar medio casillero los botones (quedan a 2.5 casilleros arriba) === */
 @media (max-width:699px){
@@ -1026,7 +975,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="reset-fs-mobile-top-align-left-vertical-2025-08-28">
 /* === SOLO MÓVIL: botones Reiniciar y Pantalla Completa en columna (uno debajo del otro) === */
 @media (max-width:699px){
@@ -1040,7 +988,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="reset-fs-mobile-vertical-floating-2025-08-28">
 /* === SOLO MÓVIL: botones Reiniciar y Pantalla Completa flotantes en columna arriba del tablero === */
 @media (max-width:699px){
@@ -1059,7 +1006,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="board-up-half-square-both-2025-08-28">
 /* === WEB y MÓVIL: subir el tablero medio casillero === */
 #board, #mobile-board, #mobile-board-down-1square{
@@ -1067,7 +1013,6 @@ function playSfx(kind){
   transform: translateY(calc(var(--board-offset-y, 0px) - 0.5 * var(--square))) !important;
 }
 </style>
-
 <style id="reset-fs-web-down-half-square-2025-08-28">
 /* === SOLO WEB: bajar botones Reiniciar y Pantalla Completa medio casillero === */
 @media (min-width:700px){
@@ -1077,7 +1022,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="reset-fs-both-right1square-2025-08-28">
 /* === WEB y MÓVIL: desplazar botones Reiniciar y Pantalla Completa 1 casillero a la derecha === */
 #btnResetVisible, #btnFullscreen{
@@ -1085,7 +1029,6 @@ function playSfx(kind){
   left: calc(1 * var(--square)) !important;
 }
 </style>
-
 <style id="reset-fs-both-right0_5square-2025-08-28">
 /* === WEB y MÓVIL: desplazar botones Reiniciar y Pantalla Completa medio casillero a la derecha desde la base === */
 #btnResetVisible, #btnFullscreen{
@@ -1102,7 +1045,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 <style id="donate-bar-style-2025-08-28">
   /* === Barra de donaciones (debajo del tablero) === */
   #donateBar{
@@ -1128,8 +1070,6 @@ function playSfx(kind){
     #donateBar .donate-logo img{ height:32px; }
   }
 </style>
-
-
 <style id="donate-mobile-tweak-2025-08-28">
 /* === SOLO MÓVIL: botones de donación 15% más chicos y barra 3 casilleros a la IZQUIERDA === */
 @media (max-width:699px){
@@ -1144,8 +1084,6 @@ function playSfx(kind){
   }
 }
 </style>
-
-
 <style id="donate-mobile-left3-2025-08-28">
   /* SOLO MÓVIL: mover barra de donaciones 3 casilleros a la IZQUIERDA */
   @media (max-width:699px){
@@ -1154,8 +1092,6 @@ function playSfx(kind){
     }
   }
 </style>
-
-
 <style id="donate-mobile-left3-float-2025-08-28">
   /* SOLO MÓVIL: mover barra de donaciones 3 casilleros a la IZQUIERDA y hacerla flotante */
   @media (max-width:699px){
@@ -1168,8 +1104,6 @@ function playSfx(kind){
     }
   }
 </style>
-
-
 <style id="donate-mobile-float-center-board-2025-08-28">
   /* SOLO MÓVIL: hacer flotante el botón de donaciones y centrarlo en medio del tablero, 5 casilleros más arriba */
   @media (max-width:699px){
@@ -1182,24 +1116,18 @@ function playSfx(kind){
     }
   }
 </style>
-
-
 <style id="donate-left4-2025-08-28">
   /* DESPLAZAR BOTONES DE DONACIÓN 4 CASILLEROS A LA IZQUIERDA (WEB y MÓVIL) */
   #donateBar{
     transform: translateX(calc(-4 * var(--square))) !important;
   }
 </style>
-
-
 <style id="donate-left4-uphalf-2025-08-28">
   /* WEB y MÓVIL: desplazar la barra de donaciones 4 casilleros a la izquierda y 0.5 casillero hacia arriba */
   #donateBar{
     transform: translate(calc(-4 * var(--square)), calc(-0.5 * var(--square))) !important;
   }
 </style>
-
-
 <style id="colaboraBtn-style-2025-08-28">
   /* Estilo para el botón "Colabora<br>con el proyecto" */
   #colaboraBtn{
@@ -1213,8 +1141,6 @@ function playSfx(kind){
     transform: translateX(calc(-2 * var(--square)));
   }
 </style>
-
-
 <style id="indicator-up-half-square-2025-08-29">
 /* Subir indicadores medio casillero */
 .mode-inline{
@@ -1224,8 +1150,6 @@ function playSfx(kind){
   transform: translateY(calc(-0.5 * var(--square))) !important;
 }
 </style>
-
-
 <style id="indicator-left-3squares-2025-08-29">
 /* Desplazar indicadores 3 casilleros a la izquierda */
 .mode-inline{
@@ -1235,8 +1159,6 @@ function playSfx(kind){
   transform: translate(calc(-3 * var(--square)), calc(-0.5 * var(--square))) !important;
 }
 </style>
-
-
 <style id="bot-popups-center-horizontal-only-2025-08-29">
 /* Centrar horizontalmente los avisos del bot SIN modificar su funcionamiento */
 .bot-hud,
@@ -1257,8 +1179,6 @@ function playSfx(kind){
   text-align: center !important;
 }
 </style>
-
-
 <style id="bot-popups-above-board-2025-08-29">
 /* Colocar los carteles de aviso justo encima de la sección superior del tablero, con un margen de 2mm */
 .bot-hud,
@@ -1272,8 +1192,6 @@ function playSfx(kind){
   z-index: 9999 !important;
 }
 </style>
-
-
 <style id="bot-popups-down-1square-2025-08-29">
 /* Bajar los carteles 1 casillero respecto a la parte superior del tablero */
 .bot-hud,
@@ -1281,8 +1199,6 @@ function playSfx(kind){
   top: calc(var(--board-top, 0px) + var(--square) - 2mm) !important;
 }
 </style>
-
-
 <style id="mode-indicator-button-smaller-2025-08-29">
 /* Reducir ancho del indicador de modo y del botón un 10% */
 .mode-inline .mode-pill,
@@ -1293,24 +1209,18 @@ function playSfx(kind){
   transform: scaleX(0.9) !important;  /* reduce ancho al 90% */
 }
 </style>
-
-
 <style id="mode-indicator-button-right2-2025-08-29">
 /* Desplazar el bloque de modo (indicador + botón) 2 casilleros a la derecha */
 .mode-inline{
   margin-left: calc(2 * var(--square)) !important;
 }
 </style>
-
-
 <style id="mode-indicator-button-right2-down1-2025-08-29">
 /* Bajar el bloque de modo (indicador + botón) 1 casillero */
 .mode-inline{
   margin-top: calc(1 * var(--square)) !important;
 }
 </style>
-
-
 <style id="mode-inline-unify-2025-08-29">
 /* Fuente única de verdad para la posición del bloque de modo (web y móvil) */
 :root{
@@ -1333,40 +1243,30 @@ function playSfx(kind){
   gap: 8px !important;
 }
 </style>
-
-
 <style id="mode-inline-up-half-square-2025-08-29">
 :root{
   --mode-offset-x: calc(2 * var(--square));   /* sigue 2 casilleros a la derecha */
   --mode-offset-y: calc(0.5 * var(--square)); /* ahora solo medio casillero hacia abajo */
 }
 </style>
-
-
 <style id="mode-inline-right1-down0_5-2025-08-29">
 :root{
   --mode-offset-x: calc(1 * var(--square));   /* ahora solo 1 casillero a la derecha */
   --mode-offset-y: calc(0.5 * var(--square)); /* medio casillero hacia abajo */
 }
 </style>
-
-
 <style id="mode-inline-right0_5-down0_5-2025-08-29">
 :root{
   --mode-offset-x: calc(0.5 * var(--square)); /* medio casillero a la derecha */
   --mode-offset-y: calc(0.5 * var(--square)); /* medio casillero hacia abajo */
 }
 </style>
-
-
 <style id="mode-inline-right0_5-down0_5-up3mm-2025-08-29">
 :root{
   --mode-offset-x: calc(0.5 * var(--square));  /* medio casillero a la derecha */
   --mode-offset-y: calc(0.5 * var(--square) - 3mm); /* medio casillero hacia abajo menos 3mm */
 }
 </style>
-
-
 <style id="donate-buttons-down-half-square-2025-08-29">
 /* Desplazar la barra de donaciones (PayPal y MercadoPago) medio casillero hacia abajo */
 #donateBar{
@@ -1374,8 +1274,6 @@ function playSfx(kind){
   top: calc(0.5 * var(--square)) !important;
 }
 </style>
-
-
 <style id="mode-inline-shrink-15-2025-08-29">
 /* Reducir ancho del indicador de modo y del botón de selección en un 15% */
 .mode-inline .mode-pill,
@@ -1386,24 +1284,18 @@ function playSfx(kind){
   transform: scaleX(0.85) !important;  /* reduce ancho al 85% */
 }
 </style>
-
-
 <style id="mode-inline-gap-2mm-2025-08-29">
 /* Reducir la separación entre el indicador de modo y el botón selector a ~2mm */
 .mode-inline{
   gap: 2mm !important;
 }
 </style>
-
-
 <style id="donate-gap-3mm-2025-08-29">
 /* Ajustar la separación entre el texto "Colabora<br>con el proyecto" y los botones de donación a ~3mm */
 #colaboraBtn{
   margin-right: 3mm !important;
 }
 </style>
-
-
 <style id="donate-gap-3mm-fix-2025-08-29">
 /* Forzar ~3mm de separación entre "Colabora<br>con el proyecto" y los logos de donación */
 /* 1) Anular cualquier corrimiento visual que altere la separación percibida */
@@ -1422,8 +1314,6 @@ function playSfx(kind){
   }
 }
 </style>
-
-
 <style id="donate-left-2squares-2025-08-29">
 /* Desplazar todo el bloque de donaciones 2 casilleros a la izquierda (web y móvil) */
 #donateBar{
@@ -1431,8 +1321,6 @@ function playSfx(kind){
   left: calc(-2 * var(--square)) !important;
 }
 </style>
-
-
 <style id="donate-smaller5-up0_5-2025-08-29">
 /* Reducir bloque de donaciones 5% y subirlo medio casillero */
 #donateBar{
@@ -1440,8 +1328,6 @@ function playSfx(kind){
   transform-origin: top left !important;
 }
 </style>
-
-
 <style id="colabora-text-multiline-2025-08-29">
 /* Hacer que el texto "Colabora con el proyecto" sea más angosto y multilinea */
 #colaboraBtn{
@@ -1452,8 +1338,6 @@ function playSfx(kind){
   line-height: 1.2em !important;
 }
 </style>
-
-
 <style id="donate-left-3squares-2025-08-29">
 /* Desplazar todo el bloque de donaciones 3 casilleros a la izquierda (total) */
 #donateBar{
@@ -1461,8 +1345,6 @@ function playSfx(kind){
   left: calc(-3 * var(--square)) !important;
 }
 </style>
-
-
 <style id="donate-left4-up1-2025-08-29">
 /* Subir 1 casillero en total y desplazar 4 casilleros a la izquierda el bloque de donaciones */
 #donateBar{
@@ -1471,8 +1353,6 @@ function playSfx(kind){
   transform-origin: top left !important;
 }
 </style>
-
-
 <style id="donate-left4-up1_5-2025-08-29">
 /* Subir 1.5 casilleros en total y mantener 4 casilleros a la izquierda el bloque de donaciones */
 #donateBar{
@@ -1481,8 +1361,6 @@ function playSfx(kind){
   transform-origin: top left !important;
 }
 </style>
-
-
 <style id="donate-mobile-up0_5-2025-08-29">
 /* Solo en versión móvil: subir medio casillero más */
 @media (max-width: 699px){
@@ -1492,8 +1370,6 @@ function playSfx(kind){
   }
 }
 </style>
-
-
 <style id="donate-mobile-smaller-2025-08-29">
 /* En versión móvil: achicar botones de donación un 15% para armonizar con la nueva posición */
 @media (max-width: 699px){
@@ -1505,16 +1381,12 @@ function playSfx(kind){
   }
 }
 </style>
-
-
 <style id="donate-left5-2025-08-29">
 /* En ambas versiones: desplazar bloque de donaciones 5 casilleros a la izquierda en total */
 #donateBar{
   left: calc(-5 * var(--square)) !important;
 }
 </style>
-
-
 <style id="donate-mobile-left0_5-up0_5-2025-08-29">
 @media (max-width: 699px){
   #donateBar{
@@ -1524,8 +1396,6 @@ function playSfx(kind){
   }
 }
 </style>
-
-
 <style id="donate-smaller10-2025-08-29">
 /* En ambas versiones: reducir bloque de donaciones un 10% adicional */
 #donateBar{
@@ -1533,8 +1403,6 @@ function playSfx(kind){
   transform-origin: top left !important;
 }
 </style>
-
-
 <style id="donate-up1square-2025-08-29">
 /* Subir bloque de donaciones 1 casillero más en ambas versiones */
 #donateBar{
@@ -1542,8 +1410,6 @@ function playSfx(kind){
   top: calc(-1 * var(--square)) !important;
 }
 </style>
-
-
 <style id="mobile-restart-fs-down0_5-2025-08-29">
 /* En versión móvil: bajar medio casillero los botones de reiniciar y ver en pantalla completa */
 @media (max-width: 699px){
@@ -1554,8 +1420,6 @@ function playSfx(kind){
   }
 }
 </style>
-
-
 <style id="mobile-board-down0_5-2025-08-29">
 /* En versión móvil: bajar medio casillero el tablero */
 @media (max-width: 699px){
@@ -1565,8 +1429,6 @@ function playSfx(kind){
   }
 }
 </style>
-
-
 <style id="board-offset-unify-final-2025-08-29">
 /* === Fuente única de verdad para el desplazamiento vertical del tablero === */
 :root{
@@ -1588,8 +1450,6 @@ function playSfx(kind){
   :root{ --board-mobile-extra: calc(0.5 * var(--square)); }
 }
 </style>
-
-
 <style id="mode-inline-mobile-up0_5-2025-08-29">
 @media (max-width: 699px){
   .mode-inline{
@@ -1598,8 +1458,6 @@ function playSfx(kind){
   }
 }
 </style>
-
-
 <style id="board-mobile-down1square-2025-08-29">
 @media (max-width: 699px){
   :root{
@@ -1608,16 +1466,12 @@ function playSfx(kind){
   }
 }
 </style>
-
-
 <style id="board-down0_5-all-2025-08-29">
 /* En todas las versiones: bajar medio casillero el tablero */
 #board, #mobile-board, #mobile-board-down-1square{
   transform: translateY(calc(var(--board-offset-y, 0px) + var(--board-mobile-extra, 0px) + 0.5 * var(--square))) !important;
 }
 </style>
-
-
 <style id="board-mobile-total1square-2025-08-29">
 @media (max-width: 699px){
   :root{
@@ -1626,8 +1480,6 @@ function playSfx(kind){
   }
 }
 </style>
-
-
 <style id="mode-inline-smaller10-2025-08-29">
 /* Reducir tamaño del indicador y botón de selección de modo un 10% en ambas versiones */
 .mode-inline .mode-pill,
@@ -1639,8 +1491,6 @@ function playSfx(kind){
   transform-origin: center center !important;
 }
 </style>
-
-
 <style id="mode-inline-up0_5-gapSmall-2025-08-29">
 /* Subir medio casillero en ambas versiones */
 .mode-inline{
@@ -1649,8 +1499,6 @@ function playSfx(kind){
   gap: 2mm !important; /* reducir separación entre indicador y botón */
 }
 </style>
-
-
 <style id="mode-line-and-anchor-fix-2025-08-29">
 /* Quitar cualquier línea/ornamento a la izquierda del indicador de modo */
 .mode-inline,
@@ -1676,8 +1524,6 @@ function playSfx(kind){
   align-self: flex-start !important;
 }
 </style>
-
-
 <style id="mode-inline-mobile-up0_5-2025-08-29B">
 @media (max-width: 699px){
   .mode-inline{
@@ -1685,8 +1531,6 @@ function playSfx(kind){
   }
 }
 </style>
-
-
 <style id="mode-inline-smaller5-compact-2025-08-29">
 /* Reducir tamaño del indicador y botón un 5% */
 .mode-inline .mode-pill,
@@ -1705,8 +1549,6 @@ function playSfx(kind){
   gap: 2mm !important;         /* separación más ajustada */
 }
 </style>
-
-
 <style id="mode-inline-topLeft-2025-08-29">
 /* Colocar el indicador de modo y botón en la parte superior izquierda del tablero con margen 3mm */
 .mode-inline{
@@ -1719,8 +1561,6 @@ function playSfx(kind){
   z-index: 2147482000 !important;
 }
 </style>
-
-
 <style id="mode-inline-mobile-up0_5-topLeft-2025-08-29">
 @media (max-width: 699px){
   .mode-inline{
@@ -1728,8 +1568,6 @@ function playSfx(kind){
   }
 }
 </style>
-
-
 <style id="mode-inline-mobile-topRight-2025-08-29">
 @media (max-width: 699px){
   .mode-inline{
@@ -1740,8 +1578,6 @@ function playSfx(kind){
   }
 }
 </style>
-
-
 <style id="mode-inline-floating-2025-08-29">
 /* Flotante en ambas versiones */
 .mode-inline{
@@ -1763,8 +1599,6 @@ function playSfx(kind){
   }
 }
 </style>
-
-
 <style id="mode-inline-insideBoard-topLeft-2025-08-29">
 /* Colocar el indicador + botón dentro del tablero, parte superior izquierda, con margen de 3mm */
 #board, #mobile-board, #mobile-board-down-1square{
@@ -1780,8 +1614,6 @@ function playSfx(kind){
   z-index: 1000 !important; /* por encima del tablero */
 }
 </style>
-
-
 <style id="mode-insideBoard-mobile-up0_5-2025-08-29">
 @media (max-width: 699px){
   .mode-inline{
@@ -1789,8 +1621,6 @@ function playSfx(kind){
   }
 }
 </style>
-
-
 <style id="board-mobile-down0_5-insideBoard-2025-08-29">
 @media (max-width: 699px){
   #board, #mobile-board, #mobile-board-down-1square{
@@ -1799,7 +1629,6 @@ function playSfx(kind){
   }
 }
 </style>
-
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
@@ -1815,7 +1644,6 @@ function playSfx(kind){
   "w_K": "assets/piezas_aa/w_K.png",
   "w_P": "assets/piezas_aa/w_P.png"
 };</script>
-
 <body>
 <div class="container">
 <div class="frame">
@@ -1825,22 +1653,19 @@ function playSfx(kind){
 <button class="btn" id="btnResetVisible">Reiniciar</button>
 <button class="btn" id="btnFullscreen">Ver en pantalla completa</button>
 </div>
-
 <div id="board"></div>
 <div id="rowControls"></div>
 <div class="toolbar" id="toolbarBottom"></div>
-
-<div id="donateBar" role="group" aria-label="Colaboraciones y donaciones">
-      <button id="colaboraBtn" style="margin-right:10px;font-weight:bold;">Colabora<br>con el proyecto</button>
-  <!-- Reemplaza los href y (si hace falta) los src por los que usás en la página principal -->
-  <a id="donarMercadoPago" class="donate-logo" href="https://link.mercadopago.com.ar/ajetrez" target="_blank" rel="noopener">
-    <img src="assets/images/mercadopago.jpg" alt="MercadoPago">
-  </a>
-  <a id="donarPayPal" class="donate-logo" href="#" target="_blank" rel="noopener">
-    <img src="assets/images/paypal.png" alt="PayPal">
-  </a>
+<div aria-label="Colaboraciones y donaciones" id="donateBar" role="group">
+<button id="colaboraBtn" style="margin-right:10px;font-weight:bold;">Colabora<br/>con el proyecto</button>
+<!-- Reemplaza los href y (si hace falta) los src por los que usás en la página principal -->
+<a class="donate-logo" href="https://link.mercadopago.com.ar/ajetrez" id="donarMercadoPago" rel="noopener" target="_blank">
+<img alt="MercadoPago" src="assets/images/mercadopago.jpg"/>
+</a>
+<a class="donate-logo" href="#" id="donarPayPal" rel="noopener" target="_blank">
+<img alt="PayPal" src="assets/images/paypal.png"/>
+</a>
 </div>
-
 </div>
 </div>
 <!-- Contenedores auxiliares (ocultos) para compatibilidad con el script original -->
@@ -1851,7 +1676,6 @@ function playSfx(kind){
 <button id="revNext"></button><button id="revEnd"></button>
 <button id="revExit"></button><button id="resetBtn"></button>
 </div>
-
 <script>
   (function(){
   const EMPTY=null;
@@ -3038,7 +2862,6 @@ snapshot(`shift fila ${row+1} → ${target===0?'tope izq.':'tope der.'}`);
   window.addEventListener('resize', moveControlsBelowOnMobile);
 })();
 </script>
-
 <script id="guard-no-instructivo">
 (function(){
   try{
@@ -3051,8 +2874,6 @@ snapshot(`shift fila ${row+1} → ${target===0?'tope izq.':'tope der.'}`);
   }catch(e){}
 })();
 </script>
-
-
 <!-- Ajetrez SFX: move / shift / capture -->
 <script>
 (function(){
@@ -3092,8 +2913,6 @@ snapshot(`shift fila ${row+1} → ${target===0?'tope izq.':'tope der.'}`);
   }
 })();
 </script>
-
-
 <!-- Ajetrez SFX (assets/audio/*.mp3) -->
 <script>
 (function(){
@@ -3124,12 +2943,10 @@ snapshot(`shift fila ${row+1} → ${target===0?'tope izq.':'tope der.'}`);
   }
 })();
 </script>
-
-
 <!-- ====== AUDIO SFX (autoplay-safe) ====== -->
-<audio id="sfx-move"    preload="auto" src="assets/audio/move.mp3"></audio>
+<audio id="sfx-move" preload="auto" src="assets/audio/move.mp3"></audio>
 <audio id="sfx-capture" preload="auto" src="assets/audio/capture.mp3"></audio>
-<audio id="sfx-shift"   preload="auto" src="assets/audio/shift.mp3"></audio>
+<audio id="sfx-shift" preload="auto" src="assets/audio/shift.mp3"></audio>
 <script>
 (function(){
   const moveEl    = document.getElementById('sfx-move');
@@ -3151,8 +2968,6 @@ snapshot(`shift fila ${row+1} → ${target===0?'tope izq.':'tope der.'}`);
   };
 })();
 </script>
-
-
 <script>
 // === Regla: Siempre debe haber al menos 1 rey de cada color en el 8x8 visible ===
 (function(){
@@ -3186,8 +3001,6 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   };
 })();
 </script>
-
-
 <style id="botHUD-styles">
   .bot-hud{ position: fixed; display: none; z-index: 2147483000; pointer-events: none; }
   .bot-hud .bot-card{
@@ -3204,11 +3017,7 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
     white-space: nowrap;
   }
 </style>
-
-
-<div id="botHUD" class="bot-hud"><div class="bot-card" id="botHUDText"></div></div>
-
-
+<div class="bot-hud" id="botHUD"><div class="bot-card" id="botHUDText"></div></div>
 <script id="botHUD-helpers">
 (function(){
   const hud = document.getElementById('botHUD');
@@ -3295,8 +3104,6 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   };
 })();
 </script>
-
-
 <script>
 (function(){
   function moveToastToFS(){
@@ -3311,7 +3118,6 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   document.addEventListener('fullscreenchange', moveToastToFS);
 })();
 </script>
-
 <script>
 (function(){
   const core = window.applyMove || window.doMove || window.commitMove;
@@ -3344,8 +3150,6 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   }
 })();
 </script>
-
-
 <style>
 /* === Overrides al final para asegurar prioridad === */
 @media (max-width: 699px){
@@ -3383,8 +3187,6 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   }
 }
 </style>
-
-
 <style>
 @media (max-width: 699px){
   #rowControls{
@@ -3393,8 +3195,6 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   }
 }
 </style>
-
-
 <style>
 @media (max-width: 699px){
   #overlay{ 
@@ -3406,8 +3206,6 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   }
 }
 </style>
-
-
 <style id="mobile-reset-fs-force-style-2025-08-28">
 @media (max-width:699px){
   #floatingControls{
@@ -3430,7 +3228,6 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   }
 }
 </style>
-
 <script id="mobile-reset-fs-neutralizer-2025-08-28">
 // Neutraliza scripts que muevan los controles en móvil
 (function(){
@@ -3470,7 +3267,6 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   else window.addEventListener('DOMContentLoaded', forcePos, {once:true});
 })();
 </script>
-
 <style id="mode-mobile-center-float-2025-08-29">
 /* === SOLO MÓVIL: modo flotante centrado sobre el tablero === */
 @media (max-width: 699px){
@@ -3521,6 +3317,80 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   }
 })();
 </script>
+<script>
+/*! Ajuste móvil v1.0 — 2025-08-29
+   Desplaza 1 casillero hacia abajo los botones:
+   - Reiniciar (#btnResetVisible)
+   - Pantalla completa (#btnFullscreen)
+   SOLO en móviles (<=699px), sin cambiar si son fijos o flotantes.
+*/
+(function (){
+  'use strict';
+  function isMobile(){ return window.matchMedia('(max-width: 699px)').matches; }
 
-</body>
+  function squarePx(){
+    var sq = document.querySelector('.square');
+    if (sq){
+      var h = Math.round(sq.getBoundingClientRect().height);
+      if (h>0) return h;
+    }
+    var board = document.querySelector('#board, #mobile-board, #mobile-board-down-1square, .board, [data-role="board"]');
+    if (board){
+      var bh = board.getBoundingClientRect().height;
+      if (bh>0) return Math.round(bh/8);
+    }
+    return 46; // fallback
+  }
+
+  function shiftElementDown(el, delta){
+    if (!el) return;
+    var cs = getComputedStyle(el);
+    var pos = cs.position;
+    // Guardar base original solo 1 vez
+    if (!el.dataset._origTop){
+      var top = cs.top === 'auto' ? 0 : parseFloat(cs.top) || 0;
+      el.dataset._origTop = String(top);
+    }
+    if (!el.dataset._origMarginTop){
+      var mt = parseFloat(cs.marginTop) || 0;
+      el.dataset._origMarginTop = String(mt);
+    }
+    if (pos === 'absolute' || pos === 'fixed' || pos === 'relative' || pos === 'sticky'){
+      var baseTop = parseFloat(el.dataset._origTop || '0') || 0;
+      el.style.top = (baseTop + delta) + 'px';
+      // mantener marginTop original
+      el.style.marginTop = (parseFloat(el.dataset._origMarginTop || '0')||0) + 'px';
+    } else {
+      // static: usar margin-top
+      var baseMt = parseFloat(el.dataset._origMarginTop || '0') || 0;
+      el.style.marginTop = (baseMt + delta) + 'px';
+    }
+  }
+
+  function resetElement(el){
+    if (!el) return;
+    if (el.dataset._origTop != null) el.style.top = el.dataset._origTop + 'px';
+    if (el.dataset._origMarginTop != null) el.style.marginTop = el.dataset._origMarginTop + 'px';
+  }
+
+  function apply(){
+    var r = document.getElementById('btnResetVisible') || document.querySelector('[data-role="restart"], #resetBtn, #btn-reiniciar');
+    var f = document.getElementById('btnFullscreen') || document.querySelector('[data-role="fullscreen"], #fullscreenBtn, #btn-fullscreen');
+    var delta = squarePx();
+    if (isMobile()){
+      if (r) shiftElementDown(r, delta);
+      if (f) shiftElementDown(f, delta);
+    }else{
+      if (r) resetElement(r);
+      if (f) resetElement(f);
+    }
+  }
+
+  var raf = window.requestAnimationFrame || function(fn){ return setTimeout(fn,16); };
+  function schedule(){ raf(apply); setTimeout(apply, 120); setTimeout(apply, 400); }
+  window.addEventListener('DOMContentLoaded', schedule);
+  window.addEventListener('load', schedule);
+  window.addEventListener('resize', schedule);
+})();
+</script></body>
 </html>
