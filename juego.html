@@ -1201,7 +1201,7 @@ function playSfx(kind){
 
 
 <style id="colaboraBtn-style-2025-08-28">
-  /* Estilo para el botón "Colabora con el proyecto" */
+  /* Estilo para el botón "Colabora<br>con el proyecto" */
   #colaboraBtn{
     background-color: #000 !important;
     color: #fff !important;
@@ -1397,7 +1397,7 @@ function playSfx(kind){
 
 
 <style id="donate-gap-3mm-2025-08-29">
-/* Ajustar la separación entre el texto "Colabora con el proyecto" y los botones de donación a ~3mm */
+/* Ajustar la separación entre el texto "Colabora<br>con el proyecto" y los botones de donación a ~3mm */
 #colaboraBtn{
   margin-right: 3mm !important;
 }
@@ -1405,7 +1405,7 @@ function playSfx(kind){
 
 
 <style id="donate-gap-3mm-fix-2025-08-29">
-/* Forzar ~3mm de separación entre "Colabora con el proyecto" y los logos de donación */
+/* Forzar ~3mm de separación entre "Colabora<br>con el proyecto" y los logos de donación */
 /* 1) Anular cualquier corrimiento visual que altere la separación percibida */
 #colaboraBtn{
   transform: none !important;
@@ -1429,6 +1429,36 @@ function playSfx(kind){
 #donateBar{
   position: relative !important;
   left: calc(-2 * var(--square)) !important;
+}
+</style>
+
+
+<style id="donate-smaller5-up0_5-2025-08-29">
+/* Reducir bloque de donaciones 5% y subirlo medio casillero */
+#donateBar{
+  transform: scale(0.95) translateY(calc(-0.5 * var(--square))) !important;
+  transform-origin: top left !important;
+}
+</style>
+
+
+<style id="colabora-text-multiline-2025-08-29">
+/* Hacer que el texto "Colabora con el proyecto" sea más angosto y multilinea */
+#colaboraBtn{
+  white-space: normal !important;
+  width: auto !important;
+  max-width: 90px !important; /* limitar ancho para forzar el salto */
+  text-align: center !important;
+  line-height: 1.2em !important;
+}
+</style>
+
+
+<style id="donate-left-3squares-2025-08-29">
+/* Desplazar todo el bloque de donaciones 3 casilleros a la izquierda (total) */
+#donateBar{
+  position: relative !important;
+  left: calc(-3 * var(--square)) !important;
 }
 </style>
 
@@ -1463,7 +1493,7 @@ function playSfx(kind){
 <div class="toolbar" id="toolbarBottom"></div>
 
 <div id="donateBar" role="group" aria-label="Colaboraciones y donaciones">
-      <button id="colaboraBtn" style="margin-right:10px;font-weight:bold;">Colabora con el proyecto</button>
+      <button id="colaboraBtn" style="margin-right:10px;font-weight:bold;">Colabora<br>con el proyecto</button>
   <!-- Reemplaza los href y (si hace falta) los src por los que usás en la página principal -->
   <a id="donarMercadoPago" class="donate-logo" href="https://link.mercadopago.com.ar/ajetrez" target="_blank" rel="noopener">
     <img src="assets/images/mercadopago.jpg" alt="MercadoPago">
