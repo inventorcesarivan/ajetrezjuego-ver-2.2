@@ -3501,5 +3501,17 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   /* desplazar 1 casillero hacia la izquierda (separación desde el borde derecho) */
   padding-right: calc(1 * var(--square)) !important;
 }
+</style><style id="board-up-0_5-final-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v18):
+   WEB + MÓVIL — mover SOLO el tablero (dentro del contenedor) 0.5 casillero hacia ARRIBA.
+   La base .frame no se mueve.
+*/
+#board{
+  position: relative !important;
+  top: 0 !important;
+  margin-top: 0 !important;
+  transform: translateY(calc(-0.5 * var(--square))) !important;
+  transform-origin: top left !important;
+}
 </style></body>
 </html>
