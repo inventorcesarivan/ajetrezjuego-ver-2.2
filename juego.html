@@ -1375,6 +1375,54 @@ function playSfx(kind){
 }
 </style>
 
+
+<style id="mode-inline-shrink-15-2025-08-29">
+/* Reducir ancho del indicador de modo y del botón de selección en un 15% */
+.mode-inline .mode-pill,
+.mode-inline button,
+.mode-inline .toggle-mode,
+.mode-inline .btn,
+.mode-inline a[role="button"]{
+  transform: scaleX(0.85) !important;  /* reduce ancho al 85% */
+}
+</style>
+
+
+<style id="mode-inline-gap-2mm-2025-08-29">
+/* Reducir la separación entre el indicador de modo y el botón selector a ~2mm */
+.mode-inline{
+  gap: 2mm !important;
+}
+</style>
+
+
+<style id="donate-gap-3mm-2025-08-29">
+/* Ajustar la separación entre el texto "Colabora con el proyecto" y los botones de donación a ~3mm */
+#colaboraBtn{
+  margin-right: 3mm !important;
+}
+</style>
+
+
+<style id="donate-gap-3mm-fix-2025-08-29">
+/* Forzar ~3mm de separación entre "Colabora con el proyecto" y los logos de donación */
+/* 1) Anular cualquier corrimiento visual que altere la separación percibida */
+#colaboraBtn{
+  transform: none !important;
+  margin-right: 0 !important;
+}
+
+/* 2) Fijar gap del contenedor en ~3mm para web y móvil */
+#donateBar{
+  gap: 3mm !important;
+}
+@media (max-width: 699px){
+  #donateBar{
+    gap: 3mm !important;
+  }
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
