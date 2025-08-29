@@ -3416,5 +3416,13 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   window.addEventListener('load', schedule);
   window.addEventListener('resize', schedule);
 })();
-</script></body>
+</script><style id="floatingControls-offset-casilleros-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v12):
+   Desplazar #floatingControls 1 casillero a la izquierda y 2 hacia arriba,
+   manteniéndolo dentro de la base (.frame), en web y móvil. */
+#floatingControls{
+  right: calc(6px + 1 * var(--square)) !important;  /* +1 casillero => más distancia del borde derecho */
+  bottom: calc(6px + 2 * var(--square)) !important; /* +2 casilleros => más distancia del borde inferior */
+}
+</style></body>
 </html>
