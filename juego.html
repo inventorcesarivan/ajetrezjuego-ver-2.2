@@ -3576,5 +3576,15 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   left: auto !important;
   right: auto !important;
 }
+</style><style id="baseFooter-up-mobile-plus1-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v24):
+   SOLO MÓVIL — subir todos los botones inferiores (incluye indicador) 1 casillero adicional.
+   (Sobre el desplazamiento base existente) */
+@media (max-width: 699px){
+  #baseFooter{
+    transform: translateY(calc(-3.5 * var(--square))) !important; /* suponiendo base -2.5, sumamos -1 */
+    transform-origin: top left !important;
+  }
+}
 </style></body>
 </html>
