@@ -1566,6 +1566,29 @@ function playSfx(kind){
 }
 </style>
 
+
+<style id="board-offset-unify-final-2025-08-29">
+/* === Fuente única de verdad para el desplazamiento vertical del tablero === */
+:root{
+  /* Puede venir definido antes; aquí solo garantizamos su existencia */
+  --board-offset-y: var(--board-offset-y, 0px);
+  --board-mobile-extra: 0px; /* desktop por defecto */
+}
+
+/* Aplica SIEMPRE la suma del offset base + extra de móvil, con máxima prioridad */
+#board, #mobile-board, #mobile-board-down-1square{
+  position: relative !important;
+  top: 0 !important;
+  margin-top: 0 !important;
+  transform: translateY(calc(var(--board-offset-y) + var(--board-mobile-extra))) !important;
+}
+
+/* En MÓVIL: sumar +0.5 casillero */
+@media (max-width: 699px){
+  :root{ --board-mobile-extra: calc(0.5 * var(--square)); }
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
