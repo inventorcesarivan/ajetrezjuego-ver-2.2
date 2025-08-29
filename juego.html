@@ -3602,5 +3602,26 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
     transform-origin: top left !important;
   }
 }
+</style><style id="frame-shrink-bottom-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v27):
+   Achicar la base contenedora desde abajo hacia arriba en web + móvil.
+   - Colapsamos el espacio “muerto” que dejaba el #baseFooter al ser elevado con transform
+   - Dejamos un acolchado mínimo en el borde inferior (~3mm)
+*/
+.frame{
+  padding-bottom: 3mm !important; /* borde inferior mínimo, visible */
+}
+
+/* Colapso del espacio de flujo por el translateY aplicado al footer */
+#baseFooter{
+  margin-bottom: calc(-2.5 * var(--square)) !important; /* desktop/base: footer estaba a -2.5 */
+}
+
+/* En móvil lo subimos más (-4), así que colapsamos más para que la base se achique realmente */
+@media (max-width: 699px){
+  #baseFooter{
+    margin-bottom: calc(-4 * var(--square)) !important;
+  }
+}
 </style></body>
 </html>
