@@ -1599,6 +1599,16 @@ function playSfx(kind){
 }
 </style>
 
+
+<style id="board-mobile-down1square-2025-08-29">
+@media (max-width: 699px){
+  :root{
+    /* Total: ya teníamos +0.5 casillero, ahora serán +1.5 en móvil */
+    --board-mobile-extra: calc(1.5 * var(--square));
+  }
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
