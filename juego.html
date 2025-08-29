@@ -3371,5 +3371,50 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   transform: translateY(calc(0.5 * var(--square))) !important;
   transform-origin: top left !important;
 }
-</style></body>
+</style><style id="btn-transform-reset-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v10):
+   Mantener botones 10% más chicos sin traslaciones previas.
+   Se coloca al final para ganar la cascada.
+*/
+#btnResetVisible, #btnFullscreen{
+  transform: scale(0.9) !important;
+  transform-origin: bottom right !important;
+}
+</style><style id="floating-bottom-right-INBASE-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v11):
+   Anclar #floatingControls dentro de la BASE (.frame), abajo a la derecha, debajo del juego.
+   Se fuerza absolute dentro de .frame y se eliminan traslaciones previas.
+*/
+.frame{ position: relative !important; } /* Garantiza contexto para absolute */
+#floatingControls{
+  position: absolute !important;
+  right: 6px !important;   /* ~3-4mm aprox en pantallas típicas */
+  bottom: 6px !important;
+  left: auto !important;
+  top: auto !important;
+  transform: none !important;
+  z-index: 2147483000 !important;
+}
+</style><script id="base-padding-for-controls-2025-08-29">
+/*! Reservar espacio en la base para que los controles queden DEBAJO del tablero sin superponerlo */
+(function(){
+  'use strict';
+  function adjust(){
+    var board = document.getElementById('board');
+    var controls = document.getElementById('floatingControls');
+    if(!board || !controls) return;
+    var frame = board.closest('.frame') || board.parentElement;
+    if(!frame) return;
+    var h = controls.offsetHeight || 0;
+    var basePad = 12;     // padding inferior existente (aprox) en px
+    var margin = 8;       // margen visual extra bajo los controles
+    frame.style.setProperty('padding-bottom', (basePad + h + margin) + 'px', 'important');
+  }
+  var raf = window.requestAnimationFrame || function(fn){ return setTimeout(fn,16); };
+  function schedule(){ raf(adjust); setTimeout(adjust, 80); setTimeout(adjust, 300); }
+  window.addEventListener('DOMContentLoaded', schedule);
+  window.addEventListener('load', schedule);
+  window.addEventListener('resize', schedule);
+})();
+</script></body>
 </html>
