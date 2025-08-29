@@ -1634,7 +1634,7 @@ function playSfx(kind){
    10% más chicos los botones Reiniciar y Pantalla completa
    en TODAS las versiones (web + móvil), sin tocar su naturaleza flotante/fija. */
 #btnResetVisible, #btnFullscreen{
-  transform: scale(0.9) !important;
+  transform: translate(calc(-1 * var(--square)), var(--square)) scale(0.9) !important;
   transform-origin: top right !important;
 }
 </style></head>
@@ -3325,80 +3325,5 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   }
 })();
 </script>
-<script>
-/*! Ajuste móvil v1.0 — 2025-08-29
-   Desplaza 1 casillero hacia abajo los botones:
-   - Reiniciar (#btnResetVisible)
-   - Pantalla completa (#btnFullscreen)
-   SOLO en móviles (<=699px), sin cambiar si son fijos o flotantes.
-*/
-(function (){
-  'use strict';
-  function isMobile(){ return window.matchMedia('(max-width: 699px)').matches; }
-
-  function squarePx(){
-    var sq = document.querySelector('.square');
-    if (sq){
-      var h = Math.round(sq.getBoundingClientRect().height);
-      if (h>0) return h;
-    }
-    var board = document.querySelector('#board, #mobile-board, #mobile-board-down-1square, .board, [data-role="board"]');
-    if (board){
-      var bh = board.getBoundingClientRect().height;
-      if (bh>0) return Math.round(bh/8);
-    }
-    return 46; // fallback
-  }
-
-  function shiftElementDown(el, delta){
-    if (!el) return;
-    var cs = getComputedStyle(el);
-    var pos = cs.position;
-    // Guardar base original solo 1 vez
-    if (!el.dataset._origTop){
-      var top = cs.top === 'auto' ? 0 : parseFloat(cs.top) || 0;
-      el.dataset._origTop = String(top);
-    }
-    if (!el.dataset._origMarginTop){
-      var mt = parseFloat(cs.marginTop) || 0;
-      el.dataset._origMarginTop = String(mt);
-    }
-    if (pos === 'absolute' || pos === 'fixed' || pos === 'relative' || pos === 'sticky'){
-      var baseTop = parseFloat(el.dataset._origTop || '0') || 0;
-      el.style.top = (baseTop + delta) + 'px';
-      // mantener marginTop original
-      el.style.marginTop = (parseFloat(el.dataset._origMarginTop || '0')||0) + 'px';
-    } else {
-      // static: usar margin-top
-      var baseMt = parseFloat(el.dataset._origMarginTop || '0') || 0;
-      el.style.marginTop = (baseMt + delta) + 'px';
-    }
-  }
-
-  function resetElement(el){
-    if (!el) return;
-    if (el.dataset._origTop != null) el.style.top = el.dataset._origTop + 'px';
-    if (el.dataset._origMarginTop != null) el.style.marginTop = el.dataset._origMarginTop + 'px';
-  }
-
-  function apply(){
-    var r = document.getElementById('btnResetVisible') || document.querySelector('[data-role="restart"], #resetBtn, #btn-reiniciar');
-    var f = document.getElementById('btnFullscreen') || document.querySelector('[data-role="fullscreen"], #fullscreenBtn, #btn-fullscreen');
-    var delta = squarePx();
-    if (isMobile()){
-      if (r) shiftElementDown(r, delta);
-      if (f) shiftElementDown(f, delta);
-    }else{
-      if (r) resetElement(r);
-      if (f) resetElement(f);
-    }
-  }
-
-  var raf = window.requestAnimationFrame || function(fn){ return setTimeout(fn,16); };
-  function schedule(){ raf(apply); setTimeout(apply, 120); setTimeout(apply, 400); }
-  window.addEventListener('DOMContentLoaded', schedule);
-  window.addEventListener('load', schedule);
-  window.addEventListener('resize', schedule);
-})();
-</script></body>
+</body>
 </html>
