@@ -1637,20 +1637,6 @@ function playSfx(kind){
   transform: translate(calc(-1 * var(--square)), var(--square)) scale(0.9) !important;
   transform-origin: top right !important;
 }
-</style><style id="board-mobile-down-1-final-2025-08-29">
-/* Mod Ajetrez 2025-08-29 (v5):
-   MÓVIL — bajar SOLO el juego (tablero) 1 casillero hacia abajo.
-   No mueve la base/frame. Se aplica a #board y #mobile-board.
-*/
-@media (max-width: 699px){
-  #board, #mobile-board{
-    position: relative !important;
-    margin-top: 0 !important;
-    top: auto !important;
-    transform: translateY(calc(var(--board-offset-y, 0px) + 1 * var(--square))) !important;
-    transform-origin: top left !important;
-  }
-}
 </style><style id="btn-shift-mobile-extra0_5-2025-08-29">
 /* Mod Ajetrez 2025-08-29 (v6):
    MÓVIL — bajar 0.5 casillero extra los botones de Pantalla completa y Reiniciar.
@@ -1661,6 +1647,29 @@ function playSfx(kind){
     transform: translate(calc(-1 * var(--square)), calc(1.5 * var(--square))) scale(0.9) !important;
     transform-origin: top right !important;
   }
+}
+</style><style id="donate-buttons-down1-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v7):
+   WEB + MÓVIL — bajar 1 casillero los botones de colaboración del proyecto.
+   Aplicado a #colaboraBtn, #donarMercadoPago y #donarPayPal sin tocar la barra (#donateBar).
+*/
+#colaboraBtn, #donarMercadoPago, #donarPayPal{
+  transform: translateY(var(--square)) !important;
+  transform-origin: top left !important;
+}
+</style><style id="board-down-0_5-both-final-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v8):
+   WEB + MÓVIL — bajar SOLO el juego (tablero) 0.5 casillero.
+   No mueve la base (.frame). Afecta #board y #mobile-board.
+*/
+#board, #mobile-board{
+  position: relative !important;
+  /* Reseteos suaves para evitar acumulaciones de top/margin previas */
+  margin-top: 0 !important;
+  top: auto !important;
+  /* Desplazamiento neto del tablero: offset actual + 0.5 casillero */
+  transform: translateY(calc(var(--board-offset-y, 0px) + 0.5 * var(--square))) !important;
+  transform-origin: top left !important;
 }
 </style></head>
 <script>const PIECE_SPRITES = {
