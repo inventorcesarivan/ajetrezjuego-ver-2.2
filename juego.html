@@ -3593,5 +3593,14 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   transform: translateY(calc(-0.5 * var(--square))) !important;
   transform-origin: top right !important;
 }
+</style><style id="baseFooter-up-mobile-plus0_5-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v26):
+   SOLO MÓVIL — subir TODOS los botones inferiores (incluye donaciones e indicador) 0.5 casillero adicional */
+@media (max-width: 699px){
+  #baseFooter{
+    transform: translateY(calc(-4 * var(--square))) !important; /* antes -3.5; ahora -4.0 casilleros */
+    transform-origin: top left !important;
+  }
+}
 </style></body>
 </html>
