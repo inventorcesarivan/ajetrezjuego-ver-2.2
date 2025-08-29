@@ -3359,5 +3359,17 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   }
 })();
 </script>
-</body>
+<style id="board-down-0_5-override-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v9 FINAL OVERRIDE):
+   WEB + MÓVIL — forzar que SOLO el tablero baje 0.5 casillero.
+   Se coloca al FINAL para ganar la cascada ante reglas previas.
+*/
+#board{
+  position: relative !important;
+  top: 0 !important;
+  margin-top: 0 !important;
+  transform: translateY(calc(0.5 * var(--square))) !important;
+  transform-origin: top left !important;
+}
+</style></body>
 </html>
