@@ -1640,6 +1640,86 @@ function playSfx(kind){
 }
 </style>
 
+
+<style id="mode-inline-up0_5-gapSmall-2025-08-29">
+/* Subir medio casillero en ambas versiones */
+.mode-inline{
+  position: relative !important;
+  top: calc(-0.5 * var(--square)) !important;
+  gap: 2mm !important; /* reducir separación entre indicador y botón */
+}
+</style>
+
+
+<style id="mode-line-and-anchor-fix-2025-08-29">
+/* Quitar cualquier línea/ornamento a la izquierda del indicador de modo */
+.mode-inline,
+.mode-inline *{
+  border-left: none !important;
+  box-shadow: none !important;          /* Elimina posibles inset-left */
+  background-image: none !important;    /* Elimina gradientes que simulen línea */
+  outline: none !important;
+}
+.mode-inline::before,
+.mode-inline::after{
+  content: none !important;             /* Neutraliza pseudo-elementos que dibujen la línea */
+}
+
+/* Evitar que el bloque salte de lado: anclar a la izquierda por defecto */
+.mode-inline{
+  float: none !important;
+  right: auto !important;
+  left: auto !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  justify-content: flex-start !important;
+  align-self: flex-start !important;
+}
+</style>
+
+
+<style id="mode-inline-mobile-up0_5-2025-08-29B">
+@media (max-width: 699px){
+  .mode-inline{
+    transform: translate(var(--mode-offset-x), calc(var(--mode-offset-y) - 0.5 * var(--square))) !important;
+  }
+}
+</style>
+
+
+<style id="mode-inline-smaller5-compact-2025-08-29">
+/* Reducir tamaño del indicador y botón un 5% */
+.mode-inline .mode-pill,
+.mode-inline button,
+.mode-inline .toggle-mode,
+.mode-inline .btn,
+.mode-inline a[role="button"]{
+  transform: scale(0.95) !important;
+  transform-origin: center center !important;
+}
+
+/* Compactar márgenes para evitar exceso de espacio */
+.mode-inline{
+  margin: 0 !important;
+  padding: 2px 4px !important; /* margen interno reducido */
+  gap: 2mm !important;         /* separación más ajustada */
+}
+</style>
+
+
+<style id="mode-inline-topLeft-2025-08-29">
+/* Colocar el indicador de modo y botón en la parte superior izquierda del tablero con margen 3mm */
+.mode-inline{
+  position: absolute !important;
+  top: 3mm !important;
+  left: 3mm !important;
+  margin: 0 !important;
+  gap: 2mm !important;
+  transform: none !important; /* anula traslaciones previas */
+  z-index: 2147482000 !important;
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
