@@ -1671,6 +1671,16 @@ function playSfx(kind){
   transform: translateY(calc(var(--board-offset-y, 0px) + 0.5 * var(--square))) !important;
   transform-origin: top left !important;
 }
+</style><style id="ui-gap-3mm-2025-08-29">
+/* Variable global para separación UI ~3mm */
+:root{ --ui-gap: 3mm; }
+</style><style id="ui-gap-apply-2025-08-29">
+/* Aplicar separación de ~3mm respecto del juego */
+#modeDock{ margin-bottom: var(--ui-gap) !important; }
+/* Si la barra de donaciones está debajo del juego, asegurar separación superior */
+#donateBar{ margin-top: var(--ui-gap) !important; }
+/* Por si hubiera otros indicadores/botones en la parte superior del juego */
+.toolbar, .hud, .mode-indicator{ margin-bottom: var(--ui-gap) !important; }
 </style></head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
@@ -1691,10 +1701,6 @@ function playSfx(kind){
 <div class="frame">
 <div class="toolbar" id="toolbar"></div>
 <div class="overlay" id="overlay" style="display:none;"><div class="banner" id="banner">JAQUE MATE</div></div>
-<div id="floatingControls">
-<button class="btn" id="btnResetVisible">Reiniciar</button>
-<button class="btn" id="btnFullscreen">Ver en pantalla completa</button>
-</div>
 <div id="board"></div>
 <div id="rowControls"></div>
 <div class="toolbar" id="toolbarBottom"></div>
@@ -1708,7 +1714,10 @@ function playSfx(kind){
 <img alt="PayPal" src="assets/images/paypal.png"/>
 </a>
 </div>
-</div>
+<div id="floatingControls">
+<button class="btn" id="btnResetVisible">Reiniciar</button>
+<button class="btn" id="btnFullscreen">Ver en pantalla completa</button>
+</div></div>
 </div>
 <!-- Contenedores auxiliares (ocultos) para compatibilidad con el script original -->
 <div style="display:none">
@@ -3380,50 +3389,6 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   transform: scale(0.9) !important;
   transform-origin: bottom right !important;
 }
-</style><style id="floating-bottom-right-INBASE-2025-08-29">
-/* Mod Ajetrez 2025-08-29 (v11):
-   Anclar #floatingControls dentro de la BASE (.frame), abajo a la derecha, debajo del juego.
-   Se fuerza absolute dentro de .frame y se eliminan traslaciones previas.
-*/
-.frame{ position: relative !important; } /* Garantiza contexto para absolute */
-#floatingControls{
-  position: absolute !important;
-  right: 6px !important;   /* ~3-4mm aprox en pantallas típicas */
-  bottom: 6px !important;
-  left: auto !important;
-  top: auto !important;
-  transform: none !important;
-  z-index: 2147483000 !important;
-}
-</style><script id="base-padding-for-controls-2025-08-29">
-/*! Reservar espacio en la base para que los controles queden DEBAJO del tablero sin superponerlo */
-(function(){
-  'use strict';
-  function adjust(){
-    var board = document.getElementById('board');
-    var controls = document.getElementById('floatingControls');
-    if(!board || !controls) return;
-    var frame = board.closest('.frame') || board.parentElement;
-    if(!frame) return;
-    var h = controls.offsetHeight || 0;
-    var basePad = 12;     // padding inferior existente (aprox) en px
-    var margin = 8;       // margen visual extra bajo los controles
-    frame.style.setProperty('padding-bottom', (basePad + h + margin) + 'px', 'important');
-  }
-  var raf = window.requestAnimationFrame || function(fn){ return setTimeout(fn,16); };
-  function schedule(){ raf(adjust); setTimeout(adjust, 80); setTimeout(adjust, 300); }
-  window.addEventListener('DOMContentLoaded', schedule);
-  window.addEventListener('load', schedule);
-  window.addEventListener('resize', schedule);
-})();
-</script><style id="floatingControls-offset-casilleros-2025-08-29">
-/* Mod Ajetrez 2025-08-29 (v12):
-   Desplazar #floatingControls 1 casillero a la izquierda y 2 hacia arriba,
-   manteniéndolo dentro de la base (.frame), en web y móvil. */
-#floatingControls{
-  right: calc(6px + 1 * var(--square)) !important;  /* +1 casillero => más distancia del borde derecho */
-  bottom: calc(6px + 2 * var(--square)) !important; /* +2 casilleros => más distancia del borde inferior */
-}
 </style><style id="board-down-0_5-override-v2-2025-08-29">
 /* Mod Ajetrez 2025-08-29 (v13):
    WEB + MÓVIL — forzar que SOLO el tablero baje 0.5 casillero.
@@ -3513,5 +3478,28 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   // Si el UI se crea dinámicamente post-carga, reintentar periódicamente por un ratito
   var tries=0, iv = setInterval(function(){ attach(); if(++tries>20) clearInterval(iv); }, 250);
 })();
-</script></body>
+</script><style id="floatingControls-static-bottom-right-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v16):
+   Reiniciar y Pantalla completa fijos (no flotantes), dentro de la base, abajo-derecha. */
+#floatingControls{
+  position: static !important;
+  left: auto !important; right: auto !important; top: auto !important; bottom: auto !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-top: var(--ui-gap, 3mm) !important;   /* separarlos del juego */
+}
+</style><style id="floatingControls-static-offset-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v17):
+   #floatingControls fijos: subir 1 casillero y desplazar 1 casillero a la izquierda (web + móvil).
+*/
+#floatingControls{
+  /* subir 1 casillero respecto del tablero/base */
+  margin-top: calc(var(--ui-gap, 3mm) - 1 * var(--square)) !important;
+  /* desplazar 1 casillero hacia la izquierda (separación desde el borde derecho) */
+  padding-right: calc(1 * var(--square)) !important;
+}
+</style></body>
 </html>
