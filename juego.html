@@ -1651,6 +1651,17 @@ function playSfx(kind){
     transform-origin: top left !important;
   }
 }
+</style><style id="btn-shift-mobile-extra0_5-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v6):
+   MÓVIL — bajar 0.5 casillero extra los botones de Pantalla completa y Reiniciar.
+   Mantiene el desplazamiento global (-1, +1) y suma +0.5 vertical SOLO en móvil.
+*/
+@media (max-width: 699px){
+  #btnResetVisible, #btnFullscreen{
+    transform: translate(calc(-1 * var(--square)), calc(1.5 * var(--square))) scale(0.9) !important;
+    transform-origin: top right !important;
+  }
+}
 </style></head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
