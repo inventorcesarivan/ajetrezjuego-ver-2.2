@@ -1609,6 +1609,24 @@ function playSfx(kind){
 }
 </style>
 
+
+<style id="board-down0_5-all-2025-08-29">
+/* En todas las versiones: bajar medio casillero el tablero */
+#board, #mobile-board, #mobile-board-down-1square{
+  transform: translateY(calc(var(--board-offset-y, 0px) + var(--board-mobile-extra, 0px) + 0.5 * var(--square))) !important;
+}
+</style>
+
+
+<style id="board-mobile-total1square-2025-08-29">
+@media (max-width: 699px){
+  :root{
+    /* Para un total de 1 casillero en móvil: 0.5 global + 0.5 extra móvil */
+    --board-mobile-extra: calc(0.5 * var(--square));
+  }
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
