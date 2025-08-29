@@ -1482,6 +1482,30 @@ function playSfx(kind){
 }
 </style>
 
+
+<style id="donate-mobile-up0_5-2025-08-29">
+/* Solo en versión móvil: subir medio casillero más */
+@media (max-width: 699px){
+  #donateBar{
+    transform: scale(0.95) translateY(calc(-2 * var(--square))) !important; /* antes -1.5, ahora -2 en móvil */
+    transform-origin: top left !important;
+  }
+}
+</style>
+
+
+<style id="donate-mobile-smaller-2025-08-29">
+/* En versión móvil: achicar botones de donación un 15% para armonizar con la nueva posición */
+@media (max-width: 699px){
+  #donateBar img,
+  #donateBar button,
+  #donateBar a{
+    transform: scale(0.85) !important;
+    transform-origin: center center !important;
+  }
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
