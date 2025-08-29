@@ -3431,51 +3431,101 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   gap: 8px !important;
 }
 </style><script id="mode-dock-attach-2025-08-29">
+/*! Mode Dock Attach — v2 (2025-08-29)
+    - Dockea el indicador + botón de modo en la esquina sup. derecha de la base (.frame)
+    - **Evita duplicados**: siempre deja **1 solo** conjunto.
+*/
 (function(){
   'use strict';
+
   function findFrame(){
     var board = document.getElementById('board');
     if (!board) return null;
     return board.closest('.frame') || board.parentElement;
   }
-  function findModeElements(){
-    // Heurística: elementos con clase "mode-inline" o que contengan el texto "Estás en modo"
-    var nodes = Array.from(document.querySelectorAll('.mode-inline, .seg.mode-inline'));
-    if (nodes.length) return nodes;
+
+  function findModeCandidates(){
+    var list = Array.from(document.querySelectorAll('.mode-inline, .seg.mode-inline'));
+    if (list.length) return list;
+    // Fallback por texto
     var all = Array.from(document.querySelectorAll('div,span,section,button'));
     return all.filter(function(el){
       var t = (el.textContent || '').toLowerCase();
       return t.includes('estás en modo') || t.includes('estas en modo') || t.includes('modo:');
     });
   }
+
   function ensureDock(frame){
     var dock = document.getElementById('modeDock');
     if (!dock){
       dock = document.createElement('div');
       dock.id = 'modeDock';
-      // Insertar dock como PRIMER hijo de la base para que quede arriba
       frame.insertBefore(dock, frame.firstChild);
     }
     return dock;
   }
-  function attach(){
+
+  function pickBest(cands){
+    // Preferimos el último (más reciente) por si el código original re-renderiza el UI
+    return cands[cands.length - 1];
+  }
+
+  function dedupeDock(dock){
+    // En el dock, si hay más de un conjunto, dejar 1 solo
+    var groups = Array.from(dock.querySelectorAll('.mode-inline, .seg.mode-inline'));
+    if (groups.length > 1){
+      // Dejar solo el último
+      var keep = groups[groups.length - 1];
+      groups.forEach(function(g){ if (g !== keep) g.remove(); });
+    } else {
+      // Fallback por texto
+      var nodes = Array.from(dock.childNodes).filter(function(n){
+        if (!(n instanceof Element)) return false;
+        var t = (n.textContent || '').toLowerCase();
+        return t.includes('estás en modo') || t.includes('estas en modo') || t.includes('modo:');
+      });
+      if (nodes.length > 1){
+        var keepN = nodes[nodes.length - 1];
+        nodes.forEach(function(n){ if (n !== keepN) n.remove(); });
+      }
+    }
+  }
+
+  function attachOnce(){
     var frame = findFrame();
     if (!frame) return;
     var dock = ensureDock(frame);
-    var modes = findModeElements();
-    if (!modes.length) return;
-    modes.forEach(function(el){
-      if (el && el !== dock && !dock.contains(el)){
-        dock.appendChild(el);
-      }
-    });
+    var cands = findModeCandidates();
+    if (!cands.length) return;
+    var target = pickBest(cands);
+
+    // Si el target ya está en el dock, solo deduplicar y salir
+    if (dock.contains(target)){
+      dedupeDock(dock);
+      return;
+    }
+
+    // Limpiar el dock ANTES de mover: así evitamos residuos anteriores
+    while (dock.firstChild) dock.removeChild(dock.firstChild);
+
+    // Mover el contenedor de modo (si tiene padre, llevamos ese nodo directamente)
+    dock.appendChild(target);
+
+    // Dedupe por si el target contiene subnodos duplicados
+    dedupeDock(dock);
   }
+
+  // Run on load and whenever DOM changes (e.g., al cambiar modo el código re-renderiza)
   var raf = window.requestAnimationFrame || function(fn){ return setTimeout(fn,16); };
-  function schedule(){ raf(attach); setTimeout(attach, 80); setTimeout(attach, 300); setTimeout(attach, 1000); }
+  function schedule(){ raf(attachOnce); setTimeout(attachOnce, 80); setTimeout(attachOnce, 300); setTimeout(attachOnce, 800); }
   window.addEventListener('DOMContentLoaded', schedule);
   window.addEventListener('load', schedule);
-  // Si el UI se crea dinámicamente post-carga, reintentar periódicamente por un ratito
-  var tries=0, iv = setInterval(function(){ attach(); if(++tries>20) clearInterval(iv); }, 250);
+
+  // Observador para reacciones a re-render sin duplicar
+  try {
+    var mo = new MutationObserver(function(){ attachOnce(); });
+    mo.observe(document.body, {childList:true, subtree:true});
+  } catch(e){ /* no-op */ }
 })();
 </script><style id="floatingControls-static-bottom-right-2025-08-29">
 /* Mod Ajetrez 2025-08-29 (v16):
@@ -3629,6 +3679,12 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
 #donateBar{
   transform: translateY(calc(-0.5 * var(--square))) !important;
   transform-origin: top left !important;
+}
+</style><style id="frame-grow-bottom-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v29):
+   Aumentar el alto de la base contenedora del juego 0.5 casillero hacia abajo (web + móvil). */
+.frame{
+  padding-bottom: calc(3mm + 0.5 * var(--square)) !important;
 }
 </style></body>
 </html>
