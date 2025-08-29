@@ -3557,5 +3557,14 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
 #floatingControls{
   margin-right: calc(0.5 * var(--square)) !important; /* gap al borde derecho para moverlo a la izquierda */
 }
+</style><style id="baseFooter-up-2_5squares-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v22):
+   Subir TODOS los botones inferiores (donaciones + controles) 0.5 casillero adicional.
+   Total neto respecto a la base: 2.5 casilleros hacia arriba. */
+#baseFooter{
+  position: relative !important;
+  transform: translateY(calc(-2.5 * var(--square))) !important;
+  transform-origin: top left !important;
+}
 </style></body>
 </html>
