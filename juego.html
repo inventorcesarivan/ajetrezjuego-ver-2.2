@@ -1462,6 +1462,16 @@ function playSfx(kind){
 }
 </style>
 
+
+<style id="donate-left4-up1-2025-08-29">
+/* Subir 1 casillero en total y desplazar 4 casilleros a la izquierda el bloque de donaciones */
+#donateBar{
+  left: calc(-4 * var(--square)) !important;               /* 1 casillero más a la izquierda (total 4) */
+  transform: scale(0.95) translateY(calc(-1 * var(--square))) !important;  /* subir total 1 casillero */
+  transform-origin: top left !important;
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
