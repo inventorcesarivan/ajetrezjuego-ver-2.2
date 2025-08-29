@@ -1236,6 +1236,56 @@ function playSfx(kind){
 }
 </style>
 
+
+<style id="bot-popups-center-2025-08-29">
+/* Centrar horizontalmente los carteles/avisos del bot en web y móvil */
+.bot-hud{
+  position: fixed !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  top: 12% !important; /* altura razonable por encima del tablero */
+  z-index: 2147483000 !important;
+  width: auto !important;
+  max-width: min(92vw, 560px) !important;
+  display: flex !important;
+  justify-content: center !important;
+  pointer-events: none !important; /* evita bloquear el tablero si fuese HUD informativo */
+  text-align: center !important;
+}
+.bot-hud .bot-card{
+  margin: 0 auto !important;
+  text-align: center !important;
+  pointer-events: auto !important; /* por si necesita clics internos */
+}
+
+/* Si los avisos se insertan en #botLog, lo centramos también */
+#botLog{
+  position: fixed !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  top: 12% !important;
+  z-index: 2147483000 !important;
+  width: auto !important;
+  max-width: min(92vw, 560px) !important;
+  text-align: center !important;
+}
+
+/* Estilos de fallback para componentes comunes de avisos */
+.bot-toast, .bot-card, .bot-msg, .bot-banner{
+  margin: 0 auto !important;
+  text-align: center !important;
+  display: inline-block !important;
+}
+
+/* En móvil podemos bajar levemente para no tapar controles superiores */
+@media (max-width:699px){
+  .bot-hud, #botLog{
+    top: 14% !important;
+    max-width: 96vw !important;
+  }
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
