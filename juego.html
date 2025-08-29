@@ -1525,6 +1525,24 @@ function playSfx(kind){
 }
 </style>
 
+
+<style id="donate-smaller10-2025-08-29">
+/* En ambas versiones: reducir bloque de donaciones un 10% adicional */
+#donateBar{
+  transform: scale(0.9) !important;
+  transform-origin: top left !important;
+}
+</style>
+
+
+<style id="donate-up1square-2025-08-29">
+/* Subir bloque de donaciones 1 casillero más en ambas versiones */
+#donateBar{
+  position: relative !important;
+  top: calc(-1 * var(--square)) !important;
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
