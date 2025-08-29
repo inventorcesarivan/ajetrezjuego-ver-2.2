@@ -3470,16 +3470,57 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   else window.addEventListener('DOMContentLoaded', forcePos, {once:true});
 })();
 </script>
-</body>
-</html>
 
-
-<style id="mode-mobile-up1square-override-2025-08-29b">
-/* === SOLO MÓVIL: subir 1 casillero el indicador de modo y su botón === */
+<style id="mode-mobile-center-float-2025-08-29">
+/* === SOLO MÓVIL: modo flotante centrado sobre el tablero === */
 @media (max-width: 699px){
-  .toolbar .mode-inline{
-    position: relative !important;
-    transform: translateY(calc(-1 * var(--square))) !important;
+  /* Aseguramos que el tablero esté por debajo y sea la referencia visual */
+  #board{ position: relative !important; }
+  /* El contenedor del indicador/botón como overlay flotante */
+  .seg.mode-inline{
+    position: fixed !important; /* flotante */
+    /* se establecen left/top por JS para centrar exacto encima del tablero */
+    transform: translate(-50%, -50%) !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
   }
+  /* Opcional: compactar un poco en móvil si hace falta */
+  .seg.mode-inline .mode-pill{ font-size: 0.95em; }
+  .seg.mode-inline .mode-switch{ font-size: 0.95em; }
 }
 </style>
+<script id="mode-mobile-center-float-js-2025-08-29">
+(function(){
+  function isMobile(){ return window.innerWidth <= 699; }
+  function centerModeOverBoard(){
+    if(!isMobile()) return;
+    var board = document.getElementById('board');
+    var mode = document.querySelector('.seg.mode-inline');
+    if(!board || !mode) return;
+    var r = board.getBoundingClientRect();
+    var cx = r.left + r.width/2;
+    var cy = r.top  + r.height/2;
+    mode.style.left = cx + 'px';
+    mode.style.top  = cy + 'px';
+  }
+  // Reposicionar en eventos comunes
+  window.addEventListener('load', centerModeOverBoard, {passive:true});
+  window.addEventListener('resize', centerModeOverBoard, {passive:true});
+  window.addEventListener('orientationchange', centerModeOverBoard, {passive:true});
+  document.addEventListener('DOMContentLoaded', centerModeOverBoard, {passive:true});
+  // Reposicionar repetidamente por si el layout cambia tras render()
+  var tick = 0;
+  var maxTicks = 40; // ~8s si cada 200ms
+  var iv = setInterval(function(){
+    centerModeOverBoard();
+    if(++tick >= maxTicks) clearInterval(iv);
+  }, 200);
+  // Exponer para llamados manuales si existe render()
+  if (typeof window !== 'undefined'){
+    window.__centerModeOverBoard = centerModeOverBoard;
+  }
+})();
+</script>
+
+</body>
+</html>
