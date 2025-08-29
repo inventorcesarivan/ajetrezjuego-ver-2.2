@@ -1214,6 +1214,17 @@ function playSfx(kind){
   }
 </style>
 
+
+<style id="indicator-up-half-square-2025-08-29">
+/* Subir indicadores medio casillero */
+.mode-inline{
+  transform: translateY(calc(-0.5 * var(--square))) !important;
+}
+.bot-hud{
+  transform: translateY(calc(-0.5 * var(--square))) !important;
+}
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
@@ -2605,8 +2616,8 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
 <style id="botHUD-styles">
   .bot-hud{ position: fixed; display: none; z-index: 2147483000; pointer-events: none; }
   .bot-hud .bot-card{
-    background: rgba(17,24,39,.92);
-    color:#fff;
+    background:#d00 !important;
+    color:#fff !important;
     padding: 6px 10px;
     border-radius: 12px;
     font-size: clamp(13px, 2.2vw, 16px);
