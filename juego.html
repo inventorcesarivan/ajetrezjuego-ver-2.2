@@ -1237,52 +1237,132 @@ function playSfx(kind){
 </style>
 
 
-<style id="bot-popups-center-2025-08-29">
-/* Centrar horizontalmente los carteles/avisos del bot en web y móvil */
-.bot-hud{
-  position: fixed !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  top: 12% !important; /* altura razonable por encima del tablero */
-  z-index: 2147483000 !important;
-  width: auto !important;
-  max-width: min(92vw, 560px) !important;
-  display: flex !important;
-  justify-content: center !important;
-  pointer-events: none !important; /* evita bloquear el tablero si fuese HUD informativo */
-  text-align: center !important;
-}
-.bot-hud .bot-card{
-  margin: 0 auto !important;
-  text-align: center !important;
-  pointer-events: auto !important; /* por si necesita clics internos */
-}
-
-/* Si los avisos se insertan en #botLog, lo centramos también */
+<style id="bot-popups-center-horizontal-only-2025-08-29">
+/* Centrar horizontalmente los avisos del bot SIN modificar su funcionamiento */
+.bot-hud,
 #botLog{
-  position: fixed !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
-  top: 12% !important;
-  z-index: 2147483000 !important;
+  right: auto !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Cartas/avisos internos alineados al centro, sin tocar display ni position */
+.bot-hud .bot-card,
+#botLog .bot-card,
+.bot-toast, .bot-msg, .bot-banner{
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+</style>
+
+
+<style id="bot-popups-above-board-2025-08-29">
+/* Colocar los carteles de aviso justo encima de la sección superior del tablero, con un margen de 2mm */
+.bot-hud,
+#botLog{
+  position: absolute !important;
+  top: calc(var(--board-top, 0px) - 2mm) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
   width: auto !important;
   max-width: min(92vw, 560px) !important;
-  text-align: center !important;
+  z-index: 9999 !important;
 }
+</style>
 
-/* Estilos de fallback para componentes comunes de avisos */
-.bot-toast, .bot-card, .bot-msg, .bot-banner{
-  margin: 0 auto !important;
-  text-align: center !important;
-  display: inline-block !important;
+
+<style id="bot-popups-down-1square-2025-08-29">
+/* Bajar los carteles 1 casillero respecto a la parte superior del tablero */
+.bot-hud,
+#botLog{
+  top: calc(var(--board-top, 0px) + var(--square) - 2mm) !important;
 }
+</style>
 
-/* En móvil podemos bajar levemente para no tapar controles superiores */
-@media (max-width:699px){
-  .bot-hud, #botLog{
-    top: 14% !important;
-    max-width: 96vw !important;
-  }
+
+<style id="mode-indicator-button-smaller-2025-08-29">
+/* Reducir ancho del indicador de modo y del botón un 10% */
+.mode-inline .mode-pill,
+.mode-inline button,
+.mode-inline .toggle-mode,
+.mode-inline .btn,
+.mode-inline a[role="button"]{
+  transform: scaleX(0.9) !important;  /* reduce ancho al 90% */
+}
+</style>
+
+
+<style id="mode-indicator-button-right2-2025-08-29">
+/* Desplazar el bloque de modo (indicador + botón) 2 casilleros a la derecha */
+.mode-inline{
+  margin-left: calc(2 * var(--square)) !important;
+}
+</style>
+
+
+<style id="mode-indicator-button-right2-down1-2025-08-29">
+/* Bajar el bloque de modo (indicador + botón) 1 casillero */
+.mode-inline{
+  margin-top: calc(1 * var(--square)) !important;
+}
+</style>
+
+
+<style id="mode-inline-unify-2025-08-29">
+/* Fuente única de verdad para la posición del bloque de modo (web y móvil) */
+:root{
+  --mode-offset-x: calc(2 * var(--square));  /* 2 casilleros a la derecha */
+  --mode-offset-y: calc(1 * var(--square));  /* 1 casillero hacia abajo */
+}
+.mode-inline{
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  margin: 0 !important;
+  transform: translate(var(--mode-offset-x), var(--mode-offset-y)) !important;
+  z-index: 2147482000 !important;
+}
+/* Mantener el layout horizontal (indicador + botón) */
+.mode-inline{
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+</style>
+
+
+<style id="mode-inline-up-half-square-2025-08-29">
+:root{
+  --mode-offset-x: calc(2 * var(--square));   /* sigue 2 casilleros a la derecha */
+  --mode-offset-y: calc(0.5 * var(--square)); /* ahora solo medio casillero hacia abajo */
+}
+</style>
+
+
+<style id="mode-inline-right1-down0_5-2025-08-29">
+:root{
+  --mode-offset-x: calc(1 * var(--square));   /* ahora solo 1 casillero a la derecha */
+  --mode-offset-y: calc(0.5 * var(--square)); /* medio casillero hacia abajo */
+}
+</style>
+
+
+<style id="mode-inline-right0_5-down0_5-2025-08-29">
+:root{
+  --mode-offset-x: calc(0.5 * var(--square)); /* medio casillero a la derecha */
+  --mode-offset-y: calc(0.5 * var(--square)); /* medio casillero hacia abajo */
+}
+</style>
+
+
+<style id="mode-inline-right0_5-down0_5-up3mm-2025-08-29">
+:root{
+  --mode-offset-x: calc(0.5 * var(--square));  /* medio casillero a la derecha */
+  --mode-offset-y: calc(0.5 * var(--square) - 3mm); /* medio casillero hacia abajo menos 3mm */
 }
 </style>
 
