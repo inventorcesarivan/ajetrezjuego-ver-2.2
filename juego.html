@@ -1701,10 +1701,7 @@ function playSfx(kind){
 <div class="frame">
 <div class="toolbar" id="toolbar"></div>
 <div class="overlay" id="overlay" style="display:none;"><div class="banner" id="banner">JAQUE MATE</div></div>
-<div id="board"></div>
-<div id="rowControls"></div>
-<div class="toolbar" id="toolbarBottom"></div>
-<div aria-label="Colaboraciones y donaciones" id="donateBar" role="group">
+<div id="board"></div><div id="baseFooter"><div aria-label="Colaboraciones y donaciones" id="donateBar" role="group">
 <button id="colaboraBtn" style="margin-right:10px;font-weight:bold;">Colabora<br/>con el proyecto</button>
 <!-- Reemplaza los href y (si hace falta) los src por los que usás en la página principal -->
 <a class="donate-logo" href="https://link.mercadopago.com.ar/ajetrez" id="donarMercadoPago" rel="noopener" target="_blank">
@@ -1713,11 +1710,13 @@ function playSfx(kind){
 <a class="donate-logo" href="#" id="donarPayPal" rel="noopener" target="_blank">
 <img alt="PayPal" src="assets/images/paypal.png"/>
 </a>
-</div>
-<div id="floatingControls">
+</div><div id="floatingControls">
 <button class="btn" id="btnResetVisible">Reiniciar</button>
 <button class="btn" id="btnFullscreen">Ver en pantalla completa</button>
 </div></div>
+<div id="rowControls"></div>
+<div class="toolbar" id="toolbarBottom"></div>
+</div>
 </div>
 <!-- Contenedores auxiliares (ocultos) para compatibilidad con el script original -->
 <div style="display:none">
@@ -3512,6 +3511,51 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   margin-top: 0 !important;
   transform: translateY(calc(-0.5 * var(--square))) !important;
   transform-origin: top left !important;
+}
+</style><style id="baseFooter-layout-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v19):
+   Pie de base con donaciones (izq) e controles (der), debajo del juego con ~3.5mm de separación. */
+:root{ --ui-donate-gap: 3.5mm; }
+
+.frame{ position: relative !important; }
+
+#baseFooter{
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-end !important;
+  gap: 8px !important;
+  margin-top: var(--ui-donate-gap) !important; /* separación desde el juego */
+}
+
+/* Donaciones a la izquierda, sin transformaciones previas */
+#donateBar{
+  position: static !important;
+  transform: none !important;
+  margin: 0 !important;
+}
+
+/* Controles a la derecha, fijos (no flotantes) */
+#floatingControls{
+  position: static !important;
+  transform: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important;
+  margin-left: auto !important; /* empuja a la derecha dentro del footer */
+}
+</style><style id="baseFooter-up-2squares-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v20):
+   Subir TODOS los botones inferiores con su indicador (donaciones + controles) 2 casilleros. */
+#baseFooter{
+  position: relative !important;
+  transform: translateY(calc(-2 * var(--square))) !important;
+  transform-origin: top left !important;
+}
+</style><style id="floatingControls-left-0_5square-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v21):
+   Desplazar #floatingControls medio casillero a la izquierda (web + móvil) manteniendo alineación. */
+#floatingControls{
+  margin-right: calc(0.5 * var(--square)) !important; /* gap al borde derecho para moverlo a la izquierda */
 }
 </style></body>
 </html>
