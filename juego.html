@@ -1629,7 +1629,15 @@ function playSfx(kind){
   }
 }
 </style>
-</head>
+<style id="ajuste-botones-escala-2025-08-29">
+/* Mod Ajetrez 2025-08-29 (v2):
+   10% más chicos los botones Reiniciar y Pantalla completa
+   en TODAS las versiones (web + móvil), sin tocar su naturaleza flotante/fija. */
+#btnResetVisible, #btnFullscreen{
+  transform: scale(0.9) !important;
+  transform-origin: top right !important;
+}
+</style></head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
   "b_N": "assets/piezas_aa/b_N.png",
