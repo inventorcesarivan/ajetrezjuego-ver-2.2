@@ -4255,3 +4255,23 @@ body .mode-inline{
   transform-origin: top left !important;
 }
 </style>
+
+
+<style id="mode-down-right-1square-2025-09-01">
+/* Mover 1 casillero a la derecha y 1 casillero hacia abajo el botón de modo y su indicador en web y móvil */
+.mode-inline,
+.toolbar .mode-inline,
+body .mode-inline{
+  position: relative !important;
+  transform: translate(calc(1 * var(--square)), calc(1 * var(--square))) scale(0.85) !important;
+  transform-origin: top left !important;
+}
+@media (max-width:699px){
+  .mode-inline,
+  .toolbar .mode-inline,
+  body .mode-inline{
+    transform: translate(calc(1 * var(--square)), calc(1 * var(--square))) scale(0.85) !important;
+    transform-origin: top left !important;
+  }
+}
+</style>
