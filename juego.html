@@ -763,79 +763,14 @@ function playSfx(kind){
   }
 }
 </style>
-<style id="donate-bar-style-2025-08-28">
-  /* === Barra de donaciones (debajo del tablero) === */
-  #donateBar{
-    display:flex; align-items:center; justify-content:center; gap:12px;
-    flex-wrap:wrap; margin-top: 12px;
-  }
-  #donateBar .donate-text{
-    display:inline-block; padding:10px 14px; border-radius:12px;
-    background:#000; color:#fff; font-weight:800; text-decoration:none; 
-    border:1px solid #000; line-height:1; white-space:nowrap;
-    box-shadow:0 .3rem .6rem rgba(0,0,0,.18);
-  }
-  #donateBar .donate-logo{
-    display:inline-flex; align-items:center; justify-content:center;
-    padding:6px 8px; border-radius:10px; background:#fff; border:1px solid rgba(0,0,0,.1);
-    text-decoration:none;
-  }
-  #donateBar .donate-logo img{
-    display:block; height:36px; width:auto; object-fit:contain;
-  }
-  
-    #donateBar .donate-logo img{ height:32px; }
-  }
-</style>
-<style id="donate-mobile-tweak-2025-08-28">
-/* === SOLO MÓVIL: botones de donación 15% más chicos y barra 3 casilleros a la IZQUIERDA === */
 
-  /* Desplazar la barra de donaciones 3 casilleros hacia la izquierda */
-  #donateBar{
-    transform: translateX(calc(-3 * var(--square))) !important;
-  }
-}
-</style>
-<style id="donate-mobile-left3-2025-08-28">
-  /* SOLO MÓVIL: mover barra de donaciones 3 casilleros a la IZQUIERDA */
-  
-  }
-</style>
-<style id="donate-mobile-left3-float-2025-08-28">
-  /* SOLO MÓVIL: mover barra de donaciones 3 casilleros a la IZQUIERDA y hacerla flotante */
-  
-  }
-</style>
-<style id="donate-mobile-float-center-board-2025-08-28">
-  /* SOLO MÓVIL: hacer flotante el botón de donaciones y centrarlo en medio del tablero, 5 casilleros más arriba */
-  
-  }
-</style>
-<style id="donate-left4-2025-08-28">
-  /* DESPLAZAR BOTONES DE DONACIÓN 4 CASILLEROS A LA IZQUIERDA (WEB y MÓVIL) */
-  #donateBar{
-    transform: translateX(calc(-4 * var(--square))) !important;
-  }
-</style>
-<style id="donate-left4-uphalf-2025-08-28">
-  /* WEB y MÓVIL: desplazar la barra de donaciones 4 casilleros a la izquierda y 0.5 casillero hacia arriba */
-  #donateBar{
-    transform: translate(calc(-4 * var(--square)), calc(-0.5 * var(--square))) !important;
-  }
-</style>
-<style id="colaboraBtn-style-2025-08-28">
-  /* Estilo para el botón "Colabora<br>con el proyecto" */
-  #colaboraBtn{
-    background-color: #000 !important;
-    color: #fff !important;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    transform: translateX(calc(-2 * var(--square)));
-  }
-</style>
+
+
+
+
+
+
+
 <style id="indicator-up-half-square-2025-08-29">
 /* Subir indicadores medio casillero */
 .mode-inline{
@@ -962,13 +897,7 @@ function playSfx(kind){
   --mode-offset-y: calc(0.5 * var(--square) - 3mm); /* medio casillero hacia abajo menos 3mm */
 }
 </style>
-<style id="donate-buttons-down-half-square-2025-08-29">
-/* Desplazar la barra de donaciones (PayPal y MercadoPago) medio casillero hacia abajo */
-#donateBar{
-  position: relative !important;
-  top: calc(0.5 * var(--square)) !important;
-}
-</style>
+
 <style id="mode-inline-shrink-15-2025-08-29">
 /* Reducir ancho del indicador de modo y del botón de selección en un 15% */
 .mode-inline .mode-pill,
@@ -985,41 +914,10 @@ function playSfx(kind){
   gap: 2mm !important;
 }
 </style>
-<style id="donate-gap-3mm-2025-08-29">
-/* Ajustar la separación entre el texto "Colabora<br>con el proyecto" y los botones de donación a ~3mm */
-#colaboraBtn{
-  margin-right: 3mm !important;
-}
-</style>
-<style id="donate-gap-3mm-fix-2025-08-29">
-/* Forzar ~3mm de separación entre "Colabora<br>con el proyecto" y los logos de donación */
-/* 1) Anular cualquier corrimiento visual que altere la separación percibida */
-#colaboraBtn{
-  transform: none !important;
-  margin-right: 0 !important;
-}
 
-/* 2) Fijar gap del contenedor en ~3mm para web y móvil */
-#donateBar{
-  gap: 3mm !important;
-}
 
-}
-</style>
-<style id="donate-left-2squares-2025-08-29">
-/* Desplazar todo el bloque de donaciones 2 casilleros a la izquierda (web y móvil) */
-#donateBar{
-  position: relative !important;
-  left: calc(-2 * var(--square)) !important;
-}
-</style>
-<style id="donate-smaller5-up0_5-2025-08-29">
-/* Reducir bloque de donaciones 5% y subirlo medio casillero */
-#donateBar{
-  transform: scale(0.95) translateY(calc(-0.5 * var(--square))) !important;
-  transform-origin: top left !important;
-}
-</style>
+
+
 <style id="colabora-text-multiline-2025-08-29">
 /* Hacer que el texto "Colabora con el proyecto" sea más angosto y multilinea */
 #colaboraBtn{
@@ -1030,63 +928,15 @@ function playSfx(kind){
   line-height: 1.2em !important;
 }
 </style>
-<style id="donate-left-3squares-2025-08-29">
-/* Desplazar todo el bloque de donaciones 3 casilleros a la izquierda (total) */
-#donateBar{
-  position: relative !important;
-  left: calc(-3 * var(--square)) !important;
-}
-</style>
-<style id="donate-left4-up1-2025-08-29">
-/* Subir 1 casillero en total y desplazar 4 casilleros a la izquierda el bloque de donaciones */
-#donateBar{
-  left: calc(-4 * var(--square)) !important;               /* 1 casillero más a la izquierda (total 4) */
-  transform: scale(0.95) translateY(calc(-1 * var(--square))) !important;  /* subir total 1 casillero */
-  transform-origin: top left !important;
-}
-</style>
-<style id="donate-left4-up1_5-2025-08-29">
-/* Subir 1.5 casilleros en total y mantener 4 casilleros a la izquierda el bloque de donaciones */
-#donateBar{
-  left: calc(-4 * var(--square)) !important;
-  transform: scale(0.95) translateY(calc(-1.5 * var(--square))) !important;
-  transform-origin: top left !important;
-}
-</style>
-<style id="donate-mobile-up0_5-2025-08-29">
-/* Solo en versión móvil: subir medio casillero más */
 
-}
-</style>
-<style id="donate-mobile-smaller-2025-08-29">
-/* En versión móvil: achicar botones de donación un 15% para armonizar con la nueva posición */
 
-}
-</style>
-<style id="donate-left5-2025-08-29">
-/* En ambas versiones: desplazar bloque de donaciones 5 casilleros a la izquierda en total */
-#donateBar{
-  left: calc(-5 * var(--square)) !important;
-}
-</style>
-<style id="donate-mobile-left0_5-up0_5-2025-08-29">
 
-}
-</style>
-<style id="donate-smaller10-2025-08-29">
-/* En ambas versiones: reducir bloque de donaciones un 10% adicional */
-#donateBar{
-  transform: scale(0.9) !important;
-  transform-origin: top left !important;
-}
-</style>
-<style id="donate-up1square-2025-08-29">
-/* Subir bloque de donaciones 1 casillero más en ambas versiones */
-#donateBar{
-  position: relative !important;
-  top: calc(-1 * var(--square)) !important;
-}
-</style>
+
+
+
+
+
+
 <style id="mobile-restart-fs-down0_5-2025-08-29">
 /* En versión móvil: bajar medio casillero los botones de reiniciar y ver en pantalla completa */
 @media (max-width: 699px){
@@ -1302,15 +1152,6 @@ function playSfx(kind){
     transform-origin: top right !important;
   }
 }
-</style><style id="donate-buttons-down1-2025-08-29">
-/* Mod Ajetrez 2025-08-29 (v7):
-   WEB + MÓVIL — bajar 1 casillero los botones de colaboración del proyecto.
-   Aplicado a #colaboraBtn, #donarMercadoPago y #donarPayPal sin tocar la barra (#donateBar).
-*/
-#colaboraBtn, #donarMercadoPago, #donarPayPal{
-  transform: translateY(var(--square)) !important;
-  transform-origin: top left !important;
-}
 </style><style id="board-down-0_5-both-final-2025-08-29">
 /* Mod Ajetrez 2025-08-29 (v8):
    WEB + MÓVIL — bajar SOLO el juego (tablero) 0.5 casillero.
@@ -1478,6 +1319,141 @@ function playSfx(kind){
   }
 </style>
 
+
+<style id="remove-reset-fs-override-2025-09-01">
+  #floatingControls, #btnResetVisible, #btnFullscreen { display: none !important; visibility: hidden !important; }
+</style>
+
+
+<style id="scale-top-pinned-2025-09-01">
+  /* Escala global del juego SIN mover la posición superior (ancla arriba-centro) */
+  :root{
+    --aj-scale-web: 1.08;   /* ajusta este factor para escritorio */
+    --aj-scale-mobile: 1.06; /* ajusta este factor para móviles */
+  }
+  /* contenedor auxiliar para mantener el anclaje */
+  .aj-scale-wrap{ position: relative; transform-origin: top center; }
+  /* escritorio por defecto */
+  .aj-scale-wrap{ transform: scale(var(--aj-scale-web)); }
+  /* móviles: (máx 768px) */
+  @media (max-width: 768px){
+    .aj-scale-wrap{ transform: scale(var(--aj-scale-mobile)); }
+  }
+  /* evita que el reescalado corte sombras o bordes, agranda área de interacción */
+  .aj-scale-wrap::before{
+    content:""; position:absolute; inset:0; pointer-events:none;
+  }
+  /* Asegura que no haya clipping alrededor */
+  .container{ overflow: visible !important; }
+</style>
+
+
+<style id="ajetrez-menu-dropdown-2025-09-01">
+  .aj-menu-wrap{
+    position:absolute; top:10px; left:10px; z-index:1000;
+    font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;
+  }
+  .aj-menu-btn{
+    background:#111827; color:#fff; border:none; padding:10px 14px;
+    border-radius:10px; font-weight:700; cursor:pointer; box-shadow:0 .25rem .75rem rgba(0,0,0,.2);
+  }
+  .aj-menu-btn:active{ transform: translateY(1px); }
+  .aj-menu-list{
+    position:absolute; top:100%; left:0; margin-top:8px; min-width:240px;
+    background:#ffffff; border:1px solid rgba(0,0,0,.12); border-radius:12px;
+    box-shadow:0 .75rem 1.5rem rgba(0,0,0,.22); padding:6px; display:none;
+  }
+  .aj-menu-list.open{ display:block; }
+  .aj-item{
+    display:flex; align-items:center; gap:10px;
+    padding:10px 12px; border-radius:10px; cursor:pointer;
+  }
+  .aj-item:hover{ background:#f3f4f6; }
+  .aj-item strong{ font-size:14px; }
+  .aj-divider{ height:1px; background:rgba(0,0,0,.08); margin:4px 6px; }
+  /* Simple modal/panel */
+  .aj-modal{
+    position:fixed; inset:0; background:rgba(0,0,0,.35);
+    display:none; align-items:center; justify-content:center; z-index:1200;
+  }
+  .aj-modal.open{ display:flex; }
+  .aj-card{
+    width:min(92vw, 720px); max-height:80vh; overflow:auto;
+    background:#fff; border-radius:18px; padding:18px;
+    box-shadow:0 1rem 2rem rgba(0,0,0,.25);
+  }
+  .aj-card h3{ margin:0 0 10px 0; }
+  .aj-close{ float:right; background:#111827; color:#fff; border:none; padding:6px 10px; border-radius:8px; cursor:pointer; }
+  @media (max-width: 768px){
+    .aj-menu-wrap{ top:8px; left:8px; }
+  }
+</style>
+
+
+<style id="ajetrez-menu-safe-2025-09-01">
+  .ajM-wrap{ position:absolute; top:10px; left:10px; z-index:2147483000; }
+  .ajM-btn{ background:#111827; color:#fff; border:none; padding:10px 14px; border-radius:10px; font-weight:700; cursor:pointer; }
+  .ajM-list{ position:absolute; top:100%; left:0; margin-top:8px; min-width:240px;
+             background:#fff; border:1px solid rgba(0,0,0,.12); border-radius:12px; box-shadow:0 .75rem 1.5rem rgba(0,0,0,.22);
+             padding:6px; display:none; }
+  .ajM-list.open{ display:block; }
+  .ajM-item{ padding:10px 12px; border-radius:10px; cursor:pointer; }
+  .ajM-item:hover{ background:#f3f4f6; }
+  .ajM-modal{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.35); z-index:2147483200; }
+  .ajM-modal.open{ display:flex; }
+  .ajM-card{ width:min(92vw, 720px); max-height:80vh; overflow:auto; background:#fff; border-radius:18px; padding:18px; box-shadow:0 1rem 2rem rgba(0,0,0,.25); }
+  .ajM-close{ float:right; background:#111827; color:#fff; border:none; padding:6px 10px; border-radius:8px; cursor:pointer; }
+  .ajM-row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:8px 0 12px; }
+  .ajM-mini{ background:#111827; color:#fff; border:none; padding:8px 10px; border-radius:8px; cursor:pointer; }
+</style>
+
+
+<style id="ajetrez-extend-base-2025-09-01">
+  /* Extiende la base gris/negra 2 casilleros hacia abajo sin mover el tablero */
+  .frame::after{
+    content:"";
+    display:block;
+    height: calc(2 * var(--square));
+  }
+</style>
+
+
+<style id="ajetrez-bottom-bar-2025-09-01">
+  /* Barra inferior anclada al juego (dentro de .frame), visible también en fullscreen */
+  .ajM-bottom-bar{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:10px; /* deja un pequeño margen del borde */
+    display:flex; gap:10px; flex-wrap:wrap;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:saturate(1.1) blur(2px);
+    border:1px solid rgba(0,0,0,.12);
+    border-radius:12px;
+    padding:8px 10px;
+    box-shadow:0 .5rem 1rem rgba(0,0,0,.18);
+    z-index: 2147483100;
+  }
+  .ajM-bottom-bar .ajM-mini{
+    background:#111827; color:#fff; border:none; padding:8px 10px; border-radius:8px; cursor:pointer;
+  }
+  .ajM-bottom-bar .ajM-mini:hover{ filter:brightness(1.08); }
+  /* Asegurar que .frame tenga posición relativa (la tiene en tu CSS, pero reforzamos) */
+  .frame{ position:relative; }
+  /* En pantallas pequeñas, compactar */
+  @media (max-width: 768px){
+    .ajM-bottom-bar{ bottom:8px; gap:8px; padding:6px 8px; }
+  }
+</style>
+
+
+<style id="ajetrez-bottom-bar-border-2025-09-01">
+  /* Marco negro fino alrededor de la barra inferior */
+  .ajM-bottom-bar{
+    border: 2px solid #000 !important;
+  }
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
@@ -1495,24 +1471,58 @@ function playSfx(kind){
 };</script>
 <body>
 <div class="container">
+<div class="aj-scale-wrap">
 <div class="frame">
+
+<div class="ajM-wrap" id="ajM">
+  <button class="ajM-btn" id="ajM-btn">Menú del juego</button>
+  <div class="ajM-list" id="ajM-list" role="menu" aria-hidden="true">
+    <div class="ajM-item" id="ajM-reset"><strong>Reiniciar</strong></div>
+    <div class="ajM-item" id="ajM-mode"><strong>Modo de juego</strong></div>
+    <div class="ajM-item" id="ajM-history"><strong>Info de tus partidas</strong></div>
+    <div class="ajM-item" id="ajM-customize"><strong>Personalizar juego</strong></div>
+  </div>
+</div>
+
+
+<div class="aj-menu-wrap" id="aj-menu">
+  <button class="aj-menu-btn" id="aj-menu-btn">Menú del juego</button>
+  <div class="aj-menu-list" id="aj-menu-list" role="menu" aria-hidden="true">
+    <div class="aj-item" id="aj-reset"><strong>Reiniciar</strong></div>
+    <div class="aj-item" id="aj-mode"><strong>Modo de juego</strong></div>
+    <div class="aj-item" id="aj-history"><strong>Info de tus partidas</strong></div>
+    <div class="aj-item" id="aj-customize"><strong>Personalizar juego</strong></div>
+  </div>
+</div>
+
+<!-- Modals -->
+<div class="aj-modal" id="aj-modal-history">
+  <div class="aj-card">
+    <button class="aj-close" data-close="#aj-modal-history">Cerrar</button>
+    <h3>Info de tus partidas</h3>
+    <p>Aquí podrás ver el historial de movimientos y estadísticas. (Vista preliminar)</p>
+    <div id="aj-history-content"></div>
+  </div>
+</div>
+<div class="aj-modal" id="aj-modal-customize">
+  <div class="aj-card">
+    <button class="aj-close" data-close="#aj-modal-customize">Cerrar</button>
+    <h3>Personalizar juego</h3>
+    <p>Opciones rápidas (demo):</p>
+    <ul>
+      <li>Aumentar / reducir tamaño (usa el escalado actual)</li>
+      <li>Mostrar/ocultar ayudas</li>
+      <li>Preferencias visuales</li>
+    </ul>
+  </div>
+</div>
+
 <div class="toolbar" id="toolbar"></div>
 <div class="overlay" id="overlay" style="display:none;"><div class="banner" id="banner">JAQUE MATE</div></div>
-<div id="board"></div><div id="baseFooter"><div aria-label="Colaboraciones y donaciones" id="donateBar" role="group">
-<button id="colaboraBtn" style="margin-right:10px;font-weight:bold;">Colabora<br/>con el proyecto</button>
-<!-- Reemplaza los href y (si hace falta) los src por los que usás en la página principal -->
-<a class="donate-logo" href="https://link.mercadopago.com.ar/ajetrez" id="donarMercadoPago" rel="noopener" target="_blank">
-<img alt="MercadoPago" src="assets/images/mercadopago.jpg"/>
-</a>
-<a class="donate-logo" href="https://www.paypal.com/ncp/payment/PTRWET3UWGEY8" id="donarPayPal" rel="noopener" target="_blank">
-<img alt="PayPal" src="assets/images/paypal.png"/>
-</a>
-</div><div id="floatingControls">
-<button class="btn" id="btnResetVisible">Reiniciar</button>
-<button class="btn" id="btnFullscreen">Ver en pantalla completa</button>
-</div></div>
+<div id="board"></div>
 <div id="rowControls"></div>
 <div class="toolbar" id="toolbarBottom"></div>
+</div>
 </div>
 </div>
 <!-- Contenedores auxiliares (ocultos) para compatibilidad con el script original -->
@@ -3498,20 +3508,237 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
     margin-bottom: calc(-4 * var(--square)) !important;
   }
 }
-</style><style id="donateBar-up-0_5square-2025-08-29">
-/* Mod Ajetrez 2025-08-29 (v28):
-   Subir el indicador y los botones de donación (donateBar) medio casillero en web + móvil. */
-#donateBar{
-  transform: translateY(calc(-0.5 * var(--square))) !important;
-  transform-origin: top left !important;
-}
 </style><style id="frame-grow-bottom-2025-08-29">
 /* Mod Ajetrez 2025-08-29 (v29):
    Aumentar el alto de la base contenedora del juego 0.5 casillero hacia abajo (web + móvil). */
 .frame{
   padding-bottom: calc(3mm + 0.5 * var(--square)) !important;
 }
-</style></body>
+</style>
+<script id="ajetrez-menu-dropdown-logic-2025-09-01">
+(function(){
+  const btn = document.getElementById('aj-menu-btn');
+  const list = document.getElementById('aj-menu-list');
+  const wrap = document.getElementById('aj-menu');
+
+  function closeOnOutside(e){
+    if(!wrap.contains(e.target)){
+      list.classList.remove('open');
+      document.removeEventListener('click', closeOnOutside);
+    }
+  }
+
+  btn?.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    list.classList.toggle('open');
+    if(list.classList.contains('open')){
+      document.addEventListener('click', closeOnOutside);
+    }
+  });
+
+  // Helper: safe reset
+  function doReset(){
+    try{
+      if(typeof reiniciarPartida === 'function'){ reiniciarPartida(); return; }
+      if(typeof resetGame === 'function'){ resetGame(); return; }
+    }catch(e){}
+    location.reload();
+  }
+
+  // Helper: toggle mode if available
+  function doToggleMode(){
+    try{
+      if(typeof toggleGameMode === 'function'){ toggleGameMode(); return; }
+      // Try clicking any known toggle control if present
+      const toggleBtn = document.querySelector('[data-action="toggle-mode"], .mode-toggle, button[id*="mode"]');
+      if(toggleBtn){ toggleBtn.click(); return; }
+    }catch(e){}
+    alert('Aquí se cambiará el modo (vs Bot / 1v1) cuando el control esté disponible.');
+  }
+
+  // Menu actions
+  document.getElementById('aj-reset')?.addEventListener('click', ()=>{ list.classList.remove('open'); doReset(); });
+  document.getElementById('aj-mode')?.addEventListener('click', ()=>{ list.classList.remove('open'); doToggleMode(); });
+  document.getElementById('aj-history')?.addEventListener('click', ()=>{
+    list.classList.remove('open');
+    document.getElementById('aj-modal-history')?.classList.add('open');
+  });
+  document.getElementById('aj-customize')?.addEventListener('click', ()=>{
+    list.classList.remove('open');
+    document.getElementById('aj-modal-customize')?.classList.add('open');
+  });
+
+  // Close buttons for modals
+  document.querySelectorAll('.aj-close').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const sel = btn.getAttribute('data-close');
+      if(sel){ document.querySelector(sel)?.classList.remove('open'); }
+    });
+  });
+})();
+</script>
+
+
+<!-- AJM MODALS -->
+<div class="ajM-modal" id="ajM-modal-history">
+  <div class="ajM-card">
+    <button class="ajM-close" data-close="#ajM-modal-history">Cerrar</button>
+    <h3>Info de tus partidas</h3>
+    <div class="ajM-row">
+      <button class="ajM-mini" id="ajM-hist-refresh">Actualizar</button>
+      <button class="ajM-mini" id="ajM-hist-copy">Copiar</button>
+      <button class="ajM-mini" id="ajM-hist-export">Exportar JSON</button>
+    </div>
+    <ol id="ajM-history-list" style="padding-left:22px; line-height:1.4;"></ol>
+  </div>
+</div>
+<div class="ajM-modal" id="ajM-modal-customize">
+  <div class="ajM-card">
+    <button class="ajM-close" data-close="#ajM-modal-customize">Cerrar</button>
+    <h3>Personalizar juego</h3>
+    <p>Temas (aplican colores de casillas y marco):</p>
+    <div class="ajM-row">
+      <button class="ajM-mini" data-theme="classic">Clásico</button>
+      <button class="ajM-mini" data-theme="oscuro">Oscuro</button>
+      <button class="ajM-mini" data-theme="alto-contraste">Alto contraste</button>
+      <button class="ajM-mini" data-theme="madera">Madera</button>
+    </div>
+  </div>
+</div>
+
+
+<script id="ajetrez-menu-safe-logic-2025-09-01">
+(function(){
+  const $ = (s, r=document)=> r.querySelector(s);
+  const $$ = (s, r=document)=> Array.from(r.querySelectorAll(s));
+
+  const mBtn = $('#ajM-btn'), mList = $('#ajM-list'), mWrap = $('#ajM');
+  function closeOutside(e){ if(!mWrap.contains(e.target)){ mList.classList.remove('open'); document.removeEventListener('click', closeOutside); } }
+  mBtn?.addEventListener('click', (e)=>{ e.stopPropagation(); mList.classList.toggle('open'); if(mList.classList.contains('open')) document.addEventListener('click', closeOutside); });
+
+  function doReset(){
+    try{ if(typeof reiniciarPartida==='function'){ reiniciarPartida(); return; } }catch(e){}
+    try{ if(typeof resetGame==='function'){ resetGame(); return; } }catch(e){}
+    location.reload();
+  }
+  function doToggleMode(){
+    try{ if(typeof toggleGameMode==='function'){ toggleGameMode(); return; } }catch(e){}
+    const b = document.querySelector('[data-action="toggle-mode"], .mode-toggle, .mode-inline button, button[id*="mode"]');
+    if(b){ b.click(); return; }
+    alert('Control de modo no encontrado.');
+  }
+
+  $('#ajM-reset')?.addEventListener('click', ()=>{ mList.classList.remove('open'); doReset(); });
+  $('#ajM-mode')?.addEventListener('click', ()=>{ mList.classList.remove('open'); doToggleMode(); });
+  $('#ajM-history')?.addEventListener('click', ()=>{ mList.classList.remove('open'); $('#ajM-modal-history')?.classList.add('open'); renderHistory(); });
+  $('#ajM-customize')?.addEventListener('click', ()=>{ mList.classList.remove('open'); $('#ajM-modal-customize')?.classList.add('open'); });
+
+  $$('.ajM-close').forEach(btn=> btn.addEventListener('click', ()=>{
+    const sel = btn.getAttribute('data-close'); if(sel) document.querySelector(sel)?.classList.remove('open');
+  }));
+
+  // Historia mínima: solo lectura desde #moves o MOVES_SAN (sin tocar layout)
+  function getMovesArray(){
+    const movesEl = $('#moves');
+    if(movesEl && movesEl.textContent.trim()){
+      return movesEl.textContent.replace(/\r/g,'').split(/\n|,/).map(s=>s.trim()).filter(Boolean).map((t,i)=>({ply:i+1, san:t}));
+    }
+    if(Array.isArray(window.MOVES_SAN)){ return window.MOVES_SAN.map((san,i)=>({ply:i+1, san})); }
+    return [];
+  }
+  function renderHistory(){
+    const list = $('#ajM-history-list'); if(!list) return;
+    list.innerHTML='';
+    const arr = getMovesArray();
+    if(!arr.length){ const li=document.createElement('li'); li.textContent='Aún no hay movimientos.'; list.appendChild(li); return; }
+    arr.forEach(rec=>{
+      const li=document.createElement('li');
+      li.textContent = rec.san || ('Jugada '+rec.ply);
+      li.style.cursor='pointer';
+      li.addEventListener('click', ()=>{ if(typeof window.goToPly==='function'){ window.goToPly(rec.ply); } });
+      list.appendChild(li);
+    });
+  }
+  $('#ajM-hist-refresh')?.addEventListener('click', renderHistory);
+  $('#ajM-hist-copy')?.addEventListener('click', async ()=>{
+    const txt = getMovesArray().map(r=>r.san||('Jugada '+r.ply)).join('\n');
+    try{ await navigator.clipboard.writeText(txt); }catch(e){}
+    alert('Movimientos copiados.');
+  });
+  $('#ajM-hist-export')?.addEventListener('click', ()=>{
+    const blob = new Blob([JSON.stringify(getMovesArray(), null, 2)], {type:'application/json'});
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='ajetrez_historial.json'; a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 3000);
+  });
+
+  // Personalizar: SOLO tema (no tocamos --square)
+  const themeMap = {
+    'classic':  { '--cell-light':'#e6dac2', '--cell-dark':'#866540', '--wood':'#ffffff', '--wood2':'#ffffff' },
+    'oscuro':   { '--cell-light':'#c9c9c9', '--cell-dark':'#3a3a3a', '--wood':'#0f172a', '--wood2':'#111827' },
+    'alto-contraste': { '--cell-light':'#ffffff', '--cell-dark':'#000000', '--wood':'#ffffff', '--wood2':'#ffffff' },
+    'madera':   { '--cell-light':'#e9d9b0', '--cell-dark':'#8b5a2b', '--wood':'#f7ede3', '--wood2':'#e6d8c8' }
+  };
+  document.querySelectorAll('#ajM-modal-customize .ajM-mini[data-theme]').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      const key = b.getAttribute('data-theme'); const conf = themeMap[key] || themeMap['classic'];
+      Object.entries(conf).forEach(([k,v])=> document.documentElement.style.setProperty(k,v));
+    });
+  });
+})();
+</script>
+
+
+<script id="ajetrez-bottom-bar-logic-2025-09-01">
+(function(){
+  function doReset(){
+    try{ if(typeof reiniciarPartida==='function'){ reiniciarPartida(); return; } }catch(e){}
+    try{ if(typeof resetGame==='function'){ resetGame(); return; } }catch(e){}
+    location.reload();
+  }
+  function doToggleMode(){
+    try{ if(typeof toggleGameMode==='function'){ toggleGameMode(); return; } }catch(e){}
+    const b = document.querySelector('[data-action="toggle-mode"], .mode-toggle, .mode-inline button, button[id*="mode"]');
+    if(b){ b.click(); return; }
+    alert('Control de modo no encontrado.');
+  }
+  function openModal(sel){ const el=document.querySelector(sel); if(el){ el.classList.add('open'); } }
+  function renderHistory(){
+    const list = document.getElementById('ajM-history-list') || document.getElementById('aj-history-list');
+    if(!list) return;
+    list.innerHTML='';
+    function getMovesArray(){
+      const movesEl = document.getElementById('moves');
+      if(movesEl && movesEl.textContent.trim()){
+        return movesEl.textContent.replace(/\r/g,'').split(/\n|,/).map(s=>s.trim()).filter(Boolean).map((t,i)=>({ply:i+1, san:t}));
+      }
+      if(Array.isArray(window.MOVES_SAN)){ return window.MOVES_SAN.map((san,i)=>({ply:i+1, san})); }
+      return [];
+    }
+    const arr = getMovesArray();
+    if(!arr.length){ const li=document.createElement('li'); li.textContent='Aún no hay movimientos.'; list.appendChild(li); return; }
+    arr.forEach(rec=>{
+      const li=document.createElement('li'); li.textContent = rec.san || ('Jugada '+rec.ply);
+      li.style.cursor='pointer';
+      li.addEventListener('click', ()=>{ if(typeof window.goToPly==='function'){ window.goToPly(rec.ply); } });
+      list.appendChild(li);
+    });
+  }
+
+  const bar = document.getElementById('ajM-bottom-bar');
+  if(bar){
+    bar.addEventListener('click', (e)=>{
+      const btn = e.target.closest('button.ajM-mini'); if(!btn) return;
+      const act = btn.getAttribute('data-act');
+      if(act==='reset') return doReset();
+      if(act==='mode') return doToggleMode();
+      if(act==='history'){ openModal('#ajM-modal-history, #aj-modal-history'); setTimeout(renderHistory,0); return; }
+      if(act==='customize'){ openModal('#ajM-modal-customize, #aj-modal-customize'); return; }
+    });
+  }
+})();
+</script>
+
+</body>
 
 <style id="base-container-shrink-down-0_5square-2025-08-29">
 /* === Reducir el alto de la base contenedora del juego medio casillero, desde abajo (web y móvil) === */
@@ -3733,31 +3960,13 @@ function __ajUpdateFileHighlight(){
 </style>
 
 
-<style id="donate-indicator-up-2-2025-09-01">
-/* Subir 2 casilleros el indicador de modo y los botones de donación */
-#donateBar, #colaboraBtn, #donarMercadoPago, #donarPayPal, .mode-inline{
-  position: relative !important;
-  transform: translateY(calc(-2 * var(--square))) !important;
-}
-</style>
 
 
-<style id="donate-indicator-up-1-2025-09-01">
-/* Subir neto 1 casillero (bajar 1 respecto al ajuste previo) el indicador de modo y los botones de donación */
-#donateBar, #colaboraBtn, #donarMercadoPago, #donarPayPal, .mode-inline{
-  position: relative !important;
-  transform: translateY(calc(-1 * var(--square))) !important;
-}
-</style>
 
 
-<style id="donate-indicator-neutral-2025-09-01">
-/* Ajuste: devolver al nivel original (sin desplazamiento vertical) el indicador y botones de donación */
-#donateBar, #colaboraBtn, #donarMercadoPago, #donarPayPal, .mode-inline{
-  position: relative !important;
-  transform: translateY(0) !important;
-}
-</style>
+
+
+
 
 
 <style id="frame-gradient-dark-2025-09-01">
@@ -3835,13 +4044,7 @@ function __ajUpdateFileHighlight(){
 </style>
 
 
-<style id="donate-indicator-down-4mm-2025-09-01">
-/* Bajar 4mm los botones de donación y el indicador */
-#donateBar, #colaboraBtn, #donarMercadoPago, #donarPayPal, .mode-inline{
-  position: relative !important;
-  transform: translateY(4mm) !important;
-}
-</style>
+
 
 
 <style id="mode-down-0_5square-2025-09-01">
@@ -4055,14 +4258,7 @@ body .mode-inline{
 </style>
 
 
-<style id="donate-indicator-scale85-2025-09-01">
-/* Reducir tamaño 15% al indicador de modo y a los botones de donación */
-.mode-inline,
-#donateBar, #colaboraBtn, #donarMercadoPago, #donarPayPal {
-  transform: scale(0.85) !important;
-  transform-origin: top left !important;
-}
-</style>
+
 
 
 <style id="base-frame-mobile-shrink-2025-09-01">
@@ -4078,12 +4274,4 @@ body .mode-inline{
 </style>
 
 
-<style id="donate-indicator-down-0_5square-2025-09-01">
-/* Bajar 0.5 casillero el indicador de modo y botones de donación en web y móvil */
-.mode-inline,
-#donateBar, #colaboraBtn, #donarMercadoPago, #donarPayPal {
-  position: relative !important;
-  transform: translate(0, calc(0.5 * var(--square))) scale(0.85) !important;
-  transform-origin: top left !important;
-}
-</style>
+
