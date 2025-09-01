@@ -1404,6 +1404,16 @@ function playSfx(kind){
 /* No aplicar en squares inactivos */
 .square.inactive::after{ display:none; }
 </style>
+
+<style id="aj-up-1square-indicator-donate-2025-09-01">
+  /* Sube 1 casillero el indicador (.mode-inline) y la barra de donaciones (#donateBar)
+     sin romper transforms previos (usa translate individual). Aplica en web y móvil. */
+  .mode-inline,
+  #donateBar {
+    translate: 0 calc(-1 * var(--square)) !important;
+  }
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
