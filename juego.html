@@ -1470,7 +1470,7 @@ function playSfx(kind){
   /* Donaciones — panel inferior izquierdo anclado al juego */
   .frame{ position: relative; } /* asegurar anclaje */
   .aj-donate{
-    position:absolute; left:10px; bottom:8px; z-index:2147482500;
+    position:absolute; left:10px; bottom:calc(8px + 3mm); z-index:2147482500;
     display:flex; align-items:center; gap:10px; flex-wrap:nowrap;
   }
   .aj-donate .aj-donate-label{
@@ -1481,7 +1481,7 @@ function playSfx(kind){
   .aj-donate a img{ height:36px; display:block; }
   .aj-donate a{ display:block; line-height:0; }
   @media (max-width: 768px){
-    .aj-donate{ left:8px; bottom:8px; gap:8px; }
+    .aj-donate{ left:8px; bottom:calc(8px + 3mm); gap:8px; }
     .aj-donate .aj-donate-label{ font-size:0.85rem; padding:6px 8px; }
     .aj-donate a img{ height:28px; }
   }
@@ -1490,12 +1490,91 @@ function playSfx(kind){
 
 <style id="ajetrez-donate-bottom-left-up0_5-2025-09-01">
   /* Subir el panel de donación 0.5 casillero */
-  .aj-donate{ bottom: calc(8px + 0.5 * var(--square)) !important; }
+  .aj-donate{ bottom: calc(calc(8px + 0.5 * var(--square)) !important + 3mm); }
   @media (max-width: 768px){
-    .aj-donate{ bottom: calc(8px + 0.5 * var(--square)) !important; }
+    .aj-donate{ bottom: calc(calc(8px + 0.5 * var(--square)) !important + 3mm); }
   }
 </style>
 
+<style>
+
+/* === Ajetrez: botón fullscreen esquina inferior derecha === */
+.aj-fs-corner{
+  position: absolute;
+  right: 0.75rem;
+  bottom: calc(0.75rem + 0.5*var(--square, 48px));
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.75rem;
+  background: rgba(0,0,0,0.78);
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 9999px;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.aj-fs-corner .aj-fs-ico{ font-size: 1rem; line-height: 1; }
+.aj-fs-corner .aj-fs-txt{ font-size: 0.9rem; line-height: 1; text-transform: none; }
+.aj-fs-corner:focus{ outline: 2px solid #fff; outline-offset: 2px; }
+@media (hover:hover){
+  .aj-fs-corner:hover{ opacity: .92; }
+}
+/* Asegura que el contenedor del juego sea el ancla del botón */
+.frame{ position: relative; }
+
+</style>
+<style>
+
+/* === Ajetrez: contenedor de botones esquina inferior derecha === */
+.aj-corner-actions{
+  position: absolute;
+  right: 0.75rem;
+  bottom: calc(0.75rem + 0.5*var(--square, 48px) + 3mm);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+/* Los botones dentro del contenedor no necesitan posicionamiento absoluto */
+.aj-corner-actions .aj-fs-corner{
+  position: static;
+  right: auto;
+  bottom: auto;
+}
+.aj-reset-corner{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.75rem;
+  background: rgba(0,0,0,0.78);
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 9999px;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.aj-reset-corner:focus{ outline: 2px solid #fff; outline-offset: 2px; }
+@media (hover:hover){
+  .aj-reset-corner:hover{ opacity: .92; }
+}
+
+</style>
+
+<style>
+/* Ajuste global: subir 3mm los botones inferiores */
+.aj-donate{ bottom: calc(8px + 3mm) !important; }
+.aj-corner-actions{ bottom: calc(0.75rem + 0.5*var(--square, 48px) + 3mm) !important; }
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
@@ -1515,6 +1594,21 @@ function playSfx(kind){
 <div class="container">
 <div class="aj-scale-wrap">
 <div class="frame">
+  <!-- Fullscreen corner button -->
+  
+  <!-- Contenedor de acciones esquina -->
+  <div class="aj-corner-actions">
+    <button id="aj-reset-corner" class="aj-reset-corner" type="button" aria-label="Reiniciar partida" title="Reiniciar partida">
+      <span class="aj-fs-ico" aria-hidden="true">↺</span>
+      <span class="aj-fs-txt">Reiniciar</span>
+    </button>
+    <button id="aj-fs-corner" class="aj-fs-corner" type="button" aria-label="Ver en pantalla completa" title="Ver en pantalla completa">
+    <span class="aj-fs-ico" aria-hidden="true">⛶</span>
+    <span class="aj-fs-txt">Fullscreen</span>
+  </button>
+  </div>
+
+
 
 <div class="aj-donate" id="aj-donate">
   <div class="aj-donate-label">Colaborá con el proyecto</div>
@@ -1530,6 +1624,9 @@ function playSfx(kind){
 <div class="ajM-wrap" id="ajM">
   <button class="ajM-btn" id="ajM-btn">Menú del juego</button>
   <div class="ajM-list" id="ajM-list" role="menu" aria-hidden="true">
+    <div class="ajM-item" id="ajM-fullscreen" role="button" tabindex="0" aria-label="Ver en pantalla completa">
+      <strong>Ver en pantalla completa</strong>
+    </div>
     <div class="ajM-item" id="ajM-reset"><strong>Reiniciar</strong></div>
     <div class="ajM-item" id="ajM-mode"><strong>Modo de juego</strong></div>
     <div class="ajM-item" id="ajM-history"><strong>Info de tus partidas</strong></div>
@@ -3792,269 +3889,138 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
 </script>
 
 
-<!-- AJETREZ: Botones laterales junto al menú (reiniciar y pantalla completa) -->
-<style>
-  .ajM-sideButtons {
-    position: fixed; /* se posiciona relativo a la ventana para evitar layouts complejos */
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    z-index: 99999; /* por encima del tablero y HUD */
-    pointer-events: auto;
-  }
-  .ajM-sideButtons .ajM-btn {
-    /* Reutiliza estilos existentes si la clase ya está definida en el proyecto */
-    cursor: pointer;
-    user-select: none;
-    white-space: nowrap;
-  }
-  /* Ajustes en móvil: botones un poco más chicos */
-  @media (max-width: 768px) {
-    .ajM-sideButtons .ajM-btn { transform: scale(0.92); }
-  }
-</style>
 <script>
+// === Ajetrez: Fullscreen desde menú principal (menu item #ajM-fullscreen) ===
 (function(){
-  // Espera a que exista el botón de menú
-  function onReady(cb){
-    if (document.readyState === 'complete' || document.readyState === 'interactive') { cb(); }
-    else document.addEventListener('DOMContentLoaded', cb, {once:true});
-  }
-
-  function findMenuButton(){
-    // Intentos más probables según este proyecto:
-    const byId = document.getElementById('ajM-btn') || document.getElementById('ajM') || document.getElementById('aj-menu-button');
-    if (byId && byId.tagName && byId.tagName.toLowerCase() === 'button') return byId;
-
-    // Busca el primer botón que contenga la palabra menú
-    const btns = Array.from(document.querySelectorAll('button, [role="button"]'));
-    const menuBtn = btns.find(b => /men[úu]/i.test(b.textContent || '')) || byId;
-    return menuBtn || null;
-  }
-
-  function callRestart(){
-    // Llama a la función existente si está disponible; si no, recarga la página como fallback.
-    const f = window.reiniciarJuego || window.resetGame || window.doReset;
-    try {
-      if (typeof f === 'function') return void f();
-    } catch(e){ console.warn('Fallo reinicio preferido:', e); }
-    try { return void location.reload(); } catch(e){ console.warn('No se pudo recargar:', e); }
-  }
-
-  function callToggleFS(){
-    // Usa función propia del juego si existe; si no, implementa un toggle básico.
-    if (typeof window.toggleFullscreen === 'function') return void window.toggleFullscreen();
-
-    const candidates = [
-      document.getElementById('board'),
-      document.getElementById('mobile-board-down-1square'),
-      document.getElementById('mobile-board-down0_5-2025-08-29'),
-      document.getElementById('board-container'),
-      document.getElementById('game-container'),
-      document.body
-    ];
-    const el = candidates.find(Boolean) || document.documentElement;
-    const d = document;
-    const isFS = d.fullscreenElement || d.webkitFullscreenElement || d.mozFullScreenElement || d.msFullscreenElement;
+  function ajToggleFullscreen(el){
+    const doc = document;
+    const elem = el || document.documentElement;
     try{
-      if (!isFS) {
-        (el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen || function(){})();
+      if (!doc.fullscreenElement && !doc.webkitFullscreenElement) {
+        const req = elem.requestFullscreen || elem.webkitRequestFullscreen || elem.msRequestFullscreen;
+        req && req.call(elem);
       } else {
-        (d.exitFullscreen || d.webkitExitFullscreen || d.mozCancelFullScreen || d.msExitFullscreen || function(){})();
+        const exit = doc.exitFullscreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+        exit && exit.call(doc);
       }
-    } catch(e){ console.warn('No se pudo cambiar a pantalla completa:', e); }
+    }catch(e){ console.warn("Fullscreen error:", e); }
   }
-
-  function ensureUI(){
-    const menuBtn = findMenuButton();
-    if (!menuBtn) return false;
-
-    // Si ya se inyectó, no duplicar
-    if (document.getElementById('ajM-sideButtons')) return true;
-
-    // Crear contenedor y botones
-    const wrapper = document.createElement('div');
-    wrapper.id = 'ajM-sideButtons';
-    wrapper.className = 'ajM-sideButtons';
-
-    const btnReset = document.createElement('button');
-    btnReset.id = 'ajM-restart-side';
-    btnReset.className = 'ajM-btn ajM-mini'; // clases existentes para mantener estilo
-    btnReset.type = 'button';
-    btnReset.textContent = 'Reiniciar';
-    btnReset.addEventListener('click', callRestart);
-
-    const btnFS = document.createElement('button');
-    btnFS.id = 'ajM-fs-side';
-    btnFS.className = 'ajM-btn ajM-mini';
-    btnFS.type = 'button';
-    btnFS.textContent = 'Pantalla completa';
-    btnFS.addEventListener('click', callToggleFS);
-
-    wrapper.appendChild(btnReset);
-    wrapper.appendChild(btnFS);
-    document.body.appendChild(wrapper);
-
-    function place(){
-      const r = menuBtn.getBoundingClientRect();
-      const top = Math.round(r.top + (window.scrollY || 0));
-      const left = Math.round(r.right + (window.scrollX || 0) + 10); // 10px a la derecha del menú
-      wrapper.style.top = top + 'px';
-      wrapper.style.left = left + 'px';
+  function updateFsText(){
+    const fsItem = document.getElementById('ajM-fullscreen');
+    if(!fsItem) return;
+    const inFS = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    const label = fsItem.querySelector('strong');
+    if(label){
+      label.textContent = inFS ? 'Salir de pantalla completa' : 'Ver en pantalla completa';
     }
-    place();
-    // Recalcular en resize/scroll/orientación
-    ['resize','scroll','orientationchange'].forEach(ev => window.addEventListener(ev, place));
-    // Si el botón de menú cambia de tamaño por CSS dinámico, reintentar
-    setTimeout(place, 300);
-    setTimeout(place, 1000);
-    return true;
   }
-
-  onReady(function(){
-    // Reintentos por si el menú aparece tarde
-    let tries = 0;
-    const t = setInterval(function(){
-      tries++;
-      if (ensureUI() || tries > 30) clearInterval(t);
-    }, 200);
-  });
+  function bindFsItem(){
+    const fsItem = document.getElementById('ajM-fullscreen');
+    if(!fsItem) return;
+    if(fsItem.dataset.bound === '1') return;
+    fsItem.dataset.bound = '1';
+    fsItem.addEventListener('click', function(){
+      const frame = document.querySelector('.frame') || document.body;
+      ajToggleFullscreen(frame);
+      // Cierra menú si está abierto
+      const list = fsItem.closest('.ajM-list') || fsItem.closest('.aj-menu-list');
+      if(list && list.classList.contains('open')) list.classList.remove('open');
+    });
+    fsItem.addEventListener('keydown', function(ev){
+      if(ev.key === 'Enter' || ev.key === ' '){
+        ev.preventDefault();
+        fsItem.click();
+      }
+    });
+    updateFsText();
+  }
+  document.addEventListener('DOMContentLoaded', bindFsItem);
+  document.addEventListener('fullscreenchange', updateFsText);
+  document.addEventListener('webkitfullscreenchange', updateFsText);
 })();
 </script>
 
-<!-- AJETREZ: Marco negro del contenedor gris + fullscreen de todo el conjunto -->
-<style>
-  /* Estilo del marco negro alrededor del contenedor gris del juego */
-  .aj-root-frame {
-    border: 2px solid #000;
-    box-sizing: border-box;
-    border-radius: 6px;
-  }
-  /* Cuando los botones laterales están dentro del frame, preferimos posicionamiento absoluto
-     para que acompañen el frame incluso en fullscreen. */
-  .aj-root-frame .ajM-sideButtons { position: absolute !important; }
-</style>
 <script>
+// === Ajetrez: binding botón esquina a fullscreen ===
 (function(){
-  function onReady(cb){
-    if (document.readyState === 'complete' || document.readyState === 'interactive') { cb(); }
-    else document.addEventListener('DOMContentLoaded', cb, {once:true});
+  function toggleFS(target){
+    const doc = document;
+    const el = target || document.querySelector('.frame') || document.documentElement;
+    try{
+      if (!doc.fullscreenElement && !doc.webkitFullscreenElement) {
+        (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen)?.call(el);
+      } else {
+        (doc.exitFullscreen || doc.webkitExitFullscreen || doc.msExitFullscreen)?.call(doc);
+      }
+    }catch(e){ console.warn("Fullscreen error:", e); }
   }
+  function isFS(){ return !!(document.fullscreenElement || document.webkitFullscreenElement); }
 
-  function pickBoardEl(){
-    return document.getElementById('board')
-        || document.getElementById('mobile-board-down-1square')
-        || document.getElementById('mobile-board-down0_5-2025-08-29')
-        || null;
-  }
-
-  function hasVisibleBg(el){
-    try {
-      const cs = getComputedStyle(el);
-      const bgc = cs.backgroundColor;
-      const bgi = cs.backgroundImage;
-      const opaque = bgc && !/rgba\(\s*0\s*,\s*0\s*,\s*0\s*,\s*0\s*\)/i.test(bgc) && !/transparent/i.test(bgc);
-      const hasImg = bgi && bgi !== 'none';
-      return opaque || hasImg;
-    } catch(e){ return false; }
-  }
-
-  function findGrayContainer(){
-    const board = pickBoardEl();
-    if (!board) return null;
-    // Sube buscando un contenedor con fondo visible (gris/degradado)
-    let cur = board;
-    let lastCandidate = null;
-    while (cur && cur !== document.body){
-      if (hasVisibleBg(cur)) lastCandidate = cur;
-      cur = cur.parentElement;
+  function updateTexts(){
+    const menuItem = document.getElementById('ajM-fullscreen');
+    if(menuItem){
+      const label = menuItem.querySelector('strong');
+      if(label){ label.textContent = isFS() ? 'Salir de pantalla completa' : 'Ver en pantalla completa'; }
     }
-    // Usa el último candidato (más alto con fondo visible)
-    return lastCandidate;
-  }
-
-  function ensureRootFrame(){
-    let root = document.getElementById('ajRootContainer');
-    if (root) return root;
-
-    // Opción A: detectar el contenedor gris existente y marcarlo
-    const detected = findGrayContainer();
-    if (detected){
-      detected.id = detected.id || 'ajRootContainer';
-      detected.classList.add('aj-root-frame');
-      return detected;
-    }
-
-    // Opción B: crear un frame nuevo y envolver el board
-    const board = pickBoardEl();
-    if (!board) return null;
-    const wrapper = document.createElement('div');
-    wrapper.id = 'ajRootContainer';
-    wrapper.className = 'aj-root-frame';
-    // Inserta antes del board y mueve el board adentro
-    board.parentElement.insertBefore(wrapper, board);
-    wrapper.appendChild(board);
-    return wrapper;
-  }
-
-  // Actualiza el objetivo de fullscreen para usar el root frame
-  function installFullscreenHook(){
-    const root = document.getElementById('ajRootContainer');
-    if (!root) return;
-    window.__ajFullscreenTarget = root; // para que otros scripts lo usen
-  }
-
-  // Modificar el toggle que inyectamos antes (si existe) o proveer uno
-  function overrideToggleFS(){
-    const d = document;
-    window.callToggleFS = function(){
-      const el = window.__ajFullscreenTarget
-        || document.getElementById('ajRootContainer')
-        || findGrayContainer()
-        || pickBoardEl()
-        || document.body;
-
-      const isFS = d.fullscreenElement || d.webkitFullscreenElement || d.mozFullScreenElement || d.msFullscreenElement;
-      try{
-        if (!isFS) {
-          (el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen || function(){})();
-        } else {
-          (d.exitFullscreen || d.webkitExitFullscreen || d.mozCancelFullScreen || d.msExitFullscreen || function(){})();
-        }
-      } catch(e){ console.warn('No se pudo alternar pantalla completa:', e); }
-    };
-  }
-
-  function moveSideButtonsInside(){
-    const root = document.getElementById('ajRootContainer');
-    const side = document.getElementById('ajM-sideButtons');
-    if (root && side && !root.contains(side)){
-      // Reposicionar relativo al frame
-      side.style.position = 'absolute';
-      // Calcular posición junto al menú otra vez si se puede
-      try {
-        const menuBtn = document.getElementById('ajM-btn') || document.getElementById('ajM') || document.querySelector('button, [role="button"]');
-        if (menuBtn){
-          const r = menuBtn.getBoundingClientRect();
-          const fr = root.getBoundingClientRect();
-          const top = Math.round((r.top - fr.top) + 0);
-          const left = Math.round((r.right - fr.left) + 10);
-          side.style.top = top + 'px';
-          side.style.left = left + 'px';
-        }
-      } catch(e){}
-      root.appendChild(side);
+    const corner = document.getElementById('aj-fs-corner');
+    if(corner){
+      corner.setAttribute('aria-label', isFS() ? 'Salir de pantalla completa' : 'Ver en pantalla completa');
+      corner.setAttribute('title', isFS() ? 'Salir de pantalla completa' : 'Ver en pantalla completa');
+      const txt = corner.querySelector('.aj-fs-txt');
+      if(txt){ txt.textContent = isFS() ? 'Salir' : 'Fullscreen'; }
     }
   }
 
-  onReady(function(){
-    const frame = ensureRootFrame();
-    if (frame){
-      installFullscreenHook();
-      overrideToggleFS();
-      moveSideButtonsInside();
-    }
+  function bindCorner(){
+    const corner = document.getElementById('aj-fs-corner');
+    if(!corner || corner.dataset.bound === '1') return;
+    corner.dataset.bound = '1';
+    corner.addEventListener('click', function(){
+      const frame = document.querySelector('.frame') || document.body;
+      toggleFS(frame);
+    });
+    corner.addEventListener('keydown', function(ev){
+      if(ev.key === 'Enter' || ev.key === ' '){
+        ev.preventDefault(); corner.click();
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    bindCorner();
+    updateTexts();
   });
+  document.addEventListener('fullscreenchange', updateTexts);
+  document.addEventListener('webkitfullscreenchange', updateTexts);
+})();
+</script>
+
+<script>
+// === Ajetrez: botón de reinicio esquina ===
+(function(){
+  function tryReset(){
+    try{
+      if (typeof reiniciarJuego === 'function'){ reiniciarJuego(); return; }
+      if (typeof reiniciar === 'function'){ reiniciar(); return; }
+      if (typeof resetGame === 'function'){ resetGame(); return; }
+      if (typeof iniciarNuevaPartida === 'function'){ iniciarNuevaPartida(); return; }
+      if (typeof iniciarPartida === 'function'){ iniciarPartida(); return; }
+    }catch(e){ /* ignore */ }
+    try{ location.reload(); }catch(e){ /* ignore */ }
+  }
+  function bindReset(){
+    const btn = document.getElementById('aj-reset-corner');
+    if(!btn || btn.dataset.bound==='1') return;
+    btn.dataset.bound='1';
+    btn.addEventListener('click', tryReset);
+    btn.addEventListener('keydown', function(ev){
+      if(ev.key === 'Enter' || ev.key === ' '){
+        ev.preventDefault();
+        tryReset();
+      }
+    });
+  }
+  document.addEventListener('DOMContentLoaded', bindReset);
 })();
 </script>
 </body>
