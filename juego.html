@@ -668,31 +668,6 @@ function playSfx(kind){
   transform: translateY(var(--board-offset-y)) !important;
 }
 </style>
-<style id="reset-fs-align-mode-2025-08-28">
-/* === Alinear botones Reiniciar y Pantalla Completa a la altura de los botones de modo === */
-:root{
-  /* Usa el mismo offset vertical que el bloque de modo (actualmente ~ -2mm respecto al tope de la base) */
-  --mode-top-offset: -2mm;
-}
-#resetBtn, #fullscreenBtn{
-  position: absolute !important;
-  top: 0 !important;
-  transform: translateY(var(--mode-top-offset)) !important;
-  margin-top: 0 !important; /* neutraliza ajustes previos */
-}
-</style>
-<style id="reset-fs-extra-down-3mm-2025-08-28">
-/* === Bajar Reiniciar y Pantalla Completa 3mm más respecto a los controles de modo === */
-#resetBtn, #fullscreenBtn{
-  transform: translateY(calc(var(--mode-top-offset, 0px) + 3mm)) !important;
-}
-</style>
-<style id="reset-fs-left-half-square-2025-08-28">
-/* === Desplazar Reiniciar y Pantalla Completa medio casillero a la izquierda === */
-#resetBtn, #fullscreenBtn{
-  transform: translate(calc(-0.5 * var(--square)), calc(var(--mode-top-offset, 0px) + 3mm)) !important;
-}
-</style>
 <style id="fix-visible-reset-fs-2025-08-28">
 /* === Corregir target: los botones visibles son #btnResetVisible y #btnFullscreen === */
 #btnResetVisible, #btnFullscreen{
@@ -775,265 +750,11 @@ function playSfx(kind){
   }
 }
 </style>
-<style id="reset-fs-floating-both-2025-08-28">
-/* === Hacer flotantes los botones Reiniciar y Pantalla Completa en web y móvil === */
-#floatingControls{
-  position: fixed !important;
-  top: calc(var(--board-top, 0px) + var(--board-offset-y, 0px) + 0.5 * var(--square)) !important;
-  right: calc(0.5 * var(--square)) !important;
-  z-index: 2147483647 !important;
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 6px !important;
-  background: transparent !important;
-  padding: 0 !important;
-}
-#floatingControls .btn{
-  width: auto !important;
-  min-width: 100px;
-  padding: 6px 10px !important;
-  text-align: center !important;
-}
-</style>
-<style id="reset-fs-web-left4-up1-2025-08-28">
-/* === SOLO WEB: desplazar botones Reiniciar y Fullscreen 4 casilleros a la izquierda y 1 hacia arriba === */
-@media (min-width:700px){
-  #floatingControls{
-    right: calc(0.5 * var(--square) + 4 * var(--square)) !important;
-    top: calc(var(--board-top, 0px) + var(--board-offset-y, 0px) - 1 * var(--square)) !important;
-  }
-}
-</style>
-<style id="reset-fs-web-left4-up1-down0_5-2025-08-28">
-/* === SOLO WEB: bajar botones flotantes medio casillero (manteniendo 4 izq, 1 arriba previos) === */
-@media (min-width:700px){
-  #floatingControls{
-    top: calc(var(--board-top, 0px) + var(--board-offset-y, 0px) - 1 * var(--square) + 0.5 * var(--square)) !important;
-  }
-}
-</style>
-<style id="reset-fs-mobile-halfwidth-2025-08-28">
-/* === SOLO MÓVIL: achicar ancho de los botones Reiniciar y Fullscreen a la mitad === */
-@media (max-width:699px){
-  #btnResetVisible, #btnFullscreen{
-    width: 50% !important;
-    max-width: none !important;
-    flex: 0 0 auto !important;
-  }
-}
-</style>
-<style id="reset-fs-mobile-vertical-stack-2025-08-28">
-/* === SOLO MÓVIL: colocar botones Reiniciar y Fullscreen uno debajo del otro === */
-@media (max-width:699px){
-  #floatingControls{
-    flex-direction: column !important;
-    align-items: flex-end !important;
-  }
-  #btnResetVisible, #btnFullscreen{
-    width: 50% !important;
-  }
-}
-</style>
-<style id="reset-fs-mobile-down-1square-2025-08-28">
-/* === SOLO MÓVIL: bajar 1 casillero los botones Reiniciar y Pantalla Completa === */
-@media (max-width:699px){
-  /* Desplazar el contenedor de controles móviles 1 casillero hacia abajo
-     Usamos translateY para sumar al posicionamiento actual sin romper otras reglas */
-  #floatingControls{
-    transform: translateY(var(--square)) !important;
-  }
-}
-</style>
-<style id="reset-fs-mobile-rightmax-2025-08-28">
-/* === SOLO MÓVIL: alinear botones Reiniciar y Pantalla Completa lo más a la derecha dentro del tablero === */
-@media (max-width:699px){
-  #floatingControls{
-    right: 0 !important;
-    left: auto !important;
-    justify-content: flex-end !important;
-    width: 100% !important;
-  }
-}
-</style>
-<style id="reset-fs-mobile-down-3squares-rightmax-2025-08-28">
-/* === SOLO MÓVIL: bajar botones Reiniciar y Pantalla Completa 2 casilleros adicionales (total 3) === */
-@media (max-width:699px){
-  #floatingControls{
-    transform: translateY(calc(3 * var(--square))) !important;
-  }
-}
-</style>
-<style id="reset-fs-all-left1square-2025-08-28">
-/* === WEB y MÓVIL: desplazar botones Reiniciar y Pantalla Completa 1 casillero a la izquierda === */
-#btnResetVisible, #btnFullscreen{
-  position: relative !important;
-  left: calc(-1 * var(--square)) !important;
-}
-</style>
-<style id="reset-fs-nofloat-2025-08-28">
-/* === WEB y MÓVIL: Reiniciar y Pantalla Completa dejan de ser flotantes === */
-#floatingControls{
-  position: static !important;
-  transform: none !important;
-  margin-top: calc(3 * var(--square)) !important; /* mantener desplazamiento actual */
-  width: 100% !important;
-  display: flex !important;
-  justify-content: flex-end !important;
-  gap: 8px !important;
-}
-#btnResetVisible, #btnFullscreen{
-  position: relative !important;
-  left: calc(-1 * var(--square)) !important;
-}
-</style>
-<style id="reset-fs-nofloat-both-2025-08-28">
-/* === WEB y MÓVIL: Reiniciar y Pantalla Completa dejan de ser flotantes === */
-#floatingControls{
-  position: static !important;       /* quita flotante */
-  transform: none !important;        /* anula desplazamientos forzados */
-  margin-top: calc(3 * var(--square)) !important; /* conserva bajada de 3 casilleros */
-  width: 100% !important;
-  display: flex !important;
-  justify-content: flex-end !important;
-  gap: 8px !important;
-}
-
-#btnResetVisible, #btnFullscreen{
-  position: relative !important;
-  left: calc(-1 * var(--square)) !important; /* mantiene corrimiento a la izquierda */
-}
-</style>
-<style id="reset-fs-nofloat-both-up3squares-2025-08-28">
-/* === WEB y MÓVIL: subir botones Reiniciar y Pantalla Completa 3 casilleros === */
-#floatingControls{
-  margin-top: 0 !important; /* reiniciamos margen */
-  margin-top: calc(0 * var(--square)) !important;
-  transform: translateY(calc(-3 * var(--square))) !important; /* subir 3 casilleros */
-}
-</style>
-<style id="reset-fs-nofloat-both-up2squares-2025-08-28">
-/* === WEB y MÓVIL: ajustar botones Reiniciar y Pantalla Completa a subir solo 2 casilleros (bajar 1 desde el ajuste previo) === */
-#floatingControls{
-  transform: translateY(calc(-2 * var(--square))) !important; /* subir solo 2 casilleros en total */
-}
-</style>
-<style id="reset-fs-nofloat-both-up1square-2025-08-28">
-/* === WEB y MÓVIL: ajustar botones Reiniciar y Pantalla Completa a subir solo 1 casillero (bajar 1 desde el ajuste previo) === */
-#floatingControls{
-  transform: translateY(calc(-1 * var(--square))) !important; /* subir solo 1 casillero en total */
-}
-</style>
-<style id="reset-fs-mobile-top-align-left-2025-08-28">
-/* === SOLO MÓVIL: subir botones Reiniciar y Pantalla Completa arriba del tablero, alineados con los botones superiores izquierdos === */
-@media (max-width:699px){
-  #floatingControls{
-    position: absolute !important;
-    top: 0 !important;              /* al tope del tablero */
-    left: 0 !important;             /* alineados con los botones izquierdos */
-    transform: none !important;
-    margin: 0 !important;
-    width: auto !important;
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: flex-start !important;
-    gap: 6px !important;
-    z-index: 9999 !important;
-  }
-  #btnResetVisible, #btnFullscreen{
-    left: 0 !important;
-    position: relative !important;
-  }
-}
-</style>
-<style id="reset-fs-mobile-top-align-left-up3squares-2025-08-28">
-/* === SOLO MÓVIL: botones Reiniciar y Pantalla Completa en fila horizontal, 3 casilleros más arriba === */
-@media (max-width:699px){
-  #floatingControls{
-    position: absolute !important;
-    top: calc(-3 * var(--square)) !important; /* subir 3 casilleros más */
-    left: 0 !important;
-    transform: none !important;
-    margin: 0 !important;
-    width: auto !important;
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: flex-start !important;
-    gap: 6px !important;
-    z-index: 9999 !important;
-  }
-  #btnResetVisible, #btnFullscreen{
-    left: 0 !important;
-    position: relative !important;
-  }
-}
-</style>
-<style id="reset-fs-mobile-top-align-left-up2_5squares-2025-08-28">
-/* === SOLO MÓVIL: bajar medio casillero los botones (quedan a 2.5 casilleros arriba) === */
-@media (max-width:699px){
-  #floatingControls{
-    top: calc(-2.5 * var(--square)) !important; /* ajuste fino */
-  }
-}
-</style>
-<style id="reset-fs-mobile-top-align-left-vertical-2025-08-28">
-/* === SOLO MÓVIL: botones Reiniciar y Pantalla Completa en columna (uno debajo del otro) === */
-@media (max-width:699px){
-  #floatingControls{
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 6px !important;
-  }
-  #btnResetVisible, #btnFullscreen{
-    width: auto !important;
-  }
-}
-</style>
-<style id="reset-fs-mobile-vertical-floating-2025-08-28">
-/* === SOLO MÓVIL: botones Reiniciar y Pantalla Completa flotantes en columna arriba del tablero === */
-@media (max-width:699px){
-  #floatingControls{
-    position: fixed !important;
-    top: calc(var(--square) * 1) !important; /* ajustar vertical según tablero */
-    left: 0.5rem !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 6px !important;
-    z-index: 2147483647 !important;
-    background: transparent !important;
-  }
-  #btnResetVisible, #btnFullscreen{
-    width: auto !important;
-  }
-}
-</style>
 <style id="board-up-half-square-both-2025-08-28">
 /* === WEB y MÓVIL: subir el tablero medio casillero === */
 #board, #mobile-board, #mobile-board-down-1square{
   /* Reemplaza cualquier transform previo, sumando -0.5 casillero al offset existente */
   transform: translateY(calc(var(--board-offset-y, 0px) - 0.5 * var(--square))) !important;
-}
-</style>
-<style id="reset-fs-web-down-half-square-2025-08-28">
-/* === SOLO WEB: bajar botones Reiniciar y Pantalla Completa medio casillero === */
-@media (min-width:700px){
-  #btnResetVisible, #btnFullscreen{
-    top: calc(0.5 * var(--square)) !important;
-    position: relative !important;
-  }
-}
-</style>
-<style id="reset-fs-both-right1square-2025-08-28">
-/* === WEB y MÓVIL: desplazar botones Reiniciar y Pantalla Completa 1 casillero a la derecha === */
-#btnResetVisible, #btnFullscreen{
-  position: relative !important;
-  left: calc(1 * var(--square)) !important;
-}
-</style>
-<style id="reset-fs-both-right0_5square-2025-08-28">
-/* === WEB y MÓVIL: desplazar botones Reiniciar y Pantalla Completa medio casillero a la derecha desde la base === */
-#btnResetVisible, #btnFullscreen{
-  position: relative !important;
-  left: calc(0.5 * var(--square)) !important;
 }
 </style>
 <style>
@@ -4116,24 +3837,6 @@ function __ajUpdateFileHighlight(){
 </style>
 
 
-<style id="reset-fs-down-0_5square-2025-09-01">
-/* Bajar medio casillero los botones Reiniciar y Pantalla Completa */
-#btnResetVisible, #btnFullscreen{
-  position: relative !important;
-  transform: translateY(calc(0.5 * var(--square))) !important;
-}
-</style>
-
-
-<style id="reset-fs-up-3mm-2025-09-01">
-/* Subir 3mm los botones Reiniciar y Pantalla Completa */
-#btnResetVisible, #btnFullscreen{
-  position: relative !important;
-  transform: translateY(-3mm) !important;
-}
-</style>
-
-
 <style id="mode-down-0_5square-2025-09-01">
 /* Bajar medio casillero el indicador de modo de juego */
 .mode-inline{
@@ -4220,15 +3923,6 @@ body .mode-inline{
 #board, #mobile-board, #mobile-board-down-1square{
   height: calc(100% - 3mm) !important;
   overflow: hidden !important;
-}
-</style>
-
-
-<style id="reset-fs-down-0_5square-2025-09-01">
-/* Bajar medio casillero los botones Reiniciar y Pantalla Completa */
-#btnResetVisible, #btnFullscreen{
-  position: relative !important;
-  transform: translateY(calc(0.5 * var(--square))) !important;
 }
 </style>
 
@@ -4359,3 +4053,14 @@ body .mode-inline{
   }catch(e){/* no-op */}
 })();
 </script>
+
+
+
+
+<style id="reset-fs-down-0_5square-2025-09-01">
+/* Bajar 0.5 casillero los botones Reiniciar y Pantalla Completa (web y móvil) */
+#btnResetVisible, #btnFullscreen{
+  position: relative !important;
+  transform: translateY(calc(0.5 * var(--square))) !important;
+}
+</style>
