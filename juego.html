@@ -4333,19 +4333,24 @@ body .mode-inline{
 
 
 
-<script id="force-mode-transform-2025-09-01-right1-down0_5">
+
+
+<script id="force-mode-transform-2025-09-01-web-mobile">
 (function(){
   function apply(){
     try{
-      var el = document.querySelector('.mode-inline');
-      if(!el) return;
-      el.style.setProperty('position','relative','important');
-      el.style.setProperty('transform','translate(calc(1 * var(--square)), calc(0.5 * var(--square))) scale(0.85)','important');
-      el.style.setProperty('transform-origin','top left','important');
+      var els = document.querySelectorAll('.mode-inline');
+      if(!els.length) return;
+      els.forEach(function(el){
+        el.style.setProperty('position','relative','important');
+        el.style.setProperty('transform','translate(calc(1 * var(--square)), calc(0.5 * var(--square))) scale(0.85)','important');
+        el.style.setProperty('transform-origin','top left','important');
+      });
     }catch(e){/* no-op */}
   }
   apply();
   window.addEventListener('load', apply);
+  window.addEventListener('resize', apply);
   try{
     var mo = new MutationObserver(apply);
     mo.observe(document.body, {childList:true, subtree:true});
