@@ -1598,17 +1598,28 @@ function playSfx(kind){
 </style>
 
 
+
 <style id="aj-corner-actions-bottom-2025-09-01B">
-  /* Subir Reiniciar y Pantalla completa medio casillero */
+  /* Subir 0.5 casillero y luego bajar 3mm (queda un poquito más bajo que antes) */
   .aj-corner-actions{
-    bottom: calc(8px + 0.5*var(--square, 48px)) !important;
+    bottom: calc(8px + 0.5*var(--square, 48px) - 3mm) !important;
     transform: none !important;
   }
   .aj-fs-corner{
-    bottom: calc(8px + 0.5*var(--square, 48px)) !important;
+    bottom: calc(8px + 0.5*var(--square, 48px) - 3mm) !important;
   }
 </style>
 
+
+
+<style id="mode-down-3mm-2025-09-01B">
+  /* Bajar 3mm el HUD de Modo de juego (esquina superior derecha/izquierda según config) */
+  .mode-inline,
+  .toolbar .mode-inline,
+  body .mode-inline{
+    transform: translateY(3mm) !important;
+  }
+</style>
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
