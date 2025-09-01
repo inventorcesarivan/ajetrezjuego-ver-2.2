@@ -1534,7 +1534,7 @@ function playSfx(kind){
 /* === Ajetrez: contenedor de botones esquina inferior derecha === */
 .aj-corner-actions{
   position: absolute;
-  right: 0.75rem;
+  right: calc(0.75rem + 0.5*var(--square, 48px));
   bottom: calc(0.75rem + 0.5*var(--square, 48px) + 3mm);
   z-index: 10000;
   display: flex;
@@ -1574,6 +1574,14 @@ function playSfx(kind){
 /* Ajuste global: subir 3mm los botones inferiores */
 .aj-donate{ bottom: calc(8px + 3mm) !important; }
 .aj-corner-actions{ bottom: calc(0.75rem + 0.5*var(--square, 48px) + 3mm) !important; }
+</style>
+
+<style>
+/* Override: desplazar contenedor esquina medio casillero a la izquierda y medio hacia abajo */
+.aj-corner-actions{
+  right: calc(0.75rem + 0.5*var(--square, 48px)) !important;
+  bottom: calc(0.75rem + 0.5*var(--square, 48px)) !important;
+}
 </style>
 </head>
 <script>const PIECE_SPRITES = {
