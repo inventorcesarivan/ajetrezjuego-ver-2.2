@@ -218,10 +218,7 @@ body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto
 
 
 /* === SOLO MÓVIL: desplazar 1 casillero hacia abajo el botón de modo (Estás en modo / Cambiar de modo) === */
-@media (max-width:699px){
-  .toolbar .mode-inline{
-    margin-top: calc(var(--square)) !important;
-  }
+
 }
 
 
@@ -786,19 +783,13 @@ function playSfx(kind){
   #donateBar .donate-logo img{
     display:block; height:36px; width:auto; object-fit:contain;
   }
-  @media (max-width:699px){
-    #donateBar{ gap:10px; }
+  
     #donateBar .donate-logo img{ height:32px; }
   }
 </style>
 <style id="donate-mobile-tweak-2025-08-28">
 /* === SOLO MÓVIL: botones de donación 15% más chicos y barra 3 casilleros a la IZQUIERDA === */
-@media (max-width:699px){
-  /* Reducir SOLO los logos (MercadoPago / PayPal) en 15% */
-  #donateBar .donate-logo img{
-    height: calc(32px * 0.85) !important; /* antes: ~32px en móvil */
-    width: auto !important;
-  }
+
   /* Desplazar la barra de donaciones 3 casilleros hacia la izquierda */
   #donateBar{
     transform: translateX(calc(-3 * var(--square))) !important;
@@ -807,34 +798,17 @@ function playSfx(kind){
 </style>
 <style id="donate-mobile-left3-2025-08-28">
   /* SOLO MÓVIL: mover barra de donaciones 3 casilleros a la IZQUIERDA */
-  @media (max-width:699px){
-    #donateBar{
-      transform: translateX(calc(-3 * var(--square))) !important;
-    }
+  
   }
 </style>
 <style id="donate-mobile-left3-float-2025-08-28">
   /* SOLO MÓVIL: mover barra de donaciones 3 casilleros a la IZQUIERDA y hacerla flotante */
-  @media (max-width:699px){
-    #donateBar{
-      position: fixed !important;
-      bottom: 2vh;
-      left: 50%;
-      transform: translateX(calc(-50% - 3 * var(--square))) !important;
-      z-index: 9999;
-    }
+  
   }
 </style>
 <style id="donate-mobile-float-center-board-2025-08-28">
   /* SOLO MÓVIL: hacer flotante el botón de donaciones y centrarlo en medio del tablero, 5 casilleros más arriba */
-  @media (max-width:699px){
-    #donateBar{
-      position: absolute !important;
-      top: calc(50% - 5 * var(--square)) !important;
-      left: 50% !important;
-      transform: translate(-50%, -50%) !important;
-      z-index: 9999;
-    }
+  
   }
 </style>
 <style id="donate-left4-2025-08-28">
@@ -1029,10 +1003,7 @@ function playSfx(kind){
 #donateBar{
   gap: 3mm !important;
 }
-@media (max-width: 699px){
-  #donateBar{
-    gap: 3mm !important;
-  }
+
 }
 </style>
 <style id="donate-left-2squares-2025-08-29">
@@ -1084,22 +1055,12 @@ function playSfx(kind){
 </style>
 <style id="donate-mobile-up0_5-2025-08-29">
 /* Solo en versión móvil: subir medio casillero más */
-@media (max-width: 699px){
-  #donateBar{
-    transform: scale(0.95) translateY(calc(-2 * var(--square))) !important; /* antes -1.5, ahora -2 en móvil */
-    transform-origin: top left !important;
-  }
+
 }
 </style>
 <style id="donate-mobile-smaller-2025-08-29">
 /* En versión móvil: achicar botones de donación un 15% para armonizar con la nueva posición */
-@media (max-width: 699px){
-  #donateBar img,
-  #donateBar button,
-  #donateBar a{
-    transform: scale(0.85) !important;
-    transform-origin: center center !important;
-  }
+
 }
 </style>
 <style id="donate-left5-2025-08-29">
@@ -1109,12 +1070,7 @@ function playSfx(kind){
 }
 </style>
 <style id="donate-mobile-left0_5-up0_5-2025-08-29">
-@media (max-width: 699px){
-  #donateBar{
-    left: calc(-5.5 * var(--square)) !important; /* 5 + 0.5 casilleros */
-    transform: scale(0.85) translateY(calc(-2.5 * var(--square))) !important; 
-    transform-origin: top left !important;
-  }
+
 }
 </style>
 <style id="donate-smaller10-2025-08-29">
@@ -1172,11 +1128,7 @@ function playSfx(kind){
 }
 </style>
 <style id="mode-inline-mobile-up0_5-2025-08-29">
-@media (max-width: 699px){
-  .mode-inline{
-    /* Mantener offsets previos y restar 0.5 casillero en móvil */
-    transform: translate(var(--mode-offset-x), calc(var(--mode-offset-y) - 0.5 * var(--square))) !important;
-  }
+
 }
 </style>
 <style id="board-mobile-down1square-2025-08-29">
@@ -1246,10 +1198,7 @@ function playSfx(kind){
 }
 </style>
 <style id="mode-inline-mobile-up0_5-2025-08-29B">
-@media (max-width: 699px){
-  .mode-inline{
-    transform: translate(var(--mode-offset-x), calc(var(--mode-offset-y) - 0.5 * var(--square))) !important;
-  }
+
 }
 </style>
 <style id="mode-inline-smaller5-compact-2025-08-29">
@@ -1283,20 +1232,11 @@ function playSfx(kind){
 }
 </style>
 <style id="mode-inline-mobile-up0_5-topLeft-2025-08-29">
-@media (max-width: 699px){
-  .mode-inline{
-    top: calc(3mm - 0.5 * var(--square)) !important; /* sube medio casillero desde los 3mm originales */
-  }
+
 }
 </style>
 <style id="mode-inline-mobile-topRight-2025-08-29">
-@media (max-width: 699px){
-  .mode-inline{
-    top: calc(3mm - 0.5 * var(--square)) !important; /* mantener subida de medio casillero */
-    left: auto !important;
-    right: 3mm !important; /* 3mm desde el borde derecho */
-    justify-content: flex-end !important;
-  }
+
 }
 </style>
 <style id="mode-inline-floating-2025-08-29">
@@ -1313,11 +1253,7 @@ function playSfx(kind){
 }
 
 /* En móvil: esquina sup. derecha */
-@media (max-width: 699px){
-  .mode-inline{
-    left: auto !important;
-    right: 3mm !important;
-  }
+
 }
 </style>
 <style id="mode-inline-insideBoard-topLeft-2025-08-29">
@@ -1336,10 +1272,7 @@ function playSfx(kind){
 }
 </style>
 <style id="mode-insideBoard-mobile-up0_5-2025-08-29">
-@media (max-width: 699px){
-  .mode-inline{
-    top: calc(3mm - 0.5 * var(--square)) !important;
-  }
+
 }
 </style>
 <style id="board-mobile-down0_5-insideBoard-2025-08-29">
@@ -3854,13 +3787,7 @@ body .mode-inline{
   transform: translateY(calc(0.5 * var(--square))) scale(0.85) !important;
   transform-origin: top left !important;
 }
-@media (max-width: 699px){
-  .mode-inline.mode-inline,
-  .toolbar .mode-inline,
-  body .mode-inline{
-    transform: translateY(calc(0.5 * var(--square))) scale(0.85) !important;
-    transform-origin: top left !important;
-  }
+
 }
 </style>
 
@@ -3873,13 +3800,7 @@ body .mode-inline{
   transform: translate(calc(0.5 * var(--square)), calc(0.5 * var(--square))) scale(0.85) !important;
   transform-origin: top left !important;
 }
-@media (max-width: 699px){
-  .mode-inline.mode-inline,
-  .toolbar .mode-inline,
-  body .mode-inline{
-    transform: translate(calc(0.5 * var(--square)), calc(0.5 * var(--square))) scale(0.85) !important;
-    transform-origin: top left !important;
-  }
+
 }
 </style>
 
@@ -3960,13 +3881,7 @@ body .mode-inline{
   transform: translate(calc(1 * var(--square)), calc(1 * var(--square))) scale(0.85) !important;
   transform-origin: top left !important;
 }
-@media (max-width:699px){
-  .mode-inline,
-  .toolbar .mode-inline,
-  body .mode-inline{
-    transform: translate(calc(1 * var(--square)), calc(1 * var(--square))) scale(0.85) !important;
-    transform-origin: top left !important;
-  }
+
 }
 </style>
 
@@ -4083,5 +3998,22 @@ body .mode-inline{
   position: relative !important;
   transform: translate(0,0) scale(0.85) !important;
   transform-origin: top left !important;
+}
+</style>
+
+
+<style id="donate-indicator-mobile-up1-2025-09-01">
+/* MÓVIL: subir 1 casillero el indicador de modo y botones de donación, manteniendo escala 85% */
+@media (max-width:699px){
+  .mode-inline{
+    position: relative !important;
+    transform: translate(0, calc(-1 * var(--square))) scale(0.85) !important;
+    transform-origin: top left !important;
+  }
+  #donateBar, #colaboraBtn, #donarMercadoPago, #donarPayPal{
+    position: relative !important;
+    transform: translate(0, calc(-1 * var(--square))) scale(0.85) !important;
+    transform-origin: top left !important;
+  }
 }
 </style>
