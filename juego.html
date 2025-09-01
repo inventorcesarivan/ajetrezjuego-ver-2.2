@@ -1535,7 +1535,7 @@ function playSfx(kind){
 .aj-corner-actions{
   position: absolute;
   right: calc(0.75rem + 0.5*var(--square, 48px));
-  bottom: calc(0.75rem + 0.5*var(--square, 48px) + 3mm);
+  bottom: calc(0.75rem + 0.5*var(--square, 48px) + 3mm - 0.5*var(--square, 48px));
   z-index: 10000;
   display: flex;
   align-items: center;
@@ -1573,16 +1573,42 @@ function playSfx(kind){
 <style>
 /* Ajuste global: subir 3mm los botones inferiores */
 .aj-donate{ bottom: calc(8px + 3mm) !important; }
-.aj-corner-actions{ bottom: calc(0.75rem + 0.5*var(--square, 48px) + 3mm) !important; }
+.aj-corner-actions{ bottom: calc(calc(0.75rem + 0.5*var(--square, 48px) + 3mm) !important - 0.5*var(--square, 48px)); }
 </style>
 
 <style>
 /* Override: desplazar contenedor esquina medio casillero a la izquierda y medio hacia abajo */
 .aj-corner-actions{
   right: calc(0.75rem + 0.5*var(--square, 48px)) !important;
-  bottom: calc(0.75rem + 0.5*var(--square, 48px)) !important;
+  bottom: calc(calc(0.75rem + 0.5*var(--square, 48px)) !important - 0.5*var(--square, 48px));
 }
 </style>
+
+<style>
+/* Achicar botón de MercadoPago un 40% (escala visual) */
+.aj-donate a[href*="mercadopago"] img{
+  transform: scale(0.6);
+  transform-origin: center;
+}
+</style>
+
+<style>
+/* Bajar medio casillero adicional los botones de la esquina (shift visual) */
+.aj-corner-actions{ transform: translateY(calc(0.5 * var(--square, 48px))); }
+</style>
+
+
+<style id="aj-corner-actions-bottom-2025-09-01B">
+  /* Subir Reiniciar y Pantalla completa medio casillero */
+  .aj-corner-actions{
+    bottom: calc(8px + 0.5*var(--square, 48px)) !important;
+    transform: none !important;
+  }
+  .aj-fs-corner{
+    bottom: calc(8px + 0.5*var(--square, 48px)) !important;
+  }
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
