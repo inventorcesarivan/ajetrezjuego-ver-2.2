@@ -4068,6 +4068,230 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   document.addEventListener('DOMContentLoaded', bindReset);
 })();
 </script>
+
+<!-- Ajetrez Bot Upgrade (non-intrusive override) -->
+<script id="bot-upgrade-override-2025-09-01">
+(function(){
+  'use strict';
+
+  // Lightweight piece values for evaluation
+  const PV = { 'P':100, 'N':320, 'B':330, 'R':500, 'Q':900, 'K':20000 };
+
+  function matScore(vis, side){
+    let s = 0;
+    for(let r=0;r<8;r++) for(let c=0;c<8;c++){
+      const p = vis[r][c];
+      if(!p) continue;
+      const v = PV[p.type] || 0;
+      s += (p.color === side ? v : -v);
+    }
+    return s;
+  }
+
+  function mobilityScore(vis, board, offsets, side, epTarget){
+    let count = 0;
+    for(let r=0;r<8;r++) for(let c=0;c<8;c++){
+      const p = vis[r][c];
+      if(!p || p.color !== side) continue;
+      const ms = (typeof legalMovesFor==='function') ? legalMovesFor(vis, board, offsets, r, c, side, epTarget) : [];
+      count += ms.length;
+    }
+    return count;
+  }
+
+  // Checks if opponent can immediately capture a square (used to penalize hanging pieces)
+  function opponentCanCaptureSquare(board, offsets, targetR, targetC, oppColor, epTarget){
+    const vis2 = (typeof buildVisible==='function') ? buildVisible(board, offsets) : null;
+    if(!vis2) return false;
+    for(let r=0;r<8;r++) for(let c=0;c<8;c++){
+      const p = vis2[r][c];
+      if(!p || p.color !== oppColor) continue;
+      const moves = (typeof legalMovesFor==='function') ? legalMovesFor(vis2, board, offsets, r, c, oppColor, epTarget) : [];
+      for(const mv of moves){
+        if(mv[0] === targetR && mv[1] === targetC){
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  // Safe helper to simulate a move using existing engine
+  function simulate(board, offsets, from, to, special){
+    if(typeof applyMove !== 'function'){
+      return { board, captured:null, movedPiece:null, capturesKing:false, promo:false };
+    }
+    try{
+      return applyMove(board, offsets, from, to, special);
+    }catch(e){
+      return { board, captured:null, movedPiece:null, capturesKing:false, promo:false };
+    }
+  }
+
+  // Slightly stronger evaluation than the baseline:
+  // material + small mobility + in-check bonus + capture/promote/center preferences + hanging penalty
+  function evaluateFor(side, board, offsets, epTarget){
+    const vis = (typeof buildVisible==='function') ? buildVisible(board, offsets) : null;
+    if(!vis) return 0;
+    let score = matScore(vis, side);
+
+    // small mobility
+    score += 2 * mobilityScore(vis, board, offsets, side, epTarget);
+    score -= 2 * mobilityScore(vis, board, offsets, (side==='w'?'b':'w'), epTarget);
+
+    // in-check heuristic
+    try{
+      if(typeof inCheck === 'function'){
+        if(inCheck(vis, (side==='w'?'b':'w'))) score += 24;
+        if(inCheck(vis, side)) score -= 24;
+      }
+    }catch(_){}
+
+    return score;
+  }
+
+  // MVV-LVA capture bonus
+  function captureBonus(captured, moverType){
+    if(!captured) return 0;
+    const gain = (PV[captured.type] || 0) - Math.floor((PV[moverType] || 0) * 0.1);
+    return 10 + gain; // prefer any capture a bit
+  }
+
+  // Promotion bonus
+  function promotionBonus(special, moverType){
+    if(special && (special.promoteTo === 'Q' || (special.castle===undefined && moverType==='P'))) {
+      return 80;
+    }
+    return 0;
+  }
+
+  // Prefer advancing central pawns slightly (Ajetrez central 8x8)
+  function centralAdvanceBonus(toR, toC, moverType, side){
+    if(moverType !== 'P') return 0;
+    if(toC>=2 && toC<=5 && toR>=2 && toR<=5){
+      // deeper into center is better
+      const depth = (side==='w') ? (7 - toR) : toR;
+      return 4 + depth;
+    }
+    return 0;
+  }
+
+  // Override: a slightly deeper one-ply + opponent reply (null-window) lookahead
+  function improvedBot(){
+    try{
+      window.pendingShiftPreview = null;
+      if(window.mode!=='bot') return;
+      if(window.pendingShift) return;
+      if(window.turn!==window.botSide) return;
+      if(window.gameOver || window.reviewing) return;
+      if(window.__BOT_BUSY__) return; window.__BOT_BUSY__ = true;
+
+      const vis = (typeof buildVisible==='function') ? buildVisible(window.board, window.offsets) : null;
+      if(!vis){ window.__BOT_BUSY__ = false; return; }
+
+      const side = window.botSide;
+      const opp  = (side==='w'?'b':'w');
+
+      let best = null, bestVal = -1e12;
+      // Iterate pieces and moves
+      for(let r=0;r<8;r++)for(let c=0;c<8;c++){
+        const p = vis[r][c];
+        if(!p || p.color !== side) continue;
+        const moves = (typeof legalMovesFor==='function') ? legalMovesFor(vis, window.board, window.offsets, r, c, side, window.epTarget) : [];
+        for(const mv of moves){
+          const toR = mv[0], toC = mv[1];
+          const special = mv[2] || null;
+          const captured = mv[3] || null;
+
+          // Simulate our move
+          const sim = simulate(window.board, window.offsets, {r, c}, {r:toR, c:toC}, special);
+          const b1 = sim.board;
+
+          // Base eval for our side after move
+          let val = evaluateFor(side, b1, window.offsets, null);
+
+          // Tactical bonuses
+          val += captureBonus(captured, p.type);
+          val += promotionBonus(special, p.type);
+          val += centralAdvanceBonus(toR, toC, p.type, side);
+
+          // Give-check bonus
+          try{
+            const v1 = (typeof buildVisible==='function') ? buildVisible(b1, window.offsets) : null;
+            if(v1 && typeof inCheck==='function' && inCheck(v1, opp)) val += 28;
+          }catch(_){}
+
+          // Hanging penalty: if opponent can immediately recapture the destination, penalize by approx. MVV-LVA
+          try{
+            if(opponentCanCaptureSquare(b1, window.offsets, toR, toC, opp, null)){
+              // Assume worst-case attacker is minor piece
+              val -= Math.floor((PV[p.type]||100) * 0.35);
+            }
+          }catch(_){}
+
+          // One-ply opponent reply (choose best opponent capture/response)
+          try{
+            const v1 = (typeof buildVisible==='function') ? buildVisible(b1, window.offsets) : null;
+            let worstReply = +1e12;
+            if(v1){
+              for(let r2=0;r2<8;r2++)for(let c2=0;c2<8;c2++){
+                const q = v1[r2][c2];
+                if(!q || q.color !== opp) continue;
+                const mv2s = (typeof legalMovesFor==='function') ? legalMovesFor(v1, b1, window.offsets, r2, c2, opp, null) : [];
+                for(const mv2 of mv2s){
+                  const sim2 = simulate(b1, window.offsets, {r:r2, c:c2}, {r:mv2[0], c:mv2[1]}, mv2[2]||null);
+                  const vOpp = evaluateFor(side, sim2.board, window.offsets, null);
+                  if(vOpp < worstReply) worstReply = vOpp;
+                }
+              }
+            }
+            if(worstReply !== +1e12){
+              // Mix (prudence): 70% our eval, 30% worst opponent reply impact
+              val = 0.7 * val + 0.3 * worstReply;
+            }
+          }catch(_){}
+
+          if(val > bestVal){
+            bestVal = val;
+            best = { from:{r,c}, to:{r:toR,c:toC}, special, captured };
+          }
+        }
+      }
+
+      if(!best){ window.__BOT_BUSY__ = false; return; }
+
+      // Show quick preview and then play
+      try{ window.botPreview = { from: best.from, to: best.to }; }catch(_){}
+      setTimeout(function(){
+        try{
+          const result = simulate(window.board, window.offsets, best.from, best.to, best.special);
+          // integrate with existing move application pipeline:
+          // We'll mimic a user move:
+          // Reuse snapshot/messaging by directly committing:
+          window.board = result.board;
+          window.sel = null; window.moves = [];
+          // epTarget handling is inside applyMove; we won't modify it here
+          // Toggle turn, evaluate, render, and hand back to engine
+          window.turn = (window.turn==='w') ? 'b' : 'w';
+          if(typeof evaluateStatus==='function') evaluateStatus(window.turn);
+          if(typeof render==='function') render();
+        } finally {
+          window.botPreview = null;
+          window.__BOT_BUSY__ = false;
+          // In case chain-moves: call again if still bot's turn
+          if(typeof window.maybeBot === 'function') setTimeout(window.maybeBot, 0);
+        }
+      }, 120); // tiny delay for UX
+    }catch(e){
+      window.__BOT_BUSY__ = false;
+      try{ console.warn('BOT_UPGRADE error', e); }catch(_){}
+    }
+  }
+
+  // Install override without touching existing code paths
+  window.maybeBot = improvedBot;
+})();
+</script>
 </body>
 
 <style id="base-container-shrink-down-0_5square-2025-08-29">
