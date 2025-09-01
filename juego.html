@@ -3991,34 +3991,6 @@ body .mode-inline{
 </style>
 
 
-<style id="donate-indicator-fix-web-mobile-2025-09-01">
-/* Forzar misma posición y escala en web y móvil para indicador y botones de donación */
-.mode-inline,
-#donateBar, #colaboraBtn, #donarMercadoPago, #donarPayPal {
-  position: relative !important;
-  transform: translate(0,0) scale(0.85) !important;
-  transform-origin: top left !important;
-}
-</style>
-
-
-<style id="donate-indicator-mobile-up1-2025-09-01">
-/* MÓVIL: subir 1 casillero el indicador de modo y botones de donación, manteniendo escala 85% */
-@media (max-width:699px){
-  .mode-inline{
-    position: relative !important;
-    transform: translate(0, calc(-1 * var(--square))) scale(0.85) !important;
-    transform-origin: top left !important;
-  }
-  #donateBar, #colaboraBtn, #donarMercadoPago, #donarPayPal{
-    position: relative !important;
-    transform: translate(0, calc(-1 * var(--square))) scale(0.85) !important;
-    transform-origin: top left !important;
-  }
-}
-</style>
-
-
 <style id="base-frame-mobile-shrink-2025-09-01">
 /* MÓVIL: achicar altura de la base (gris/blanca en degradé) aprox. 2 casilleros para igualar a web */
 @media (max-width:699px){
@@ -4028,5 +4000,16 @@ body .mode-inline{
     height: calc(100% - 2 * var(--square)) !important;
     overflow: hidden !important;
   }
+}
+</style>
+
+
+<style id="donate-indicator-down-0_5square-2025-09-01">
+/* Bajar 0.5 casillero el indicador de modo y botones de donación en web y móvil */
+.mode-inline,
+#donateBar, #colaboraBtn, #donarMercadoPago, #donarPayPal {
+  position: relative !important;
+  transform: translate(0, calc(0.5 * var(--square))) scale(0.85) !important;
+  transform-origin: top left !important;
 }
 </style>
