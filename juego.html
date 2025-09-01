@@ -1414,6 +1414,70 @@ function playSfx(kind){
   }
 </style>
 
+
+<style id="aj-down-1square-mode-2025-09-01">
+  /* Baja 1 casillero el indicador y botón de modo (.mode-inline) */
+  .mode-inline {
+    translate: 0 var(--square) !important;
+  }
+</style>
+
+
+<style id="aj-up-0_5square-mode-2025-09-01">
+  /* Sube 0.5 casillero el indicador y botón de modo (.mode-inline) */
+  .mode-inline {
+    translate: 0 calc(-0.5 * var(--square)) !important;
+  }
+</style>
+
+
+<style id="aj-down-0_5square-mode-2025-09-01">
+  /* Baja 0.5 casillero el indicador y botón de modo (.mode-inline) */
+  .mode-inline {
+    translate: 0 calc(0.5 * var(--square)) !important;
+  }
+</style>
+
+
+<style id="aj-up-3mm-mode-2025-09-01">
+  /* Sube 3mm el indicador y botón de modo (.mode-inline) */
+  .mode-inline {
+    translate: 0 -3mm !important;
+  }
+</style>
+
+
+<style id="aj-reduce-height-1square-2025-09-01">
+  /* Reduce 1 casillero desde abajo la base contenedora del juego */
+  #game-container {
+    height: calc(100% - var(--square)) !important;
+  }
+</style>
+
+
+<style id="aj-base-crop-bottom-1square-2025-09-01">
+  /* Achica visualmente la base (gradiente) desde abajo: -1 casillero */
+  .frame {
+    margin-bottom: calc(-1 * var(--square)) !important; /* recorta desde abajo */
+  }
+  /* Fallback: si un contenedor usa altura fija, reducimos el padding inferior */
+  .frame {
+    padding-bottom: max(0px, calc(3mm + 0.5 * var(--square) - var(--square))) !important;
+  }
+</style>
+
+
+<style id="aj-bottom-buttons-flush-boardline-2025-09-01">
+  /* Botones inferiores pegados a la línea negra inferior del tablero */
+  #board{ position: relative !important; } /* asegurar anclaje */
+  #floatingControls{
+    top: auto !important;
+    bottom: 0 !important;   /* al ras del borde inferior del tablero */
+    right: 12px !important;
+    translate: 0 -1px;      /* microajuste: 1px hacia arriba para evitar solape con la línea */
+  }
+</style>
+
 </head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
