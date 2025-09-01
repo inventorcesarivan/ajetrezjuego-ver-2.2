@@ -4275,3 +4275,24 @@ body .mode-inline{
   }
 }
 </style>
+
+
+<script id="force-mode-transform-2025-09-01">
+(function(){
+  function apply(){
+    try{
+      var el = document.querySelector('.mode-inline');
+      if(!el) return;
+      el.style.setProperty('position','relative','important');
+      el.style.setProperty('transform','translate(calc(1 * var(--square)), calc(1 * var(--square))) scale(0.85)','important');
+      el.style.setProperty('transform-origin','top left','important');
+    }catch(e){/* no-op */}
+  }
+  apply();
+  window.addEventListener('load', apply);
+  try{
+    var mo = new MutationObserver(apply);
+    mo.observe(document.body, {childList:true, subtree:true});
+  }catch(e){/* no-op */}
+})();
+</script>
