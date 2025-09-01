@@ -1681,7 +1681,76 @@ function playSfx(kind){
 #donateBar{ margin-top: var(--ui-gap) !important; }
 /* Por si hubiera otros indicadores/botones en la parte superior del juego */
 .toolbar, .hud, .mode-indicator{ margin-bottom: var(--ui-gap) !important; }
-</style></head>
+</style>
+<style id="aj-center-outline">
+/* Borde tenue alrededor del 8×8 visible */
+#board::after, #mobile-board::after, #mobile-board-down-1square::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(0,0,0,0.25);
+  pointer-events: none;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.15) inset;
+}
+@media (max-width: 768px){
+  #board::after, #mobile-board::after, #mobile-board-down-1square::after{
+    border-width: 2px;
+  }
+}
+</style>
+
+<style id="aj-center-highlight">
+/* Borde y badge de Zona central (8×8) */
+#board::after, #mobile-board::after, #mobile-board-down-1square::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 3px solid rgba(0,0,0,0.35);
+  pointer-events: none;
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.18) inset;
+}
+.aj-center-badge{
+  position: absolute;
+  top: -2.2em;
+  left: 0;
+  padding: 0.35em 0.6em;
+  background: rgba(0,0,0,0.72);
+  color: #fff;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 999px;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+}
+/* Dimming de letras fuera del 8×8; activo se ve fuerte */
+.aj-files .aj-label{ opacity: 0.28; transition: opacity .2s ease; }
+.aj-files .aj-label.aj-active{ opacity: 1; }
+@media (max-width: 768px){
+  .aj-center-badge{ top: -2.1em; font-size: 0.95rem; }
+}
+</style>
+
+<style id="aj-lateral-tint">
+/* Aclara suavemente los casilleros laterales sin afectar piezas */
+.square{ position: relative; }
+.square.lateral::after{
+  content:"";
+  position:absolute; inset:0;
+  background: rgba(255,255,255,0.12); /* tono más claro */
+  pointer-events:none;
+}
+/* En móviles, un poco menos de aclarado */
+@media (max-width:700px){
+  .square.lateral::after{ background: rgba(255,255,255,0.10); }
+}
+/* No aplicar en squares inactivos */
+.square.inactive::after{ display:none; }
+</style>
+</head>
 <script>const PIECE_SPRITES = {
   "b_R": "assets/piezas_aa/b_R.png",
   "b_N": "assets/piezas_aa/b_N.png",
@@ -1735,14 +1804,42 @@ function playSfx(kind){
   function makeInitialBoard16x8(){
   const b=Array.from({length:8},()=>Array(16).fill(EMPTY));
   const back=["R","N","B","Q","K","B","N","R"];
-  const row=back.concat(back);
+  const row=back.concat(back); // 16 columnas
   const pawns=Array(16).fill("P");
-  // Negras arriba
-  b[0]=row.map(t=>makePiece(t,'b'));
-  b[1]=pawns.map(()=>makePiece('P','b'));
-  // Blancas abajo
-  b[6]=pawns.map(()=>makePiece('P','w'));
-  b[7]=row.map(t=>makePiece(t,'w'));
+
+  // --- Negras ---
+  // Objetivo: mover SOLO las 8 primeras piezas (A..H, columnas 0..7) dos filas hacia abajo:
+  //   - back row (fila 8 → índice 0) pasa a fila 6 (índice 2) en columnas 0..7
+  //   - peones (fila 7 → índice 1) pasa a fila 5 (índice 3) en columnas 0..7
+  // Mantener las piezas de columnas 8..15 en sus filas originales (0 y 1).
+  for(let c=0;c<16;c++){
+    const pieceBack = makePiece(row[c],'b');
+    const piecePawn = makePiece('P','b');
+    if(c<8){
+      // columnas A..H: bajan 2 filas
+      b[2][c] = pieceBack; // back row a fila 6
+      b[3][c] = piecePawn; // peones a fila 5
+    } else {
+      // columnas I..P: quedan en 8 y 7
+      b[0][c] = pieceBack;
+      b[1][c] = piecePawn;
+    }
+  }
+
+  // --- Blancas: mover SOLO la sección que sobresale (I..P = 8..15) 2 filas hacia ARRIBA; A..H quedan igual
+  for(let c=0;c<16;c++){
+    const pieceBackW = makePiece(row[c],'w');
+    const piecePawnW = makePiece('P','w');
+    if(c>=8){
+      // columnas I..P: suben 2 filas (desde 7 y 6 -> 5 y 4)
+      b[5][c] = pieceBackW; // back row blanca (fila 1 real) sube a fila 3 (índice 5)
+      b[4][c] = piecePawnW; // peones blancos suben a fila 4 (índice 4)
+    } else {
+      // columnas A..H: quedan en 7 y 6
+      b[7][c] = pieceBackW;
+      b[6][c] = piecePawnW;
+    }
+  }
   return b;
 }
   const initialOffsets=[8,8,8,8,0,0,0,0];
@@ -2370,7 +2467,7 @@ function renderBoard(){
         const isCell=bc!==null;
         const inCentral=d>=8 && d<=15;
         const btn=document.createElement('button');
-        btn.className='square '+(isCell?(((r+bc)%2===1)?'dark':'light'):'inactive');
+        btn.className='square '+(isCell?(((r+bc)%2===1)?'dark':'light'):'inactive') + (inCentral?' central':' lateral');
         const span=document.createElement('span');
         if(isCell){
             const p=board[r][bc];
@@ -3687,4 +3784,214 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   padding-bottom: calc(3mm + 0.5 * var(--square)) !important;
 }
 </style></body>
+
+<style id="base-container-shrink-down-0_5square-2025-08-29">
+/* === Reducir el alto de la base contenedora del juego medio casillero, desde abajo (web y móvil) === */
+#board, #mobile-board, #mobile-board-down-1square{
+  padding-bottom: calc(0.5 * var(--square)) !important;
+}
+</style>
+
+<style id="bottom-buttons-2mm-separation-2025-08-29">
+/* === Alinear los botones inferiores con separación de 2 mm desde la base inferior (web y móvil) === */
+#bottom-buttons, .bottom-buttons, #buttons-container, .buttons-container {
+  margin-bottom: 2mm !important;
+  bottom: 2mm !important;
+}
+</style>
+
+<style id="bottom-buttons-web-down-0_5square-2025-08-29">
+/* === Versión web: bajar los botones inferiores medio casillero === */
+@media screen and (min-width: 769px) {
+  #bottom-buttons, .bottom-buttons, #buttons-container, .buttons-container {
+    margin-bottom: calc(0.5 * var(--square)) !important;
+    bottom: calc(0.5 * var(--square)) !important;
+  }
+}
+</style>
+
+<style id="fix-bottom-buttons-2mm-gap-2025-08-29">
+/* ======= Corrección integral botones inferiores (web + móvil) =======
+   Objetivo: que #donateBar (izq) y #floatingControls (der) queden alineados
+   igual en ambas versiones, con separación de ~2mm desde el juego.
+   Problemas detectados: transform y márgenes negativos en #baseFooter que impedían
+   posicionar los botones con precisión y de forma consistente entre web/móvil.
+----------------------------------------------------------------------- */
+
+/* 1) Resetear transformaciones previas del footer y colapsos de flujo */
+#baseFooter{
+  position: relative !important;
+  transform: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Si existía compensación mediante margin-bottom negativo, anúlala */
+#baseFooter{
+  margin-bottom: 0 !important;
+}
+
+/* 2) Estructura del footer: fila con izquierda/derecha */
+#baseFooter{
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  /* separación exacta respecto al tablero (#board) */
+  margin-top: 2mm !important;
+}
+
+/* 3) Asegurar que las dos áreas no sean flotantes ni absolutas */
+#donateBar, #floatingControls{
+  position: static !important;
+  transform: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 4) Botones visualmente nivelados */
+#floatingControls .btn{
+  display: inline-flex !important;
+  align-items: center !important;
+  height: auto !important;
+}
+
+/* 5) Comportamiento responsive idéntico (web + móvil) */
+@media (max-width: 768px){
+  #baseFooter{ gap: 6px !important; }
+}
+
+/* 6) Seguridad: si había reglas que empujaban #floatingControls con márgenes,
+      las neutralizamos para evitar desalineaciones entre versiones */
+#floatingControls{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* 7) Mantener 2mm del borde inferior de la base, si la base tiene fondo */
+.frame, #game, #container, #root {
+  /* no forzamos altura aquí; solo aseguramos que nada "tire" del footer */
+  overflow: visible !important;
+}
+</style>
+
+<style id="floatingControls-left-1square-2025-08-29">
+/* === Desplazar los botones de Reiniciar y Pantalla completa 1 casillero a la izquierda (web + móvil) === */
+#floatingControls{
+  position: relative !important;
+  left: calc(-1 * var(--square)) !important;
+}
+</style>
+
+<style id="bottom-buttons-web-down-0_5square-2025-08-29">
+/* === Versión WEB: desplazar hacia abajo los botones inferiores medio casillero === */
+@media screen and (min-width: 769px){
+  #baseFooter{
+    position: relative !important;
+    top: calc(0.5 * var(--square)) !important;
+  }
+}
+</style>
+
+<style id="bottom-buttons-web-3mm-gap-2025-08-29">
+/* === Versión WEB: dejar los botones inferiores con margen fijo de 3mm de separación === */
+@media screen and (min-width: 769px){
+  #baseFooter{
+    position: relative !important;
+    top: auto !important;
+    margin-top: 3mm !important;
+  }
+}
+</style>
+
+<style id="bottom-buttons-UNIFY-3mm-2025-08-29">
+/* === Unificación definitiva: margen único 3mm para la botonera inferior (web + móvil) ===
+   - Se anulan márgenes/posiciones previas duplicadas en #baseFooter, #donateBar y #floatingControls
+   - Separación respecto al juego fijada en 3mm en TODAS las vistas
+*/
+#baseFooter, #donateBar, #floatingControls{
+  top: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Footer como fila flexible y con separación única de 3mm desde el tablero */
+#baseFooter{
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  margin-top: 3mm !important;   /* << única medida de separación */
+}
+
+/* Asegurar que reglas anteriores que intentaban empujar a la derecha/izq no interfieran */
+#floatingControls{ margin-left: 0 !important; margin-right: 0 !important; }
+#donateBar{ margin-left: 0 !important; margin-right: 0 !important; }
+
+/* Seguridad: ningún margen inferior extra que “aleje” la botonera de la base */
+#baseFooter{ margin-bottom: 0 !important; }
+</style>
+
+<style id="bottom-buttons-UNIFY-3mm-all-sides-2025-08-29">
+/* === Unificación definitiva de márgenes para botonera inferior ===
+   - Medida única de separación: 3mm en todos los lados (arriba, abajo, izquierda, derecha)
+   - Aplica a footer (#baseFooter) y contenedores (#donateBar, #floatingControls)
+   - Se eliminan duplicados/conflictos de reglas anteriores
+*/
+#baseFooter, #donateBar, #floatingControls{
+  position: relative !important;
+  transform: none !important;
+  top: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Footer como fila flexible, con 3mm de separación en TODOS los lados */
+#baseFooter{
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  margin: 3mm !important;   /* separación única: 3mm en todos los lados */
+}
+</style>
 </html>
+<script>
+
+// === Resaltar dinámicamente las 8 columnas visibles (ventana 8×8) ===
+function __ajMostCommonOffset(arr){
+  const freq = new Map();
+  arr.forEach(v => freq.set(v, (freq.get(v)||0) + 1));
+  let best = arr[0], bestC = -1;
+  for(const [k,c] of freq.entries()){ if(c>bestC){ best=k; bestC=c; } }
+  return best|0;
+}
+function __ajUpdateFileHighlight(){
+  try{
+    // Determinar la ventana horizontal "más común" entre filas
+    const start = __ajMostCommonOffset(offsets || [0,0,0,0,0,0,0,0]);
+    const end = start + 7;
+    const top = document.querySelector('#board .aj-files.top, #mobile-board .aj-files.top, #mobile-board-down-1square .aj-files.top');
+    const bottom = document.querySelector('#board .aj-files.bottom, #mobile-board .aj-files.bottom, #mobile-board-down-1square .aj-files.bottom');
+    if(!top || !bottom) return;
+    const setActive = (container) => {
+      const nodes = Array.from(container.children);
+      nodes.forEach((el, idx)=>{
+        if(idx>=start && idx<=end) el.classList.add('aj-active'); else el.classList.remove('aj-active');
+      });
+    };
+    setActive(top); setActive(bottom);
+  }catch(_){}
+}
+
+</script>
