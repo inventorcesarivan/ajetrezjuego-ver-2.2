@@ -9,7 +9,7 @@
 <style>
 :root{
   --cell-light:#e6dac2; --cell-dark:#866540;
-  --square:46px; --wood:#b68b5e; --wood2:#d8b48a;
+  --square:46px; --wood:#ffffff; --wood2:#ffffff;
   --panel-bg:#ffffff; --text:#111827; --accent:#10b981; --danger:#ef4444;
 }
 *{box-sizing:border-box} html,body{height:100%}
@@ -3995,3 +3995,230 @@ function __ajUpdateFileHighlight(){
 }
 
 </script>
+
+<style id="btn-shift-left-0_5-2025-09-01">
+/* Ajuste: desplazar medio casillero a la izquierda los botones Reiniciar y Pantalla Completa */
+#btnResetVisible, #btnFullscreen{
+  position: relative !important;
+  left: calc(-0.5 * var(--square)) !important;
+}
+</style>
+
+
+<style id="donate-indicator-up-2-2025-09-01">
+/* Subir 2 casilleros el indicador de modo y los botones de donación */
+#donateBar, #colaboraBtn, #donarMercadoPago, #donarPayPal, .mode-inline{
+  position: relative !important;
+  transform: translateY(calc(-2 * var(--square))) !important;
+}
+</style>
+
+
+<style id="donate-indicator-up-1-2025-09-01">
+/* Subir neto 1 casillero (bajar 1 respecto al ajuste previo) el indicador de modo y los botones de donación */
+#donateBar, #colaboraBtn, #donarMercadoPago, #donarPayPal, .mode-inline{
+  position: relative !important;
+  transform: translateY(calc(-1 * var(--square))) !important;
+}
+</style>
+
+
+<style id="donate-indicator-neutral-2025-09-01">
+/* Ajuste: devolver al nivel original (sin desplazamiento vertical) el indicador y botones de donación */
+#donateBar, #colaboraBtn, #donarMercadoPago, #donarPayPal, .mode-inline{
+  position: relative !important;
+  transform: translateY(0) !important;
+}
+</style>
+
+
+<style id="frame-gradient-dark-2025-09-01">
+/* Base con degradado marrón a negro hacia abajo */
+.frame{
+  background: linear-gradient(
+    to bottom,
+    #c7a981 0%,
+    #b89267 60%,
+    rgba(0,0,0,0.35) 100%
+  ) !important;
+}
+</style>
+
+
+<style id="frame-gradient-darker-2025-09-01">
+/* Base con degradado marrón a negro más intenso hacia abajo */
+.frame{
+  background: linear-gradient(
+    to bottom,
+    #c7a981 0%,
+    #b89267 50%,
+    rgba(0,0,0,0.65) 100%
+  ) !important;
+}
+</style>
+
+
+<style id="frame-gradient-black-2025-09-01">
+/* Base con degradado marrón a negro sólido hacia abajo */
+.frame{
+  background: linear-gradient(
+    to bottom,
+    #c7a981 0%,
+    #b89267 45%,
+    #000000 100%
+  ) !important;
+}
+</style>
+
+
+<style id="frame-gradient-intermediate-2025-09-01">
+/* Base con degradado marrón a negro intermedio (entre sólido y semi-transparente) */
+.frame{
+  background: linear-gradient(
+    to bottom,
+    #c7a981 0%,
+    #b89267 45%,
+    rgba(0,0,0,0.8) 100%
+  ) !important;
+}
+</style>
+
+
+<style id="frame-gradient-double-2025-09-01">
+/* Base con degradado oscuro arriba y abajo, claro en el centro */
+.frame{
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.8) 0%,     /* oscuro arriba */
+    #c7a981 40%,            /* claro centro superior */
+    #b89267 60%,            /* claro centro inferior */
+    rgba(0,0,0,0.8) 100%    /* oscuro abajo */
+  ) !important;
+}
+</style>
+
+
+<style id="board-down-0_5-2025-09-01">
+/* Bajar medio casillero el tablero del juego */
+#board, #mobile-board, #mobile-board-down-1square{
+  position: relative !important;
+  transform: translateY(calc(0.5 * var(--square))) !important;
+}
+</style>
+
+
+<style id="donate-indicator-down-4mm-2025-09-01">
+/* Bajar 4mm los botones de donación y el indicador */
+#donateBar, #colaboraBtn, #donarMercadoPago, #donarPayPal, .mode-inline{
+  position: relative !important;
+  transform: translateY(4mm) !important;
+}
+</style>
+
+
+<style id="reset-fs-down-0_5square-2025-09-01">
+/* Bajar medio casillero los botones Reiniciar y Pantalla Completa */
+#btnResetVisible, #btnFullscreen{
+  position: relative !important;
+  transform: translateY(calc(0.5 * var(--square))) !important;
+}
+</style>
+
+
+<style id="reset-fs-up-3mm-2025-09-01">
+/* Subir 3mm los botones Reiniciar y Pantalla Completa */
+#btnResetVisible, #btnFullscreen{
+  position: relative !important;
+  transform: translateY(-3mm) !important;
+}
+</style>
+
+
+<style id="mode-down-0_5square-2025-09-01">
+/* Bajar medio casillero el indicador de modo de juego */
+.mode-inline{
+  position: relative !important;
+  transform: translateY(calc(0.5 * var(--square))) !important;
+}
+</style>
+
+
+<style id="mode-scale85-down-0_5-2025-09-01-fix-mobile">
+/* Forzar en desktop y móvil: achicar 15% y bajar 1/2 casillero el indicador de modo */
+.mode-inline.mode-inline,
+.toolbar .mode-inline,
+body .mode-inline{
+  transform: translateY(calc(0.5 * var(--square))) scale(0.85) !important;
+  transform-origin: top left !important;
+}
+@media (max-width: 699px){
+  .mode-inline.mode-inline,
+  .toolbar .mode-inline,
+  body .mode-inline{
+    transform: translateY(calc(0.5 * var(--square))) scale(0.85) !important;
+    transform-origin: top left !important;
+  }
+}
+</style>
+
+
+<style id="mode-scale85-down-0_5-right-0_5-2025-09-01">
+/* Forzar en desktop y móvil: achicar 15%, bajar 1/2 casillero y mover 1/2 casillero a la derecha el indicador de modo */
+.mode-inline.mode-inline,
+.toolbar .mode-inline,
+body .mode-inline{
+  transform: translate(calc(0.5 * var(--square)), calc(0.5 * var(--square))) scale(0.85) !important;
+  transform-origin: top left !important;
+}
+@media (max-width: 699px){
+  .mode-inline.mode-inline,
+  .toolbar .mode-inline,
+  body .mode-inline{
+    transform: translate(calc(0.5 * var(--square)), calc(0.5 * var(--square))) scale(0.85) !important;
+    transform-origin: top left !important;
+  }
+}
+</style>
+
+
+<style id="frame-gradient-white-black-2025-09-01">
+/* Fondo blanco con degradados negros arriba y abajo, claro en el centro */
+.frame{
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.8) 0%,     /* oscuro arriba */
+    #ffffff 40%,            /* blanco centro superior */
+    #ffffff 60%,            /* blanco centro inferior */
+    rgba(0,0,0,0.8) 100%    /* oscuro abajo */
+  ) !important;
+}
+</style>
+
+
+<style id="mode-down-3mm-2025-09-01">
+/* Bajar 3mm el indicador de modo y su botón en todas las versiones */
+.mode-inline,
+.toolbar .mode-inline,
+body .mode-inline{
+  position: relative !important;
+  transform: translateY(3mm) scale(0.85) !important;
+  transform-origin: top left !important;
+}
+</style>
+
+
+<style id="board-bottom-up-3mm-2025-09-01">
+/* Subir 3mm el tablero dentro del marco, para reducir espacio inferior con la línea negra */
+#board, #mobile-board, #mobile-board-down-1square{
+  margin-bottom: -3mm !important;
+}
+</style>
+
+
+<style id="board-contour-shrink-3mm-2025-09-01">
+/* Achicar 3mm la altura del contorno del tablero desde abajo hacia arriba */
+#board, #mobile-board, #mobile-board-down-1square{
+  height: calc(100% - 3mm) !important;
+  overflow: hidden !important;
+}
+</style>
