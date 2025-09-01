@@ -4277,14 +4277,66 @@ body .mode-inline{
 </style>
 
 
-<script id="force-mode-transform-2025-09-01">
+<style id="frame-contour-shrink-2mm-2025-09-01">
+/* Achicar 2mm la altura del borde negro que contornea al juego desde abajo hacia arriba */
+.frame{
+  height: calc(100% - 2mm) !important;
+  overflow: hidden !important;
+}
+</style>
+
+
+<style id="board-mode-up-1square-2025-09-01">
+/* Subir 1 casillero el tablero completo y el botón/indicador de modo */
+#board, #mobile-board, #mobile-board-down-1square{
+  position: relative !important;
+  top: calc(-1 * var(--square)) !important;
+}
+.mode-inline,
+.toolbar .mode-inline,
+body .mode-inline{
+  position: relative !important;
+  top: calc(-1 * var(--square)) !important;
+}
+</style>
+
+
+<style id="board-mode-down-0_5square-2025-09-01">
+/* Bajar 0.5 casillero el tablero completo y el botón/indicador de modo */
+#board, #mobile-board, #mobile-board-down-1square{
+  position: relative !important;
+  top: calc(-0.5 * var(--square)) !important;
+}
+.mode-inline,
+.toolbar .mode-inline,
+body .mode-inline{
+  position: relative !important;
+  top: calc(-0.5 * var(--square)) !important;
+}
+</style>
+
+
+<style id="mode-up-0_5square-2025-09-01">
+/* Subir 0.5 casillero el botón/indicador de modo */
+.mode-inline,
+.toolbar .mode-inline,
+body .mode-inline{
+  position: relative !important;
+  top: calc(-0.5 * var(--square)) !important;
+}
+</style>
+
+
+
+
+<script id="force-mode-transform-2025-09-01-adjust">
 (function(){
   function apply(){
     try{
       var el = document.querySelector('.mode-inline');
       if(!el) return;
       el.style.setProperty('position','relative','important');
-      el.style.setProperty('transform','translate(calc(1 * var(--square)), calc(1 * var(--square))) scale(0.85)','important');
+      el.style.setProperty('transform','translate(calc(0.5 * var(--square)), calc(0.5 * var(--square))) scale(0.85)','important');
       el.style.setProperty('transform-origin','top left','important');
     }catch(e){/* no-op */}
   }
