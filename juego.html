@@ -3,6 +3,12 @@
 
 <html lang="es">
 <head>
+
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Ajetrez — Tablero (solo)</title>
@@ -4292,6 +4298,17 @@ window.AJ_RULES.kingsInPlay = function(color, board, offsets){
   window.maybeBot = improvedBot;
 })();
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  if (screen.orientation && screen.orientation.lock) {
+    screen.orientation.lock("portrait").catch(err => {
+      console.log("No se pudo forzar orientación:", err);
+    });
+  }
+});
+</script>
+
 </body>
 
 <style id="base-container-shrink-down-0_5square-2025-08-29">
